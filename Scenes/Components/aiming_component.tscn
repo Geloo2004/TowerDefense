@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://beui5qiilci2l"]
+
+[ext_resource type="Script" uid="uid://84riqqilylh1" path="res://Scripts/Components/AimingComponent.cs" id="1_s1i85"]
+
+[node name="AimingComponent" type="Node" unique_id=1670653419]
+script = ExtResource("1_s1i85")

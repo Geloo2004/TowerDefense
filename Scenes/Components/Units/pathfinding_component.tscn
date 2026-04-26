@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cnfk2bnerrcdy"]
+
+[ext_resource type="Script" uid="uid://c2xalblx0nmyb" path="res://Scripts/AI/Units/PathfindingComponent.cs" id="1_fu3ay"]
+
+[node name="PathfindingComponent" type="NavigationAgent3D" unique_id=308446649]
+path_desired_distance = 0.1
+target_desired_distance = 0.2
+path_max_distance = 3.01
+script = ExtResource("1_fu3ay")

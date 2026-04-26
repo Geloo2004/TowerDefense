@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CannonResource" format=3 uid="uid://75mwpujyh2mv"]
+
+[ext_resource type="Script" uid="uid://d13bd6tt7j5v3" path="res://Resources/ResourceScripts/CannonResource.cs" id="1_1a214"]
+
+[resource]
+script = ExtResource("1_1a214")
+Id = 1
+Name = "Medium cannon"
+Cost = 20
+metadata/_custom_type_script = "uid://d13bd6tt7j5v3"

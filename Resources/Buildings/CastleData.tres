@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://bys7qphgshgul"]
+
+[ext_resource type="PackedScene" uid="uid://cvw6dwey3dpnv" path="res://Scenes/Buildings/castle.tscn" id="1_mssew"]
+[ext_resource type="PackedScene" uid="uid://cuyy41g7341vh" path="res://Scenes/Buildings/Outlines/cubic_outline.tscn" id="1_ohre3"]
+[ext_resource type="Script" uid="uid://b5elhvuy37rir" path="res://Resources/ResourceScripts/BuildingData.cs" id="1_wxf25"]
+
+[resource]
+script = ExtResource("1_wxf25")
+Id = 3
+BuildingName = "Castle"
+Size = Vector3i(2, 0, 2)
+Health = 10
+Scene = ExtResource("1_mssew")
+OutlineScene = ExtResource("1_ohre3")
+Cost = 10
+metadata/_custom_type_script = "uid://b5elhvuy37rir"

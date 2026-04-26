@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://djrnwuustoxr3"]
+
+[ext_resource type="Script" uid="uid://b5j0x0lccdnqo" path="res://Scripts/Components/RangeComponent.cs" id="1_41r20"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tqu78"]
+height = 1.0
+radius = 8.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_41r20"]
+height = 1.0
+radius = 11.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8f8e1"]
+height = 1.0
+radius = 13.0
+
+[node name="RangeComponent" type="Node3D" unique_id=752554573]
+script = ExtResource("1_41r20")
+
+[node name="Melee" type="Area3D" parent="." unique_id=819919079]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Melee" unique_id=900052241]
+shape = SubResource("CylinderShape3D_tqu78")
+debug_color = Color(0.98729426, 0.1166304, 0, 1)
+
+[node name="Ranged" type="Area3D" parent="." unique_id=2045979891]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ranged" unique_id=109162225]
+shape = SubResource("CylinderShape3D_41r20")
+debug_color = Color(0.2792197, 0.49545723, 1, 1)
+
+[node name="Detection" type="Area3D" parent="." unique_id=388529115]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection" unique_id=783999708]
+shape = SubResource("CylinderShape3D_8f8e1")
+debug_color = Color(0.66, 0.517, 0, 1)

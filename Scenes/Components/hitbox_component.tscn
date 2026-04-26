@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cwpi11hvbh46m"]
+
+[ext_resource type="Script" uid="uid://q6f8b1y7x0yh" path="res://Scripts/Components/Hitbox.cs" id="1_deb4x"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_deb4x"]
+height = 1.5251465
+radius = 1.0
+
+[node name="HitboxComponent" type="Area3D" unique_id=1164556761]
+collision_mask = 0
+script = ExtResource("1_deb4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1980143431]
+shape = SubResource("CylinderShape3D_deb4x")
+debug_color = Color(0, 1, 0.5176471, 1)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://s0yit5iudee"]
+
+[ext_resource type="PackedScene" uid="uid://cuyy41g7341vh" path="res://Scenes/Buildings/Outlines/cubic_outline.tscn" id="1_b5mwy"]
+[ext_resource type="PackedScene" uid="uid://b3tokey6byihn" path="res://Scenes/Buildings/tower.tscn" id="1_f7wt8"]
+[ext_resource type="Script" uid="uid://b5elhvuy37rir" path="res://Resources/ResourceScripts/BuildingData.cs" id="1_nvu2n"]
+
+[resource]
+script = ExtResource("1_nvu2n")
+Id = 2
+BuildingName = "Tower"
+Scene = ExtResource("1_f7wt8")
+OutlineScene = ExtResource("1_b5mwy")
+Cost = 2
+metadata/_custom_type_script = "uid://b5elhvuy37rir"

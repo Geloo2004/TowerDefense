@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cxmctr17ctj3s"]
+
+[ext_resource type="Script" uid="uid://cbbwj1oewdasd" path="res://Scripts/UI/TurretSpot.cs" id="1_0vhwf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_51adf"]
+height = 0.5
+radius = 0.7
+
+[node name="TurretSpot" type="Node3D" unique_id=1503670788]
+script = ExtResource("1_0vhwf")
+
+[node name="ClickboxComponent" type="Area3D" parent="." unique_id=1684087004]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickboxComponent" unique_id=1672721841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("CylinderShape3D_51adf")
+debug_color = Color(0.77888995, 0, 0.20288622, 1)

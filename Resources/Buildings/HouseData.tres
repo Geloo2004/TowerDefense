@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://cjq0sqr01mtvb"]
+
+[ext_resource type="PackedScene" uid="uid://cwgy5hqr74e15" path="res://Scenes/Buildings/house_2x_2.tscn" id="1_aosj1"]
+[ext_resource type="Script" uid="uid://b5elhvuy37rir" path="res://Resources/ResourceScripts/BuildingData.cs" id="1_rwpel"]
+[ext_resource type="PackedScene" uid="uid://cuyy41g7341vh" path="res://Scenes/Buildings/Outlines/cubic_outline.tscn" id="1_s18t0"]
+
+[resource]
+script = ExtResource("1_rwpel")
+Id = 1
+BuildingName = "House"
+Size = Vector3i(2, 0, 2)
+Scene = ExtResource("1_aosj1")
+OutlineScene = ExtResource("1_s18t0")
+metadata/_custom_type_script = "uid://b5elhvuy37rir"

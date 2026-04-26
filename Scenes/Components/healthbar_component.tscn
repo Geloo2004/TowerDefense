@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bhyrhormrr6um"]
+
+[ext_resource type="Script" uid="uid://ceyu2ba24npqv" path="res://Scripts/Components/Healthbar.cs" id="1_500sg"]
+[ext_resource type="Texture2D" uid="uid://bkebxaouldb4u" path="res://Textures/StoneBrickWall.jpg" id="2_maaft"]
+
+[node name="HealthbarComponent" type="Node3D" unique_id=737203017]
+script = ExtResource("1_500sg")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2030841280]
+texture = ExtResource("2_maaft")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://be808ojvrsxcr"]
+
+[ext_resource type="Script" uid="uid://dtff0pam0hvki" path="res://Resources/ResourceScripts/UnitData.cs" id="1_i6md0"]
+[ext_resource type="PackedScene" uid="uid://blq6aq5bhdfco" path="res://Scenes/Units/barbarian.tscn" id="1_w1x5e"]
+
+[resource]
+script = ExtResource("1_i6md0")
+Name = "Barbarian"
+Damage = 1
+CoinDrop = 1
+Health = 200
+Scene = ExtResource("1_w1x5e")
+metadata/_custom_type_script = "uid://dtff0pam0hvki"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://cco31gvgelpf7"]
+
+[ext_resource type="Script" uid="uid://b5elhvuy37rir" path="res://Resources/ResourceScripts/BuildingData.cs" id="1_6b68g"]
+[ext_resource type="PackedScene" uid="uid://cygut0a71k4wo" path="res://Scenes/Buildings/wall_gate.tscn" id="1_xq3px"]
+
+[resource]
+script = ExtResource("1_6b68g")
+Id = 5
+BuildingName = "Gate"
+Health = 4
+Scene = ExtResource("1_xq3px")
+metadata/_custom_type_script = "uid://b5elhvuy37rir"

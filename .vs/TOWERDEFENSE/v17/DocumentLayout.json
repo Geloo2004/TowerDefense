@@ -1,0 +1,518 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\player\\buildingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\player\\buildingmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\ui\\buildingmenu\\buildbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\ui\\buildingmenu\\buildbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\ai\\units\\pathfindingcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\ai\\units\\pathfindingcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\player\\cameracontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\player\\cameracontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\ui\\turretspot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\ui\\turretspot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\aimingcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\aimingcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\cannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\cannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\wallgate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\wallgate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\resources\\resourcescripts\\buildingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:resources\\resourcescripts\\buildingdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\resources\\resourcescripts\\cannonresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:resources\\resourcescripts\\cannonresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\managers\\gridcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\managers\\gridcell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\managers\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\managers\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\hitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\managers\\detectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\managers\\detectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\resources\\resourcescripts\\unitdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:resources\\resourcescripts\\unitdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\resources\\resourcescripts\\projectiledata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:resources\\resourcescripts\\projectiledata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Units\\Health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\Units\\Health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\rangecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\rangecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\damage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\damage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\animationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\animationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\components\\rangedattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\components\\rangedattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Units\\HealthbarRotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\Units\\HealthbarRotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|d:\\development\\godot\\godotprojects\\tower-defense\\scripts\\entities\\buildingoutline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49870767-1B0C-4CB1-B2ED-E8002FEDBF41}|TowerDefense.csproj|solutionrelative:scripts\\entities\\buildingoutline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 18,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Scripts\\Player\\Player.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Player\\Player.cs",
+              "RelativeToolTip": "Scripts\\Player\\Player.cs",
+              "ViewState": "AgIAANoAAAAAAAAAAADwv+4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T07:53:25.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\UI\\UIManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\UIManager.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\UI\\UIManager.cs",
+              "RelativeToolTip": "Scripts\\UI\\UIManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T11:51:57.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PathfindingComponent.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\AI\\Units\\PathfindingComponent.cs",
+              "RelativeDocumentMoniker": "Scripts\\AI\\Units\\PathfindingComponent.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\AI\\Units\\PathfindingComponent.cs",
+              "RelativeToolTip": "Scripts\\AI\\Units\\PathfindingComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T08:16:50.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EnemySpawner.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\EnemySpawner.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\EnemySpawner.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\EnemySpawner.cs",
+              "RelativeToolTip": "Scripts\\Entities\\EnemySpawner.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T15:03:38.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WallGate.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\WallGate.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\WallGate.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\WallGate.cs",
+              "RelativeToolTip": "Scripts\\Entities\\WallGate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T13:47:29.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Building.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Building.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\Building.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Building.cs",
+              "RelativeToolTip": "Scripts\\Entities\\Building.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T12:57:45.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CannonResource.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\CannonResource.cs",
+              "RelativeDocumentMoniker": "Resources\\ResourceScripts\\CannonResource.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\CannonResource.cs",
+              "RelativeToolTip": "Resources\\ResourceScripts\\CannonResource.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T13:28:15.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "BuildingOutline.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\BuildingOutline.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\BuildingOutline.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\BuildingOutline.cs",
+              "RelativeToolTip": "Scripts\\Entities\\BuildingOutline.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T08:39:41.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BuildingData.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\BuildingData.cs",
+              "RelativeDocumentMoniker": "Resources\\ResourceScripts\\BuildingData.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\BuildingData.cs",
+              "RelativeToolTip": "Resources\\ResourceScripts\\BuildingData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T08:25:42.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BuildButton.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\UI\\BuildingMenu\\BuildButton.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\BuildingMenu\\BuildButton.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\UI\\BuildingMenu\\BuildButton.cs",
+              "RelativeToolTip": "Scripts\\UI\\BuildingMenu\\BuildButton.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T07:52:00.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BuildingManager.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Player\\BuildingManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\Player\\BuildingManager.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Player\\BuildingManager.cs",
+              "RelativeToolTip": "Scripts\\Player\\BuildingManager.cs",
+              "ViewState": "AgIAAN0AAAAAAAAAAAAiwGQAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T07:10:12.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CameraControl.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Player\\CameraControl.cs",
+              "RelativeDocumentMoniker": "Scripts\\Player\\CameraControl.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Player\\CameraControl.cs",
+              "RelativeToolTip": "Scripts\\Player\\CameraControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T15:06:28.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SceneManager.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Managers\\SceneManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\Managers\\SceneManager.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Managers\\SceneManager.cs",
+              "RelativeToolTip": "Scripts\\Managers\\SceneManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T08:15:32.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GridCell.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Managers\\GridCell.cs",
+              "RelativeDocumentMoniker": "Scripts\\Managers\\GridCell.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Managers\\GridCell.cs",
+              "RelativeToolTip": "Scripts\\Managers\\GridCell.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T07:53:02.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DetectionManager.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Managers\\DetectionManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\Managers\\DetectionManager.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Managers\\DetectionManager.cs",
+              "RelativeToolTip": "Scripts\\Managers\\DetectionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T06:19:48.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TurretSpot.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\UI\\TurretSpot.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\TurretSpot.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\UI\\TurretSpot.cs",
+              "RelativeToolTip": "Scripts\\UI\\TurretSpot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T15:03:03.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AimingComponent.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\AimingComponent.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\AimingComponent.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\AimingComponent.cs",
+              "RelativeToolTip": "Scripts\\Components\\AimingComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T14:39:09.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Cannon.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Cannon.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\Cannon.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Cannon.cs",
+              "RelativeToolTip": "Scripts\\Entities\\Cannon.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAlwBcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T14:14:33.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Unit.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Unit.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\Unit.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Unit.cs",
+              "RelativeToolTip": "Scripts\\Entities\\Unit.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAowI8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T16:49:47.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Hitbox.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\Hitbox.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\Hitbox.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\Hitbox.cs",
+              "RelativeToolTip": "Scripts\\Components\\Hitbox.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T11:54:12.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Utilities.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Utilities.cs",
+              "RelativeDocumentMoniker": "Scripts\\Utilities.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Utilities.cs",
+              "RelativeToolTip": "Scripts\\Utilities.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAYwGAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T16:00:08.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UnitData.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\UnitData.cs",
+              "RelativeDocumentMoniker": "Resources\\ResourceScripts\\UnitData.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\UnitData.cs",
+              "RelativeToolTip": "Resources\\ResourceScripts\\UnitData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T12:59:06.769Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ProjectileData.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\ProjectileData.cs",
+              "RelativeDocumentMoniker": "Resources\\ResourceScripts\\ProjectileData.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Resources\\ResourceScripts\\ProjectileData.cs",
+              "RelativeToolTip": "Resources\\ResourceScripts\\ProjectileData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T12:58:53.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Projectile.cs",
+              "RelativeDocumentMoniker": "Scripts\\Entities\\Projectile.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Entities\\Projectile.cs",
+              "RelativeToolTip": "Scripts\\Entities\\Projectile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T12:57:03.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "RangeComponent.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\RangeComponent.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\RangeComponent.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\RangeComponent.cs",
+              "RelativeToolTip": "Scripts\\Components\\RangeComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T10:35:16.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Damage.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\Damage.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\Damage.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\Damage.cs",
+              "RelativeToolTip": "Scripts\\Components\\Damage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T07:17:33.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Health.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\Health.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\Health.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\Health.cs",
+              "RelativeToolTip": "Scripts\\Components\\Health.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T07:15:51.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AnimationController.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\AnimationController.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\AnimationController.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\AnimationController.cs",
+              "RelativeToolTip": "Scripts\\Components\\AnimationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T07:15:48.138Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "RangedAttack.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\RangedAttack.cs",
+              "RelativeDocumentMoniker": "Scripts\\Components\\RangedAttack.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Components\\RangedAttack.cs",
+              "RelativeToolTip": "Scripts\\Components\\RangedAttack.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T07:15:15.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Health.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Units\\Health.cs",
+              "RelativeDocumentMoniker": "Scripts\\Units\\Health.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Units\\Health.cs",
+              "RelativeToolTip": "Scripts\\Units\\Health.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T07:13:25.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "HealthbarRotation.cs",
+              "DocumentMoniker": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Units\\HealthbarRotation.cs",
+              "RelativeDocumentMoniker": "Scripts\\Units\\HealthbarRotation.cs",
+              "ToolTip": "D:\\DEVELOPMENT\\GODOT\\GodotProjects\\tower-defense\\Scripts\\Units\\HealthbarRotation.cs",
+              "RelativeToolTip": "Scripts\\Units\\HealthbarRotation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-04T10:52:18.622Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
