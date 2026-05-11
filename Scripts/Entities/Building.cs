@@ -6,9 +6,8 @@ public partial class Building : Node3D
 {
     [Export] public string DataPath { get; set; } // Path to the .tres file
     [Export] protected Area3D clickBox;
-    [Export] protected AudioStreamPlayer3D audioSource;
     protected Resources.BuildingData _data;
-    protected int currentHealth;
+    public int currentHealth { get; protected set; }
 
     public Resources.BuildingData Data
     {
@@ -39,7 +38,7 @@ public partial class Building : Node3D
         }
     }
 
-    public uint GetID()
+    public int GetID()
     {
         return Data.Id;
     }

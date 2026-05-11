@@ -8,12 +8,22 @@ public partial class Cannon : Node3D
     Timer reloadTimer;
     Timer peaceTimer;
 
-    [Export] Vector2I detectionArea;
-
-    [Export] Unit target;
+    [Export] Area3D detectionArea;
     [Export] Godot.Collections.Array<AimingComponent> aimingComponents;
     bool readyToFire = false;
 
+    List<Unit> unitsInRange = new List<Unit>();
+    Unit currentTarget = null;
+    int currentTargetPriority = 0;
+
+    static int distancePriority = 3;
+    static int damagePriority = 20;
+    static int speedPriority = 10;  
+
+    static float targetSwitchMargin = 1.5f; // shows how many times greater (in percent) the priority of a new target should be for the cannon to switch to it instead of the current one
+
+
+   // [Export] Resources.CannonData _data;
     [Export] AudioStreamPlayer3D audioSource;
 
     // Called when the node enters the scene tree for the first time.
@@ -32,18 +42,23 @@ public partial class Cannon : Node3D
       //  detectionArea.AreaEntered += UpdateTarget;
 
         reloadTimer.Start(reloadTime);
-    }
 
-    public void Fire()
-    {
-        if (!readyToFire) { return; }
-
-        readyToFire = false;
-        GD.Print("BAM!!!");
-        target.TakeDamage();
-        reloadTimer.Start(reloadTime);
-
-        audioSource?.Play();
+        detectionArea.AreaEntered += (Area3D collision) => 
+        {
+            var parent = collision.GetParent();
+            if(parent is Unit)
+            {
+                unitsInRange.Add((Unit)parent);
+            }
+        };
+        detectionArea.AreaExited += (Area3D collision) =>
+        {
+            var parent = collision.GetParent();
+            if (parent is Unit)
+            {
+                unitsInRange.Remove((Unit)parent);                
+            }
+        };
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,22 +75,83 @@ public partial class Cannon : Node3D
 
         // ADD RANDOM ROTATION IF NO ENEMIES?
 
-        if (target == null) { return; }
-        if(target.health <= 0) { target = null; return; }
 
-        if (readyToFire) 
+        // choose target
+        // deal damage
+        // start reloading
+        if (unitsInRange.Count > 0)
         {
-            Fire();
+            SelectTarget();
+            bool isAimed = AimCannon(delta);
+            if (readyToFire && isAimed)
+            {
+                Fire();
+            }
         }
     }
 
-    public void UpdateTarget(Node3D target)
+    private void SelectTarget()
     {
-        this.target = (Unit)(target.GetParent());
-        foreach(var aimingComponent in aimingComponents)
+        Unit highestPriorityUnit = null;
+        int highestPriority = 0;
+
+        foreach (var unit in unitsInRange)
         {
-            aimingComponent.SetTarget(target);
+            float distance = (unit.GlobalPosition - this.GlobalPosition).LengthSquared();
+            int priority = (int)(distancePriority * distance);
+
+            if(priority > highestPriority)
+            {
+                highestPriority = priority;
+                highestPriorityUnit = unit;
+            }
         }
-        GD.Print($"New target: {target.Name}");
+
+        if (highestPriority > currentTargetPriority)
+        {
+            currentTarget = highestPriorityUnit;
+            currentTargetPriority = (int)(highestPriority * targetSwitchMargin);
+            UpdateAimingComponentsTarget(highestPriorityUnit);
+        }
+
+        currentTarget = highestPriorityUnit;
+    }
+
+    private void Fire()
+    {
+        if(currentTarget == null) { return; }
+
+        readyToFire = false;
+        if (aimingComponents[0].isAimed)
+        {
+            GD.Print("TakeDamage");
+            currentTarget.TakeDamage(1);
+            if (currentTarget.currentHealth <= 0)
+            {
+                UpdateAimingComponentsTarget(null);
+            }
+        }
+
+        reloadTimer.Start(reloadTime);
+    }
+
+    private bool AimCannon(double delta)
+    {
+        bool isAimed = true;
+        foreach (var aimingComponent in aimingComponents)
+        {
+            aimingComponent.AimToTarget(delta);
+            if (!aimingComponent.isAimed) { isAimed = false; }
+        }
+        GD.Print(isAimed);
+        return isAimed;
+    }
+
+    private void UpdateAimingComponentsTarget(Node3D newTarget)
+    {
+        foreach (var aimingComponent in aimingComponents)
+        {
+            aimingComponent.SetTarget(newTarget);
+        }
     }
 }

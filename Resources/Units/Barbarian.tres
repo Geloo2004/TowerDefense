@@ -6,8 +6,7 @@
 [resource]
 script = ExtResource("1_i6md0")
 Name = "Barbarian"
-Damage = 1
-CoinDrop = 1
-Health = 200
+Health = 2
+Speed = 4.0
 Scene = ExtResource("1_w1x5e")
 metadata/_custom_type_script = "uid://dtff0pam0hvki"

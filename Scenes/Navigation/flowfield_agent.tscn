@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dt1nby70tqs1r"]
+
+[ext_resource type="Script" uid="uid://1ahplsacl4p" path="res://Scripts/Navigation/Flowfield/FlowfieldAgent.cs" id="1_ye7gu"]
+
+[node name="FlowfieldAgent" type="Node" unique_id=67713161]
+script = ExtResource("1_ye7gu")

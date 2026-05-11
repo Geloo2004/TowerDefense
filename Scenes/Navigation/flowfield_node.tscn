@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://3sajvk6q6f4b"]
+
+[ext_resource type="Script" uid="uid://b25qft0prk371" path="res://Scripts/Navigation/Flowfield/FlowfieldNode.cs" id="1_5cmjs"]
+[ext_resource type="Material" uid="uid://cqddix4upp1vp" path="res://Materials/bad.tres" id="2_acf4j"]
+[ext_resource type="Material" uid="uid://btbfisaprf7y6" path="res://Materials/good.tres" id="3_f480k"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f480k"]
+material = ExtResource("2_acf4j")
+radius = 0.3
+height = 0.6
+radial_segments = 5
+rings = 5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jcc2x"]
+material = ExtResource("3_f480k")
+top_radius = 0.1
+bottom_radius = 0.1
+radial_segments = 5
+rings = 0
+
+[node name="FlowfieldNode" type="Node3D" unique_id=1833281073 node_paths=PackedStringArray("NextNodes", "reserved", "free")]
+script = ExtResource("1_5cmjs")
+NextNodes = []
+reserved = NodePath("reserved")
+free = NodePath("free")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1418332937]
+mesh = SubResource("SphereMesh_f480k")
+
+[node name="free" type="MeshInstance3D" parent="." unique_id=1640891020]
+transform = Transform3D(1, 0, 0, 0, 0.39999998, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("CylinderMesh_jcc2x")
+
+[node name="reserved" type="MeshInstance3D" parent="." unique_id=430990915]
+transform = Transform3D(0.8, 0, 0, 0, 0.15999998, 0, 0, 0, 0.8, 0, 1.4799999, 0)
+mesh = SubResource("CylinderMesh_jcc2x")

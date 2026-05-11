@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bnojyc4757bhd"]
+
+[ext_resource type="Script" uid="uid://8b8u65njmg1a" path="res://Scripts/Navigation/Flowfield/UnitSpawner.cs" id="1_u63w0"]
+
+[node name="UnitSpawner" type="Node" unique_id=197584738]
+script = ExtResource("1_u63w0")

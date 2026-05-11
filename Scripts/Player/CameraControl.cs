@@ -111,17 +111,7 @@ public partial class CameraControl : Camera3D
             {
                 Vector3 hitPoint = result["position"].As<Vector3>();
 
-                GD.Print(collisionMask);
                 var parent = hitNode.GetParent();
-                if (parent is GridCell)
-                {
-                    GD.Print("CELL FOUND");
-                }
-                if (parent is Building)
-                {
-                    GD.Print("BUILDING FOUND");
-                }
-                GD.Print(parent.Name);
                 return parent;
             }
             else

@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="CannonResource" format=3 uid="uid://75mwpujyh2mv"]
+[gd_resource type="Resource" script_class="CannonData" format=3 uid="uid://75mwpujyh2mv"]
 
-[ext_resource type="Script" uid="uid://d13bd6tt7j5v3" path="res://Resources/ResourceScripts/CannonResource.cs" id="1_1a214"]
+[ext_resource type="Script" uid="uid://d13bd6tt7j5v3" path="res://Resources/ResourceScripts/CannonData.cs" id="1_1a214"]
+[ext_resource type="PackedScene" uid="uid://8xijp2evwexq" path="res://Scenes/Buildings/Turrets/cannon.tscn" id="1_v87uc"]
 
 [resource]
 script = ExtResource("1_1a214")
 Id = 1
-Name = "Medium cannon"
-Cost = 20
+Name = "MEDIUM CANNON"
+Price = 10
+Scene = ExtResource("1_v87uc")
 metadata/_custom_type_script = "uid://d13bd6tt7j5v3"

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://r7qoky0n7k42"]
+
+[ext_resource type="Script" uid="uid://cbwv13ksak60e" path="res://Scripts/Entities/Palace.cs" id="1_ldcly"]
+[ext_resource type="Script" uid="uid://q6f8b1y7x0yh" path="res://Scripts/Components/Hitbox.cs" id="2_ldcly"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpf6a"]
+size = Vector3(6, 2, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jqk1"]
+size = Vector3(5, 3, 5)
+
+[node name="Palace" type="Node3D" unique_id=576530032 node_paths=PackedStringArray("clickBox")]
+script = ExtResource("1_ldcly")
+DataPath = "res://Resources/Buildings/PalaceData.tres"
+clickBox = NodePath("ClickboxComponent")
+
+[node name="HitboxComponent" type="Area3D" parent="." unique_id=1164556761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_mask = 0
+script = ExtResource("2_ldcly")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent" unique_id=1980143431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_hpf6a")
+debug_color = Color(0, 1, 0.5176471, 1)
+
+[node name="ClickboxComponent" type="Area3D" parent="." unique_id=1684087004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickboxComponent" unique_id=1672721841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_6jqk1")
+debug_color = Color(0.41916662, 0.14999998, 1, 1)

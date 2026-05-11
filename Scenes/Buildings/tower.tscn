@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cs8xaxp8levbw" path="res://Scripts/Entities/Building.cs" id="1_ohfnd"]
 [ext_resource type="PackedScene" uid="uid://dlghh1kbch4ur" path="res://Scenes/Components/health_component.tscn" id="3_jbdiw"]
-[ext_resource type="PackedScene" uid="uid://cskb8i6qc8v8b" path="res://Scenes/Components/team_component.tscn" id="5_eroj8"]
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="6_26wgh"]
 [ext_resource type="PackedScene" uid="uid://cxmctr17ctj3s" path="res://Scenes/Buildings/Turrets/turret_spot.tscn" id="7_ma4wn"]
 
@@ -91,9 +90,6 @@ DataPath = "res://Resources/Buildings/TowerData.tres"
 
 [node name="HealthComponent" parent="." unique_id=934013437 instance=ExtResource("3_jbdiw")]
 health = 5.0
-
-[node name="TeamComponent" parent="." unique_id=657633902 instance=ExtResource("5_eroj8")]
-teamName = "Test"
 
 [node name="WALL_TOWER" type="MeshInstance3D" parent="." unique_id=1342706343]
 mesh = SubResource("ArrayMesh_jicmr")

@@ -1,12 +1,8 @@
 [gd_scene format=4 uid="uid://8xijp2evwexq"]
 
 [ext_resource type="Script" uid="uid://b8f05g2ppvmeh" path="res://Scripts/Entities/Cannon.cs" id="1_thth3"]
-[ext_resource type="Script" uid="uid://b5j0x0lccdnqo" path="res://Scripts/Components/RangeComponent.cs" id="2_58muj"]
+[ext_resource type="PackedScene" uid="uid://beui5qiilci2l" path="res://Scenes/Components/aiming_component.tscn" id="3_fns88"]
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="3_nc06y"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_41r20"]
-height = 11.625
-radius = 8.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yu58d"]
 resource_name = "TexturePalette"
@@ -120,24 +116,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h1h70")
 
-[node name="Cannon_Big" type="Node3D" unique_id=1933058399 node_paths=PackedStringArray("detectionRange", "cannonBase", "cannonBarrel")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q0xhw"]
+height = 9.5
+radius = 8.0
+
+[node name="Cannon_Big" type="Node3D" unique_id=1933058399 node_paths=PackedStringArray("detectionArea", "aimingComponents", "audioSource")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, 0, 0, 0)
+top_level = true
 script = ExtResource("1_thth3")
-detectionRange = NodePath("RangeComponent/Ranged")
-cannonBase = NodePath("HeavyLafette")
-cannonBarrel = NodePath("HeavyLafette/HeavyCannon")
-
-[node name="RangeComponent" type="Node3D" parent="." unique_id=752554573]
-script = ExtResource("2_58muj")
-
-[node name="Ranged" type="Area3D" parent="RangeComponent" unique_id=2045979891]
-collision_layer = 4
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RangeComponent/Ranged" unique_id=109162225]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5625, 0)
-shape = SubResource("CylinderShape3D_41r20")
-debug_color = Color(0.2792197, 0.49545723, 1, 1)
+reloadTime = 3.0
+detectionArea = NodePath("AttackRange")
+aimingComponents = [NodePath("AimingComponent")]
+audioSource = NodePath("AudioStreamPlayer3D")
 
 [node name="HeavyLafette" type="MeshInstance3D" parent="." unique_id=1023951309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.821371e-15, 0, 8.742278e-08)
@@ -145,10 +135,28 @@ gi_mode = 0
 mesh = SubResource("ArrayMesh_fns88")
 
 [node name="HeavyCannon" type="MeshInstance3D" parent="HeavyLafette" unique_id=1831654757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.553427e-15, 0.5, -2.1855695e-07)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.553426e-15, 0.5, -2.1855695e-07)
 gi_mode = 0
 mesh = SubResource("ArrayMesh_q0xhw")
 
 [node name="BASE" type="MeshInstance3D" parent="." unique_id=524310341]
 gi_mode = 0
 mesh = SubResource("ArrayMesh_nc06y")
+
+[node name="AimingComponent" parent="." unique_id=1670653419 node_paths=PackedStringArray("rotatedObject") instance=ExtResource("3_fns88")]
+axis = 1
+rotatedObject = NodePath("../HeavyLafette")
+minRotationAngle = -360
+maxRotationAngle = 360
+rotationSpeed = 5.0
+aimingMargin = 0.05
+
+[node name="AttackRange" type="Area3D" parent="." unique_id=1312973131]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange" unique_id=514043771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+shape = SubResource("CylinderShape3D_q0xhw")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=857862905]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3 uid="uid://cs3llba0a3w5o"]
+
+[ext_resource type="Script" uid="uid://b5elhvuy37rir" path="res://Resources/ResourceScripts/BuildingData.cs" id="1_8gq0x"]
+[ext_resource type="PackedScene" uid="uid://r7qoky0n7k42" path="res://Scenes/Buildings/palace.tscn" id="1_pkxc2"]
+
+[resource]
+script = ExtResource("1_8gq0x")
+Id = 4
+BuildingName = "Palace"
+Size = Vector3i(3, 0, 3)
+Health = 1
+Scene = ExtResource("1_pkxc2")
+metadata/_custom_type_script = "uid://b5elhvuy37rir"

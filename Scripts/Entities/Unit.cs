@@ -9,27 +9,43 @@ public enum UnitState
 	Attack
 }
 
-public partial class Unit : CharacterBody3D
+public partial class Unit : Node3D
 {
+    //pathfininding
+    [Export] FlowfieldAgent pathfindingAgent;
+
+    private FlowfieldNode originNode;
+
+    private Timer disapperanceTimer;
+
+	// data management
 	[Export] string DataPath;
-	[Export] Node3D target;
-	[Export] float speed;
-	[Export] float attackRange0;
+
+    // Unit variables
+    public sbyte currentHealth { get; private set; }
+    public float currentSpeed { get; private set; }
+
+    public bool IsDead { get { return currentHealth <= 0; } }
+
+	
+	// AI
     UnitState currentState = UnitState.Run;
-	[Export] public sbyte health = 3;
-	[Export] Area3D attackRange;
+	Building target;
+	[Export] RayCast3D attackRay;
+	[Export] float attackRange = 0.5f;
+
+	// SFX
 	[Export] AudioStreamPlayer3D audioSource;
 	// write audio controller for random sounds
-	[Export] float attackDuration = 1;
-	[Export] AnimationPlayer animController;
+
+	// Animation
+	[Export] UnitAnimationController animationController;
 	// write a random animation selector for each state
 	Timer attackTimer;
 	Node attackTarget;
-	int currentHealth;
 
-	[Export] NavigationAgent3D navAgent;
 
-	bool readyToAttack = true;
+    bool readyToAttack = true;
 
     Resources.UnitData _data;
     Resources.UnitData Data
@@ -52,23 +68,59 @@ public partial class Unit : CharacterBody3D
         }
     }
 
-	public override void _EnterTree()
+	private void LoadData()
+	{
+		currentHealth = _data.Health;
+		currentSpeed = _data.Speed;
+	}
+
+    public void Init(FlowfieldNode originNode)
+    {
+        this.originNode = originNode;
+
+        if (pathfindingAgent == null)
+        {
+            GD.PrintErr("PathfindingAgent missing");
+            return;
+        }
+
+        pathfindingAgent.Init(originNode);
+    }
+
+    public override void _EnterTree()
 	{
 		if (Data == null)
 		{
 			GD.PrintErr($"Unit {Name} has no Data! Path: {DataPath}");
 			return;
 		}
-		else
-		{
-
-			currentHealth = Data.Health;
-		}
+		LoadData();
     }
 
-    // Called when the node enters the scene tree for the first time.
+	public bool CheckBuildingInfront()
+	{
+        Rid collision = attackRay.GetColliderRid();
+        if (!collision.IsValid)
+        {
+			return false;
+        }
+        else
+        {
+            // if enemy detected -> make it TARGET
+            Area3D area = (Area3D)(attackRay.GetCollider());
+            Building building = area.GetParent<Building>();
+
+            if (building != null)
+            {
+                target = building;
+            }
+        }
+        return true;
+    }
     public override void _Ready()
 	{
+		attackRay.TargetPosition = new Vector3(0,-attackRange,0);
+
         attackTimer = new Timer();
         attackTimer.Autostart = false;
         attackTimer.OneShot = true;
@@ -77,90 +129,54 @@ public partial class Unit : CharacterBody3D
         {
 			readyToAttack = true;
         };
-        animController.Play("RUN");
 
-        navAgent.TargetPosition = target.GlobalPosition;
-		navAgent.VelocityComputed += UpdateVelocity;
+        disapperanceTimer = new Timer();
+        disapperanceTimer.Autostart = false;
+        disapperanceTimer.OneShot = true;
+        AddChild(disapperanceTimer);
+        disapperanceTimer.Timeout += () => { QueueFree(); };
+
+        currentState = UnitState.Run;
+        animationController.PlayAnimation(currentState);
+
+     //   pathfindingAgent.Enable(originNode);
     }
-
-	private void UpdateVelocity(Vector3 safeVelocity) 
-	{
-		Velocity = safeVelocity;
-	}
-
-	public void Die()
-	{
-		// Disappear;
-		// Drop items
-		// Drop coins
-		GD.Print($"{this.Name} dies");
-	}
 
 	public void PlayAttack()
 	{
-		if (currentState == UnitState.Attack)
-        {
-            readyToAttack = false;
-            animController.Play("FIGHT");
-
-			audioSource.Play();
-			((Building)attackTarget).TakeDamage(Data.Damage);
-			attackTimer.Start(attackDuration);
-		}
-    }
-	public void SwitchState(UnitState state)
-    {
-		if(currentState == state) { return; }
-
-        currentState = state;
-        if (state == UnitState.Attack)
+        readyToAttack = false;
+        attackTimer.Start();
+        animationController.PlayAnimation(UnitState.Attack);
+		target.TakeDamage(Data.Damage);
+		if(target.currentHealth <= 0) 
 		{
-
-		}
-        else if (state == UnitState.Run)
-        {
-            animController.Play("RUN");
+            pathfindingAgent.StartWaiting();
+            PlayRun();
         }
+    }
+
+	private void PlayRun()
+    {
+        target = null;
+        animationController.PlayAnimation(UnitState.Run);
+       // pathfindingAgent.MoveToNextNode();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
     {
-		if (currentState == UnitState.Run)
-		{
-			if (navAgent.IsNavigationFinished()) { return; }
-
-			Vector3 nextPos = navAgent.GetNextPathPosition();
-			Vector3 direction = GlobalPosition.DirectionTo(nextPos);
-            Vector3 newVelocity = direction * speed * (float)delta;
-
-			if (navAgent.AvoidanceEnabled)
-			{
-				navAgent.Velocity = newVelocity;
-            }
-            else
-            {
-                UpdateVelocity(newVelocity);
-            }
-
-            LookAt(GlobalPosition + Velocity);
-
-			if (!navAgent.IsTargetReachable())
-			{
-				GD.Print("TARGET UNREACHABLE");
-				animController.Stop();
-			}
-
-			MoveAndSlide();
-        }
+		if (target!=null && readyToAttack) { PlayAttack(); }
 	}
 
-	public void TakeDamage()
+	public void TakeDamage(sbyte damage)
 	{
-		health--;
-		if(health <= 0)
+		currentHealth-=damage;
+        if (currentHealth <= 0)
 		{
-			QueueFree();
-		}
+			pathfindingAgent.ClearNodes();
+            pathfindingAgent.StopMoving();
+             disapperanceTimer.Start(5);
+            this.GlobalPosition += new Vector3(0, -10, 0);
+        }
 	}
 }

@@ -20,6 +20,8 @@ public partial class BuildButton : Button
 
 	private void OnButtonPressed()
 	{
+		GD.PrintErr("I DO NOTHING " + this.Name);
+		/*
 		if (player.CanBuild(buildingId))
 		{
 			if (player.IsBuilding)
@@ -39,6 +41,6 @@ public partial class BuildButton : Button
 				player.selectedBuildingId = buildingId;
 				player.IsBuilding = true;
 			}
-		}
+		}*/
 	}
 }

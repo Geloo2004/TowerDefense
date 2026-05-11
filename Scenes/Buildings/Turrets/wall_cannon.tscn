@@ -1,8 +1,6 @@
 [gd_scene format=4 uid="uid://cuvxtopcc68no"]
 
-[ext_resource type="Script" uid="uid://b8f05g2ppvmeh" path="res://Scripts/Entities/Cannon.cs" id="1_kwgqs"]
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="2_jbec1"]
-[ext_resource type="PackedScene" uid="uid://beui5qiilci2l" path="res://Scenes/Components/aiming_component.tscn" id="3_ugrbg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbcfi"]
 resource_name = "TexturePalette"
@@ -44,19 +42,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_chgog")
 
-[node name="WallCannon1" type="Node3D" unique_id=1090231368 node_paths=PackedStringArray("aimingComponents", "audioSource")]
-script = ExtResource("1_kwgqs")
-aimingComponents = [NodePath("AimingComponent")]
-audioSource = NodePath("AudioStreamPlayer3D")
+[node name="WallCannon1" type="Node3D" unique_id=1090231368]
 
 [node name="WallCannon1" type="MeshInstance3D" parent="." unique_id=673838389]
 gi_mode = 0
 mesh = SubResource("ArrayMesh_kwgqs")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1754792620]
-
-[node name="AimingComponent" parent="." unique_id=1670653419 node_paths=PackedStringArray("rotatedObject") instance=ExtResource("3_ugrbg")]
-rotatedObject = NodePath("../WallCannon1")
-minRotationAngle = -30
-maxRotationAngle = 60
-rotationSpeed = 3.0

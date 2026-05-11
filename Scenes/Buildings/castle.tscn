@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cs8xaxp8levbw" path="res://Scripts/Entities/Building.cs" id="1_3na7f"]
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="2_kg01s"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jqk1"]
+size = Vector3(3, 2, 3)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4f3u"]
 resource_name = "TexturePalette"
 cull_mode = 2
@@ -43,9 +46,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ts1ax")
 
-[node name="Castle" type="Node3D" unique_id=243048523]
+[node name="Castle" type="Node3D" unique_id=243048523 node_paths=PackedStringArray("clickBox")]
 script = ExtResource("1_3na7f")
 DataPath = "res://Resources/Buildings/CastleData.tres"
+clickBox = NodePath("ClickboxComponent")
+
+[node name="ClickboxComponent" type="Area3D" parent="." unique_id=1684087004]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickboxComponent" unique_id=1672721841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.0587158, 1)
+shape = SubResource("BoxShape3D_6jqk1")
+debug_color = Color(0.41916662, 0.14999998, 1, 1)
 
 [node name="CASTLE" type="MeshInstance3D" parent="." unique_id=762885644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)

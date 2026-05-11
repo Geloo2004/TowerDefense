@@ -8,10 +8,15 @@ namespace Resources
     {
         [Export] public int Id;
         [Export] public string Name;
-        [Export] public int Damage;
-        [Export] public int CoinDrop;
-//[Export] item drop
-        [Export] public sbyte Health { get; set; } = 3;
+
+        [Export] public sbyte Health { get; private set; } = 3;
+        [Export] public sbyte Damage { get; private set; } = 1;
+        [Export] public float Speed { get; private set; } = 2;
+        [Export] public float AttackDuration { get; private set; } = 1;
+
+        [Export] public byte CoinDrop { get; private set; } = 1;
+
+
         [Export] public PackedScene Scene { get; set; }
     }
 }

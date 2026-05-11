@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2njcvpe77ndj"]
+
+[ext_resource type="Script" uid="uid://c38rdp2c8hr2l" path="res://Scripts/AI/Units/UnitAnimationController.cs" id="1_hrk25"]
+
+[node name="AnimationController" type="Node" unique_id=986879386]
+script = ExtResource("1_hrk25")

@@ -5,9 +5,9 @@ using System.Runtime.CompilerServices;
 
 public partial class BuildingManager : Node
 {
-    [Export] public Godot.Collections.Dictionary<uint, string> buildingDataPaths;	// id - path
-    private Dictionary<uint, Resources.BuildingData> bData = new Dictionary<uint, Resources.BuildingData>();
-    Dictionary<Vector3I, uint> builtBuildings;
+    [Export] public Godot.Collections.Dictionary<int, string> buildingDataPaths;	// id - path
+    private Dictionary<int, Resources.BuildingData> bData = new Dictionary<int, Resources.BuildingData>();
+    Dictionary<Vector3I, int> builtBuildings;
     private BuildingOutline buildingOutline;
     /*
     1 = house
@@ -19,6 +19,7 @@ public partial class BuildingManager : Node
     */
     [Export] public GridMap buildableGrid;
     [Export] MeshLibrary tileMeshLib;
+    Vector3I buildingOutlinePosition;
 
     // Towers
     // Walls
@@ -41,20 +42,131 @@ public partial class BuildingManager : Node
 
     // Called when the node enters the scene tree for the first time.
 
-    #region BuildingRequirements
 
-    public int GetPrice(uint buildingID)
+    #region Preparation
+
+    private GridCell CreateColliderTemplate()
     {
-        return (bData[buildingID].Cost);
+        GridCell template = new GridCell();
+        template.Name = "GridCellCollider_Template";
+        // GD.Print("empty template created");
+
+        Area3D area3d = new Area3D();
+        area3d.InputRayPickable = true;
+        // GD.Print("area3d created");
+        template.AddChild(area3d);
+        // GD.Print("area3d added");
+
+        CollisionShape3D collisionShape = new CollisionShape3D();
+        BoxShape3D boxShape = new BoxShape3D();
+        boxShape.Size = buildableGrid.CellSize;
+        collisionShape.Shape = boxShape;
+        area3d.AddChild(collisionShape);
+        area3d.CollisionLayer = Utilities.GetCollisionMaskValue(3);
+        // GD.Print("collision3d added");
+
+        return template;
+    }
+    private bool HasCellsAbove(ref Vector3I coordinates, ref Godot.Collections.Array<Vector3I> cells)
+    {
+        GD.Print((int)buildableGrid.CellSize.Y);
+
+        for (int i = 1; i < 10; i++)
+        {
+            if (cells.Contains(new Vector3I(coordinates.X, coordinates.Y + i, coordinates.Z)))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public bool IsAreaFree(Vector3I start, uint buildingID)
+
+    public override void _EnterTree()
     {
-        foreach(var item in builtBuildings)
+        // load building data
+        foreach (var path in buildingDataPaths)
+        {
+            var buildingData = ResourceLoader.Load<Resources.BuildingData>(path.Value);
+            bData[path.Key] = buildingData;
+        }
+
+        // GD.Print("Enter tree");
+        cells = new Dictionary<Vector3I, GridCell>();
+        builtBuildings = new Dictionary<Vector3I, int>();
+
+        // Create template with your GridCell script
+        GridCell.SetBuildingManager(this);
+        GridCell cellTemplate = CreateColliderTemplate();
+        // GD.Print("template created");
+
+        var usedCells = buildableGrid.GetUsedCells();
+        foreach (var cell in usedCells)
+        {
+            Vector3I coordinates = new Vector3I(cell.X, cell.Y, cell.Z);
+
+            if (HasCellsAbove(ref coordinates, ref usedCells)) { continue; }
+            // Duplicate the template (includes the script!)
+            GridCell cellInstance = (GridCell)cellTemplate.Duplicate();
+
+            // Position the cell
+            Vector3 worldPos = buildableGrid.MapToLocal(coordinates);
+            cellInstance.Position = worldPos;
+            cellInstance.Name = $"GridCell_{cell.X}_{cell.Y}_{cell.Z}";
+
+            // Add to scene
+            AddChild(cellInstance);
+            // GD.Print("child added");
+
+            // Store reference
+            cells.Add(coordinates, cellInstance);
+            //  GD.Print("reference stored");
+        }
+
+    }
+    public override void _Ready()
+    {
+        buildingsParent = GetNodeOrNull<Node3D>("/root/Node/Buildings");
+        if (buildingsParent == null)
+        {
+            buildingsParent = new Node3D();
+            buildingsParent.Name = "Buildings";
+            GetTree().Root.AddChild(buildingsParent);
+            GD.Print("Created Buildings parent");
+        }
+
+
+        GD.Print($"Searching for buildings");
+        Godot.Collections.Array<Node> existingBuildings = Utilities.FindAllObjectsOfType<Building>(GetTree().Root);
+        GD.Print($"Found: {existingBuildings.Count}");
+
+        foreach (Node buildingNode in existingBuildings)
+        {
+            Building b = buildingNode as Building;
+            if (b != null)
+            {
+                UpdateCells(b.IntPosition, b.size, ((Building)buildingNode).GetID());
+            }
+        }
+
+        foreach (var item in builtBuildings)
         {
             GD.Print(item);
         }
+    }
 
+    #endregion
+
+    #region BuildingRequirements
+
+    public int GetPrice(int buildingID)
+    {
+        GD.Print($"GETTING: {buildingID} id");
+        return (bData[buildingID].Cost);
+    }
+
+    public bool IsAreaFree(Vector3I start, int buildingID)
+    {
         var size = bData[buildingID].Size;
 
         for (int x = 0; x < size.X; x++)
@@ -67,37 +179,51 @@ public partial class BuildingManager : Node
                     start.Z + (z * (int)buildableGrid.CellSize.Z)
                 );
 
-                GD.Print($"Checking: {x} {z} : {checkPos}");
-                if (builtBuildings.TryGetValue(checkPos, out uint buildingIndex))
+                if (builtBuildings.TryGetValue(checkPos, out int buildingIndex))
                 {
-                    GD.Print($"INDEX: {buildingIndex}");
                     if (buildingIndex != 0)
                     {
-                        GD.Print($"{start} is NOT FREE!");
                         return false;
                     }
                 }
                 else
                 {
-                    builtBuildings.Add(checkPos, 0);
-                    GD.Print($"{start} is FREE!");
                     return true;
                 }
             }
         }
-        GD.Print($"{start} is FREE!");
         return true;
     }
 
     #endregion
-    public void CreateBuildingOutline(uint buildingID)
+    public void CreateBuildingOutline(int buildingID)
     {
-        GD.Print("CreateBuildingOutline");
         buildingOutline = bData[buildingID].OutlineScene.Instantiate<BuildingOutline>();
         buildingOutline.Visible = false;
         this.AddChild(buildingOutline);
     }
 
+    public void UpdateBuildingOutline(Node cellUnderMouse, int selectedBuildingId)
+    {
+        if (cellUnderMouse == null) { return; }
+
+        if (cellUnderMouse is GridCell)
+        {
+            Vector3I newPosition = ((GridCell)cellUnderMouse).IntPosition;
+            if (buildingOutlinePosition != newPosition)
+            {
+                buildingOutlinePosition = newPosition;
+                //UpdateBuildingOutline(buildingOutlinePosition, selectedBuildingId);
+
+                buildingOutline.Visible = true;
+                buildingOutline.Position = buildingOutlinePosition;
+
+                buildingOutline.SetColor(IsAreaFree(buildingOutlinePosition, selectedBuildingId));
+            }
+        }
+    }
+
+    /*
     public void UpdateBuildingOutline(Vector3I gridPosition, uint buildingID)
     {
         buildingOutline.Visible = true;
@@ -108,22 +234,22 @@ public partial class BuildingManager : Node
         buildingOutline.SetColor(IsAreaFree(gridPosition, buildingID));
 
         GD.Print($"buildingOutline in {gridPosition}");
-    }
+    }*/
 
     public void DestroyBuildingOutline()
     {
-        GD.Print("DestroyBuildingOutline");
         if (buildingOutline != null) {
             if (buildingOutline.Visible)
             {
-                buildingOutline.QueueFree();
+                buildingOutline?.QueueFree();
+                buildingOutline = null;
             }
         }
     }
 
-    public bool CanBuild(Vector3I position, uint buildingID)
+    public bool CanBuild(Vector3I position, int buildingID)
     {
-        // determines whether a building can be built in a position with a set of requirements
+
 
         if (IsAreaFree(position, buildingID))
         {
@@ -188,9 +314,8 @@ public partial class BuildingManager : Node
     }
     
 
-    public void Build(Vector3I gridPosition, float rotation, uint buildingID)
+    public void Build(Vector3I gridPosition, float rotation, int buildingID)
     {
-
         // Instantiate building
         Building building = bData[buildingID].Scene.Instantiate<Building>();
 
@@ -205,7 +330,7 @@ public partial class BuildingManager : Node
         UpdateCells(gridPosition, bData[buildingID].Size, buildingID);
     }
 
-    private void UpdateCells(Vector3I start, Vector3I size, uint newBuildingID)
+    private void UpdateCells(Vector3I start, Vector3I size, int newBuildingID)
     {
         for (int x = 0; x < size.X; x++)
         {
@@ -221,127 +346,6 @@ public partial class BuildingManager : Node
             }
         }
     }
-
-    #region Preparation
-
-    private GridCell CreateColliderTemplate()
-    {
-        GridCell template = new GridCell();
-        template.Name = "GridCellCollider_Template";
-        // GD.Print("empty template created");
-
-        Area3D area3d = new Area3D();
-        area3d.InputRayPickable = true;
-        // GD.Print("area3d created");
-        template.AddChild(area3d);
-        // GD.Print("area3d added");
-
-        CollisionShape3D collisionShape = new CollisionShape3D();
-        BoxShape3D boxShape = new BoxShape3D();
-        boxShape.Size = buildableGrid.CellSize;
-        collisionShape.Shape = boxShape;
-        area3d.AddChild(collisionShape);
-        area3d.CollisionLayer = Utilities.GetCollisionMaskValue(3);
-        // GD.Print("collision3d added");
-
-        return template;
-    }
-    private bool HasCellsAbove(ref Vector3I coordinates, ref Godot.Collections.Array<Vector3I> cells)
-    {
-        GD.Print((int)buildableGrid.CellSize.Y);
-
-        for (int i = 1; i < 10; i++)
-        {
-            if (cells.Contains(new Vector3I(coordinates.X, coordinates.Y + i, coordinates.Z)))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public override void _EnterTree()
-    {
-        // load building data
-        foreach (var path in buildingDataPaths)
-        {
-            var buildingData = ResourceLoader.Load<Resources.BuildingData>(path.Value);
-            bData[path.Key] = buildingData;
-        }
-
-        // GD.Print("Enter tree");
-        cells = new Dictionary<Vector3I, GridCell>();
-        builtBuildings = new Dictionary<Vector3I, uint>();
-
-        // Create template with your GridCell script
-        GridCell.SetBuildingManager(this);
-        GridCell cellTemplate = CreateColliderTemplate();
-        // GD.Print("template created");
-
-        var usedCells = buildableGrid.GetUsedCells();
-        foreach (var cell in usedCells)
-        {
-            Vector3I coordinates = new Vector3I(cell.X, cell.Y, cell.Z);
-            string cellName = buildableGrid.GetCellItem(coordinates).ToString();
-
-            if (tileMeshLib.GetItemName(Convert.ToInt32(cellName)) != "GROUND_FLAT")
-            {
-                //  GD.Print($"CELL: {tileMeshLib.GetItemName(Convert.ToInt32(cellName))}");
-                continue;
-            }
-
-            if (HasCellsAbove(ref coordinates, ref usedCells)) { continue; }
-            // Duplicate the template (includes the script!)
-            GridCell cellInstance = (GridCell)cellTemplate.Duplicate();
-
-            // Position the cell
-            Vector3 worldPos = buildableGrid.MapToLocal(coordinates);
-            cellInstance.Position = worldPos;
-            cellInstance.Name = $"GridCell_{cell.X}_{cell.Y}_{cell.Z}";
-
-            // Add to scene
-            AddChild(cellInstance);
-            // GD.Print("child added");
-
-            // Store reference
-            cells.Add(coordinates, cellInstance);
-            //  GD.Print("reference stored");
-        }
-
-    }
-    public override void _Ready()
-    {
-        buildingsParent = GetNodeOrNull<Node3D>("/root/Node/Buildings");
-        if (buildingsParent == null)
-        {
-            buildingsParent = new Node3D();
-            buildingsParent.Name = "Buildings";
-            GetTree().Root.AddChild(buildingsParent);
-            GD.Print("Created Buildings parent");
-        }
-
-
-        GD.Print($"Searching for buildings");
-        Godot.Collections.Array<Node> existingBuildings = Utilities.FindAllObjectsOfType<Building>(GetTree().Root);
-        GD.Print($"Found: {existingBuildings.Count}");
-
-        foreach (Node buildingNode in existingBuildings)
-        {
-            Building b = buildingNode as Building;
-            if (b != null)
-            {
-                UpdateCells(b.IntPosition, b.size, ((Building)buildingNode).GetID());
-            }
-        }
-
-        foreach (var item in builtBuildings)
-        {
-            GD.Print(item);
-        }
-    }
-
-    #endregion
 
     public override void _Process(double delta)
     {

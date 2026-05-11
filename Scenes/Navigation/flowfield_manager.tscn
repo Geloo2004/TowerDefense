@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://batny1pkv7mj8"]
+
+[ext_resource type="Script" uid="uid://bs3wk2yq50y65" path="res://Scripts/Navigation/Flowfield/FlowfieldManager.cs" id="1_m7vyb"]
+
+[node name="FlowfieldManager" type="Node" unique_id=1660553320 node_paths=PackedStringArray("StartNodes")]
+script = ExtResource("1_m7vyb")
+StartNodes = []

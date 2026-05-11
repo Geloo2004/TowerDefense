@@ -6,41 +6,21 @@ using System.Data;
 public partial class Player : Node
 {
 
-	public uint selectedBuildingId = 0;
+	private int selectedBuildingId = 0;
     private int selectedBuildingPrice = 0;
-
+    private int selectedTurretId = 0;
     // BUILDING
     [Export] CameraControl camera;
-    [Export] BuildingManager buildingManager;
-    [Export] UIManager uiManager;
-    private bool isImprovingTower = false;
 
-    public bool CanBuild(uint buildingID)
-    {
-        selectedBuildingPrice = buildingManager.GetPrice(buildingID);
-        return selectedBuildingPrice <= coins;
-    }
+   // [Export] BuildingManager buildingManager;
+
+    [Export] TurretBuildingManager turretBuildingManager;
+    [Export] UIManager uiManager;
 
     private bool isBuilding = false;
-    public bool IsBuilding 
-    { 
-        get { return isBuilding; }
-        set
-        {
-            buildingManager.DestroyBuildingOutline();
-            if (value)
-            {
-                buildingManager.CreateBuildingOutline(selectedBuildingId);
-                collisionMask = 3;
-            }
-            else
-            {
-                collisionMask = 2;
-            }
-            buildingOutlinePosition = Vector3I.MinValue;
-            isBuilding = value;
-        }
-    }
+    private bool isBuildingTurret = false;
+    private bool isMouseOverUI = false;
+
     Vector3I startTile;
     Vector3I endTile;
     Vector3I buildingOutlinePosition;
@@ -48,9 +28,12 @@ public partial class Player : Node
     [Export] public uint collisionMask = 2;
     Node clickedObject = null;
     /*
-        1 - hitboxes
-        2 - buildings
+        1 - buildings hitboxes
+        2 - buildings clickboxes
         3 - tiles
+
+        4 - unit hitboxes
+
     */
 
 
@@ -63,45 +46,47 @@ public partial class Player : Node
     [Export] public int coins = 100;
     SceneManager sceneManager;
 
+    private void RestartLevel()
+    {
+        this.GetTree().ReloadCurrentScene();
+    }
+
+
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        Palace palace = (Palace)Utilities.FindAllObjectsOfType<Palace>(this.GetTree().Root)[0];
+        palace.OnPalaceDestruction += RestartLevel;
+
         uiManager.UpdateCoins(coins);
+        uiManager.OnBuildingSelected += StartBuilding;
+        uiManager.OnTurretSelected += StartBuildingTurrets;
+
         var sceneManager = Utilities.FindAllObjectsOfType<SceneManager>(GetTree().Root);
         if (sceneManager.Count > 0)
         {
             this.sceneManager = (SceneManager)sceneManager[0];
         }
-    }
 
-    public void UpdateBuildingOutline()
-    {
-
-        var cellUnderMouse = camera.GetObjectUnderMouse(collisionMask);
-        if (cellUnderMouse == null) { return; }
-
-        if (cellUnderMouse is GridCell)
-        {
-            Vector3I newPosition = ((GridCell)cellUnderMouse).IntPosition;
-            if (buildingOutlinePosition!= newPosition)
-            {
-                buildingOutlinePosition = newPosition;
-                buildingManager.UpdateBuildingOutline(buildingOutlinePosition, selectedBuildingId);
-            }
-        }
+        uiManager.OnMouseHoverUI += (bool isMouseOverUI) => { this.isMouseOverUI = isMouseOverUI; };
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
-        uiManager.UpdateStatus(isBuilding, isImprovingTower);
+        uiManager.UpdateStatus(isBuilding, isBuildingTurret, selectedBuildingId);
         var rmbInput = Input.GetActionStrength("RMBPress");
         var lmbInput = Input.GetActionStrength("LMBPress");
 
         if (isBuilding)
         {
-            UpdateBuildingOutline();
+           //buildingManager.UpdateBuildingOutline(camera.GetObjectUnderMouse(collisionMask),selectedBuildingId);
+        }
+        if (isBuildingTurret) 
+        {
+            
         }
 
         if (lmbInput > 0)
@@ -128,53 +113,22 @@ public partial class Player : Node
                 // On quick hold and release
                 HandleLMBClick();
             }
+
         }
-
-
         if (rmbInput > 0)
         {
-            if (rmbHoldDuration == 0)
-            {
-                // On first press
-                HandleRMBPress(delta);
-            }
-            else
-            {
-                OnRMBHold(delta);
-            }
+            StopBuilding();
+            StopBuildingTurrets();
         }
-        else if (rmbInput == 0)
-        {
-            if (rmbHoldDuration > holdDuration)
-            {
-                OnRMBRelease();
-            }
-            else if (rmbHoldDuration > 0)
-            {
-                // On quick hold and release
-                HandleRMBClick();
-            }
-        }
-        uiManager.UpdateStatus(isBuilding, isImprovingTower);
+
+        uiManager.UpdateStatus(isBuilding, isBuildingTurret,selectedBuildingId);
     }
     private void HandleRMBPress(double delta)
     {
         rmbHoldDuration += (float)delta;
         // On first press
     }
-    public void HandleRMBClick()
-    {
-        GD.Print("HandleRMBClick");
-        rmbHoldDuration = 0;
-        // On quick hold and release
-        var clickedObject = camera.GetObjectUnderMouse(collisionMask);
-        if (clickedObject == null) { return; }
-        if(clickedObject is GridCell)
-        {
-
-        }
-    }
-
+    public void HandleRMBClick() { }
     public void OnRMBHold(double delta) { rmbHoldDuration += (float)delta; }
     public void OnRMBRelease() { rmbHoldDuration = 0; }
     private void HandleLMBPress(double delta)
@@ -196,8 +150,9 @@ public partial class Player : Node
     }
     private void OnLMBRelease()
     {
-        GD.Print("OnLMBRelease");
         lmbHoldDuration = 0;
+        return;
+
         Node clickedObject = camera.GetObjectUnderMouse(collisionMask);
         if (clickedObject == null) { return; }
 
@@ -207,61 +162,93 @@ public partial class Player : Node
             endTile = ((GridCell)clickedObject).IntPosition;
         }
 
-        buildingManager.BuildWall(startTile, endTile);
+       // buildingManager.BuildWall(startTile, endTile);
     }
 
     private void OnLMBHold(double delta)
     {
-        GD.Print("OnLMBHold");
         lmbHoldDuration += (float)delta;
-
-        // add functionality for showing building outline, when the position of end cell changes
     }
 
     private void HandleLMBClick()
     {
-        GD.Print("HandleLMBClick");
         lmbHoldDuration = 0;
+
+        if (isMouseOverUI)
+        {
+            return;
+        }
+
         Node clickedObject = camera.GetObjectUnderMouse(collisionMask);
+
         if (clickedObject == null)
         {
             if (lmbHoldDuration > 0)
             {
-                if (isImprovingTower)
+                if (isBuildingTurret)
                 {
-                    DisableTowerImprovement();
+                    isBuildingTurret = false;
+                    StopBuildingTurrets();
                 }
 
                 if (isBuilding)
                 {
-                    isBuilding = false;
+                    StopBuilding();
                 }
             }
             return;
         }
-
-        if (isBuilding)
+        else if (isBuilding)
         {
-            GD.Print("isBuilding");
+            /*
+            GD.Print($"selectedBuildingId = {selectedBuildingId}");
+            if(buildingManager.GetPrice(selectedBuildingId) > coins) 
+            {
+                uiManager.ShowMessage("NOT ENOUGH COINS");
+                return;
+            }
             if (clickedObject is GridCell)
             {
                 var clickedTile = ((GridCell)clickedObject).IntPosition;
+
                 if (buildingManager.IsAreaFree(clickedTile, selectedBuildingId))
                 {
-                    coins-=selectedBuildingPrice;
+                    coins -= selectedBuildingPrice;
                     buildingManager.Build(clickedTile, 0, selectedBuildingId);
                     outOfBounds = false;
                     uiManager.UpdateCoins(coins);
                 }
+                else
+                {
+                    GD.Print("AREA NOT FREE");
+                }
             }
             else
             {
-                GD.Print("outOfBounds");
-                outOfBounds = true;
+                StopBuilding();
+            }
+            */
+        }
+        else if (isBuildingTurret)
+        {
+            GD.Print("isBuildingTurret");
+            if (clickedObject is TurretSpot)
+            {
+                var clickedTurretSpot = (TurretSpot)clickedObject;
+
+                if (turretBuildingManager.GetPrice(selectedTurretId) > coins) { return; }
+
+                GD.Print("isBuildingTurret and price is ok");
+                turretBuildingManager.BuildTurret(clickedTurretSpot, selectedTurretId);
+            }
+            else
+            {
+                StopBuildingTurrets();
             }
         }
         else
         {
+            /*
             GD.Print("is not Building");
             if (clickedObject is TurretSpot)
             {
@@ -280,6 +267,7 @@ public partial class Player : Node
                 GD.Print("isImprovingTower");
                 uiManager.HideTurretSelectionMenu();
             }
+            */
         }
     }
     private void EnableIdle()
@@ -287,16 +275,48 @@ public partial class Player : Node
         collisionMask = 2;
     }
 
-    private void DisableTowerImprovement()
+    private void StopBuildingTurrets()
     {
-        isImprovingTower = false;
-        collisionMask = 2;
-        uiManager.HideTurretSelectionMenu();
+        isBuildingTurret = false;
+
+        uiManager.ShowBuildingMenus();
+        uiManager.UpdateTooltip("");
     }
-    private void EnableTowerImprovement(TurretSpot turretSpot)
+    private void StartBuildingTurrets(int selectedTurretId)
     {
-        isImprovingTower = true;
+        isBuildingTurret = true;
         collisionMask = 2;
-        uiManager.ShowTurretSelectionMenu(turretSpot);
+
+        this.selectedTurretId = selectedTurretId;
+
+        uiManager.HideBuildingMenus();
+        uiManager.UpdateTooltip("[ PRESS RMB TO CANCEL ]");
+    }
+    public void StartBuilding(int selectedBuildingId)
+    {
+        
+
+        isBuilding = true;
+        collisionMask = 3;
+
+        this.selectedBuildingId = selectedBuildingId;
+        /*
+        buildingManager.DestroyBuildingOutline();
+        buildingManager.CreateBuildingOutline(selectedBuildingId);
+        buildingOutlinePosition = Vector3I.MinValue;
+        */
+        uiManager.HideBuildingMenus();
+        uiManager.UpdateTooltip("[ PRESS RMB TO CANCEL ]");
+        
+    }
+
+    public void StopBuilding()
+    {
+        isBuilding = false;
+
+       // buildingManager.DestroyBuildingOutline();
+
+        uiManager.ShowBuildingMenus();
+        uiManager.UpdateTooltip("");
     }
 }

@@ -3,36 +3,18 @@
 [ext_resource type="Script" uid="uid://bpr3d1nqrn18y" path="res://Scripts/Player/CameraControl.cs" id="1_iy57e"]
 [ext_resource type="Script" uid="uid://cu6xouopwbuk8" path="res://Scripts/Player/BuildingManager.cs" id="2_0f8ff"]
 [ext_resource type="Script" uid="uid://5qaldirptnnx" path="res://Scripts/Managers/SceneManager.cs" id="2_fkge6"]
-[ext_resource type="Script" uid="uid://dmhtu76p62btd" path="res://Scripts/Managers/DetectionManager.cs" id="4_0f8ff"]
 [ext_resource type="Script" uid="uid://c38rbshfd5nra" path="res://Scripts/UI/UIManager.cs" id="4_dri0c"]
-[ext_resource type="Script" uid="uid://2lrpdxw52mje" path="res://Scripts/UI/BuildingMenu/BuildButton.cs" id="4_jeebp"]
 [ext_resource type="PackedScene" uid="uid://sgyrpmsvl10p" path="res://Scenes/Buildings/wall.tscn" id="4_rc0xk"]
 [ext_resource type="Script" uid="uid://dsmqc0m34ojdt" path="res://Scripts/Player/Player.cs" id="4_tqeus"]
 [ext_resource type="PackedScene" uid="uid://b3tokey6byihn" path="res://Scenes/Buildings/tower.tscn" id="5_rc0xk"]
 [ext_resource type="PackedScene" uid="uid://cygut0a71k4wo" path="res://Scenes/Buildings/wall_gate.tscn" id="5_v1f81"]
+[ext_resource type="Script" uid="uid://cehg05fpvinpc" path="res://Scripts/Player/TurretBuildingManager.cs" id="7_1mtof"]
+[ext_resource type="PackedScene" uid="uid://r7qoky0n7k42" path="res://Scenes/Buildings/palace.tscn" id="8_1lmi8"]
 [ext_resource type="MeshLibrary" uid="uid://bro43kaol0ek2" path="res://MeshLibraries/newTiles.meshlib" id="8_dri0c"]
-[ext_resource type="Script" uid="uid://dubxtouhp2e6i" path="res://Scripts/Entities/EnemySpawner.cs" id="13_3qdsm"]
-[ext_resource type="PackedScene" uid="uid://blq6aq5bhdfco" path="res://Scenes/Units/barbarian.tscn" id="22_18q1s"]
-
-[sub_resource type="Curve3D" id="Curve3D_jeebp"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -33, 0, 0, 0, 0, 0, 0, 10, 0, -33, 0, 0, 0, 0, 0, 0, 10, 0, -32, 0, 0, 0, 0, 0, 0, 10, 2, -28, 0, 0, 0, 0, 0, 0, 10, 2, -25, 0, 0, 0, 0, 0, 0, 4, 2, -25, 0, 0, 0, 0, 0, 0, 4, 2, -37, 0, 0, 0, 0, 0, 0, 2, 2, -37, 0, 0, 0, 0, 0, 0, 2, 2, -45, 0, 0, 0, 0, 0, 0, -6, 2, -45, 0, 0, 0, 0, 0, 0, -6, 2, -43, 0, 0, 0, 0, 0, 0, -10, 2, -43, 0, 0, 0, 0, 0, 0, -10, 2, -27),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 14
-up_vector_enabled = false
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_2yqos"]
-vertices = PackedVector3Array(-10.485481, 0.01999998, 1.2333, -10.385481, 0.01999998, 0.8333, -23.585482, 0.01999998, 0.8333, -23.585482, 0.01999998, 1.2333, -9.885481, -5.9604645e-08, 1.2333, -9.885481, -5.9604645e-08, 1.3333001, -9.785481, -5.9604645e-08, 1.3333001, -8.785481, 0.00999999, 0.8333, -9.785481, -5.9604645e-08, 1.4333, -9.685481, -5.9604645e-08, 1.4333, -9.685481, -5.9604645e-08, 1.5333, -9.585481, -5.9604645e-08, 1.5333, -9.585481, -5.9604645e-08, 1.6333001, -9.485481, -5.9604645e-08, 1.6333001, -9.485481, -5.9604645e-08, 1.7333001, -9.385481, -5.9604645e-08, 1.7333001, -9.385481, -5.9604645e-08, 1.8333, -9.285481, -5.9604645e-08, 1.8333, -9.285481, -5.9604645e-08, 1.9333, -9.185481, -5.9604645e-08, 1.9333, -9.185481, 0.00999999, 10.1333, -9.285481, -5.9604645e-08, 10.1333, -9.285481, 0.00999999, 10.2333, -8.785481, 0.00999999, 11.1333, -9.385481, -5.9604645e-08, 10.2333, -9.385481, 0.00999999, 10.333301, -9.485481, -5.9604645e-08, 10.333301, -9.485481, 0.00999999, 10.4333, -9.585481, -5.9604645e-08, 10.4333, -9.585481, 0.00999999, 10.5333, -9.685481, -5.9604645e-08, 10.5333, -9.685481, 0.00999999, 10.6333, -9.785481, -5.9604645e-08, 10.6333, -9.785481, 0.00999999, 10.7333, -9.885481, -5.9604645e-08, 10.7333, -9.885481, 0.00999999, 10.833301, -15.685481, 2.02, 10.833301, -15.685481, 2.02, 11.1333, -10.465481, 0.26, 10.833301, -12.205481, 1.1599998, 10.833301, -12.7854805, 1.4099998, 10.833301, -13.945481, 1.99, 10.833301, -14.525481, 2.02, 10.833301, -14.535481, 2.02, 11.1333, -13.960482, 2, 11.1333, -13.385481, 1.71, 11.1333, -12.810481, 1.46, 11.1333, -11.085482, 0.55999994, 11.1333, -10.510481, 0.30999994, 11.1333, -9.935482, 0.00999999, 11.1333, -9.185481, 0.01999998, 2.5190144, -16.085482, 2, 10.833301, -16.085482, 2, 10.7333, -16.185482, 2, 10.7333, -17.185482, 2.01, 11.1333, -16.185482, 2, 10.6333, -16.28548, 2, 10.6333, -16.28548, 2, 10.5333, -16.38548, 2, 10.5333, -16.38548, 2, 10.4333, -16.485481, 2, 10.4333, -16.485481, 2, 10.333301, -16.585482, 2, 10.333301, -16.585482, 2, 10.2333, -16.685482, 2, 10.2333, -16.685482, 2, 10.1333, -16.78548, 2, 10.1333, -16.78548, 2.01, 5.8333, -16.685482, 2, 5.8333, -16.685482, 2.01, 5.7333, -17.185482, 2.01, 4.8333, -16.585482, 2, 5.7333, -16.585482, 2.01, 5.6333003, -16.485481, 2, 5.6333003, -16.485481, 2.01, 5.5333, -16.38548, 2, 5.5333, -16.38548, 2.01, 5.4333, -16.28548, 2, 5.4333, -16.28548, 2.01, 5.3333, -16.185482, 2, 5.3333, -16.185482, 2.01, 5.2333, -14.385481, 2.02, 5.2333, -14.385481, 2.02, 4.8333, -15.735481, 2.02, 5.2333, -16.78548, 2.02, 9.5958, -16.78548, 2.02, 6.3708)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 7), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 7), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 7), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 7), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 7), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 23), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 23), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 23), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 23), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 23), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 23), PackedInt32Array(0, 1, 4), PackedInt32Array(4, 1, 7), PackedInt32Array(23, 49, 35), PackedInt32Array(35, 49, 38), PackedInt32Array(38, 49, 48), PackedInt32Array(38, 48, 47), PackedInt32Array(38, 47, 39), PackedInt32Array(39, 47, 40), PackedInt32Array(40, 47, 46), PackedInt32Array(40, 46, 45), PackedInt32Array(40, 45, 44), PackedInt32Array(40, 44, 41), PackedInt32Array(41, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(42, 43, 37), PackedInt32Array(42, 37, 36), PackedInt32Array(19, 7, 50), PackedInt32Array(50, 7, 20), PackedInt32Array(20, 7, 23), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(55, 53, 56), PackedInt32Array(56, 53, 54), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 54), PackedInt32Array(59, 58, 60), PackedInt32Array(60, 58, 54), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 54), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 54), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 54), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 70), PackedInt32Array(71, 69, 72), PackedInt32Array(72, 69, 70), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 70), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 70), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 70), PackedInt32Array(79, 78, 80), PackedInt32Array(80, 78, 70), PackedInt32Array(36, 37, 51), PackedInt32Array(51, 37, 54), PackedInt32Array(80, 70, 83), PackedInt32Array(83, 70, 81), PackedInt32Array(81, 70, 82), PackedInt32Array(66, 54, 84), PackedInt32Array(84, 54, 85), PackedInt32Array(85, 54, 67), PackedInt32Array(67, 54, 70)]
-geometry_parsed_geometry_type = 1
-cell_size = 0.1
-cell_height = 0.01
-agent_radius = 0.35
-agent_max_climb = 0.1
-agent_max_slope = 30.0
-edge_max_error = 0.1
-vertices_per_polygon = 12.0
+[ext_resource type="PackedScene" uid="uid://batny1pkv7mj8" path="res://Scenes/Navigation/flowfield_manager.tscn" id="12_3qdsm"]
+[ext_resource type="PackedScene" uid="uid://bnojyc4757bhd" path="res://Scenes/Navigation/unit_spawner.tscn" id="13_1mtof"]
+[ext_resource type="PackedScene" uid="uid://3sajvk6q6f4b" path="res://Scenes/Navigation/flowfield_node.tscn" id="13_2yqos"]
+[ext_resource type="PackedScene" uid="uid://blq6aq5bhdfco" path="res://Scenes/Units/barbarian.tscn" id="14_2yqos"]
 
 [node name="Node" type="Node" unique_id=1617110443]
 
@@ -40,7 +22,7 @@ vertices_per_polygon = 12.0
 transform = Transform3D(0.7071067, 0.35355335, -0.61237234, 0, 0.8660253, 0.49999997, 0.7071067, -0.35355335, 0.61237234, -26.717514, 15.669873, 16.81802)
 projection = 1
 fov = 34.5
-size = 20.0
+size = 17.0
 script = ExtResource("1_iy57e")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="PlayerCamera" unique_id=737845872]
@@ -51,36 +33,42 @@ buildingDataPaths = Dictionary[int, String]({
 1: "res://Resources/Buildings/HouseData.tres",
 2: "res://Resources/Buildings/TowerData.tres",
 3: "res://Resources/Buildings/CastleData.tres",
-4: "res://Resources/Buildings/WallData.tres",
-5: "res://Resources/Buildings/WallGateData.tres"
+4: "res://Resources/Buildings/PalaceData.tres"
 })
-buildableGrid = NodePath("../../GRID/GRID_PLAYER")
+buildableGrid = NodePath("../../GRID/GRID_BUILDABLE")
 tileMeshLib = ExtResource("8_dri0c")
-
-[node name="DetectionManager" type="Node" parent="PlayerCamera" unique_id=1467735869 node_paths=PackedStringArray("detectableLand")]
-script = ExtResource("4_0f8ff")
-detectableLand = NodePath("../../GRID/DETECTACBLE_POSITIONS")
 
 [node name="SceneManager" type="Node" parent="PlayerCamera" unique_id=1110561530]
 script = ExtResource("2_fkge6")
 
-[node name="Player" type="Node" parent="PlayerCamera" unique_id=827705775 node_paths=PackedStringArray("camera", "buildingManager", "uiManager")]
+[node name="Player" type="Node" parent="PlayerCamera" unique_id=827705775 node_paths=PackedStringArray("camera", "buildingManager", "turretBuildingManager", "uiManager")]
 script = ExtResource("4_tqeus")
 camera = NodePath("..")
 buildingManager = NodePath("../BuildingManager")
+turretBuildingManager = NodePath("../TurretBuildingManager")
 uiManager = NodePath("../UIManager")
 
-[node name="UIManager" type="Node" parent="PlayerCamera" unique_id=23929044 node_paths=PackedStringArray("coinsLabel", "TowerImprovementsList", "BuildingButtonsList", "status")]
+[node name="UIManager" type="Node" parent="PlayerCamera" unique_id=23929044 node_paths=PackedStringArray("coinsLabel", "TurretsButtonsList", "BuildingButtonsList", "statusLabel", "messageLabel", "tooltipLabel", "buildingInfoPanel")]
 script = ExtResource("4_dri0c")
 coinsLabel = NodePath("../../UI/Control/CoinsDisplay")
-TowerImprovementsList = NodePath("../../UI/Control/TowerImprovementsList")
+TurretsButtonsList = NodePath("../../UI/Control/TurretsList")
 BuildingButtonsList = NodePath("../../UI/Control/BuildingsList")
-status = NodePath("../../UI/Control/status")
+statusLabel = NodePath("../../UI/Control/status")
+messageLabel = NodePath("../../UI/Control/MessageLabel")
+tooltipLabel = NodePath("../../UI/Control/TooltipLabel")
+buildingInfoPanel = NodePath("../../UI/Control/BuildingInfoDisplayPanel")
+
+[node name="TurretBuildingManager" type="Node" parent="PlayerCamera" unique_id=1751143074]
+script = ExtResource("7_1mtof")
+turretsDataPaths = Dictionary[int, String]({
+1: "res://Resources/Turrets/MediumCannonData.tres"
+})
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=29155539]
 transform = Transform3D(-2.1855692e-08, 0.86602545, -0.49999997, 3.7855173e-08, 0.49999997, 0.86602545, 1, 1.7763568e-15, -4.371139e-08, -5, 8, 0)
 
 [node name="Buildings" type="Node3D" parent="." unique_id=1030038010]
+visible = false
 
 [node name="Tower" parent="Buildings" unique_id=1297713477 instance=ExtResource("5_rc0xk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 1, 1)
@@ -115,230 +103,368 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 
 [node name="Gate2" parent="Buildings" unique_id=493111239 instance=ExtResource("5_v1f81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, 8.999999)
 
+[node name="Palace" parent="Buildings" unique_id=576530032 instance=ExtResource("8_1lmi8")]
+transform = Transform3D(1, 2.9802322e-08, 1.1920929e-07, -2.9802322e-08, 1, -2.9802322e-08, 0, -2.9802322e-08, 1.0000001, -13.000002, 8.34465e-07, -11.000001)
+
 [node name="UI" type="Node" parent="." unique_id=1957633949]
 
 [node name="Control" type="Control" parent="UI" unique_id=412989527]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 477.0
-offset_right = 349.0
+offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="ButtonHouse" type="Button" parent="UI/Control" unique_id=610130836]
-layout_mode = 0
-offset_left = 5.0
-offset_top = -103.0
-offset_right = 270.0
-offset_bottom = 5.0
-text = "BUILD HOUSE
-"
-script = ExtResource("4_jeebp")
-buildingId = 1
-
-[node name="ButtonTower" type="Button" parent="UI/Control/ButtonHouse" unique_id=1538188211]
-layout_mode = 0
-offset_top = 108.0
-offset_right = 265.0
-offset_bottom = 216.0
-text = "BUILD TOWER
-"
-script = ExtResource("4_jeebp")
-buildingId = 2
-
-[node name="ButtonCastle" type="Button" parent="UI/Control/ButtonHouse/ButtonTower" unique_id=1666723815]
-layout_mode = 0
-offset_top = 108.0
-offset_right = 265.0
-offset_bottom = 216.0
-text = "BUILD CASTLE
-"
-script = ExtResource("4_jeebp")
-buildingId = 3
-
 [node name="CoinsDisplay" type="Label" parent="UI/Control" unique_id=1759675214]
-layout_mode = 0
-offset_left = 5.0
-offset_top = -467.0
-offset_right = 463.0
-offset_bottom = -272.0
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = -1
+offset_top = 45.0
+offset_right = 720.0
+offset_bottom = 720.0
 theme_override_font_sizes/font_size = 32
 text = "COINS:"
 autowrap_mode = 2
 
-[node name="Node" type="Node" parent="UI/Control" unique_id=1402182449]
-
-[node name="TowerImprovementsList" type="ItemList" parent="UI/Control" unique_id=2113131797]
+[node name="TurretsList" type="ItemList" parent="UI/Control" unique_id=2113131797]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -1.5020001
-anchor_bottom = -1.5020001
-offset_top = -0.013977051
-offset_right = 345.0
-offset_bottom = 151.98602
+offset_right = 160.0
+offset_bottom = 720.0
 
 [node name="status" type="Label" parent="UI/Control" unique_id=1890029705]
+auto_translate_mode = 2
 layout_mode = 0
-offset_left = 442.0
-offset_top = -463.0
-offset_right = 907.0
-offset_bottom = -365.0
+offset_left = 772.0
+offset_top = 15.0
+offset_right = 1192.0
+offset_bottom = 38.0
 text = "status"
 
 [node name="BuildingsList" type="ItemList" parent="UI/Control" unique_id=2073763651]
-layout_mode = 0
-offset_left = 341.0
-offset_top = -103.0
-offset_right = 690.0
-offset_bottom = 53.0
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = -1
+offset_right = 160.0
+offset_bottom = 720.0
 allow_search = false
-item_count = 3
-item_0/text = "house"
-item_1/text = "tower"
-item_2/text = "castle"
+
+[node name="MessageLabel" type="Label" parent="UI/Control" unique_id=1004061568]
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = -1
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 30
+text = "TEST MESSAGE"
+horizontal_alignment = 1
+
+[node name="TooltipLabel" type="Label" parent="UI/Control" unique_id=369561501]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "[ TEST TOOLTIP ]"
+
+[node name="BuildingInfoDisplayPanel" type="Panel" parent="UI/Control" unique_id=1923935054]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Navigation" type="Node3D" parent="." unique_id=1051442426]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9, 0.76498485, 5)
 
-[node name="Path3D" type="Path3D" parent="Navigation" unique_id=1494193276]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.71507597, 33)
-curve = SubResource("Curve3D_jeebp")
+[node name="FlowfieldManager" parent="Navigation" unique_id=1660553320 instance=ExtResource("12_3qdsm")]
 
-[node name="EnemySpawner" type="Node3D" parent="Navigation" unique_id=1028868565 node_paths=PackedStringArray("path")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.999999, -0.76498485, 18)
-script = ExtResource("13_3qdsm")
-time = 1000.0
-path = NodePath("../Path3D")
+[node name="FirstApproach" type="Node" parent="Navigation/FlowfieldManager" unique_id=978003340]
+
+[node name="StartFlowfieldNode" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1833281073 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode2")]
+
+[node name="UnitSpawner" parent="Navigation/FlowfieldManager/FirstApproach/StartFlowfieldNode" unique_id=197584738 instance=ExtResource("13_1mtof")]
+spawnInterval = 0.4
+enabled = false
+spawnedUnits = ExtResource("14_2yqos")
+maxSpawnedUnitsCount = 160
+
+[node name="FlowfieldNode2" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=458211408 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode3")]
+
+[node name="FlowfieldNode3" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1242012856 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode4")]
+
+[node name="FlowfieldNode4" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=509430442 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode5")]
+
+[node name="FlowfieldNode5" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=201848524 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode6")]
+
+[node name="FlowfieldNode6" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1575929447 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode7")]
+
+[node name="FlowfieldNode7" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=649859500 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode8")]
+
+[node name="FlowfieldNode8" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1395994031 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode9")]
+
+[node name="FlowfieldNode9" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1996545042 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode10")]
+
+[node name="FlowfieldNode10" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1937543609 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode11")]
+
+[node name="FlowfieldNode11" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1342534222 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode12")]
+
+[node name="FlowfieldNode12" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=803671453 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode13")]
+
+[node name="FlowfieldNode13" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=179157537 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode14")]
+
+[node name="FlowfieldNode14" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1787131272 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode15")]
+
+[node name="FlowfieldNode15" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=990444874 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode16")]
+
+[node name="FlowfieldNode16" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1155770206 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
+NextNodes = [NodePath("../FlowfieldNode17")]
+
+[node name="FlowfieldNode17" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=165022887 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
+NextNodes = [NodePath("../FlowfieldNode18")]
+
+[node name="FlowfieldNode18" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=310088989 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 3)
+NextNodes = [NodePath("../FlowfieldNode19")]
+
+[node name="FlowfieldNode19" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=698066100 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
+NextNodes = [NodePath("../FlowfieldNode20")]
+
+[node name="FlowfieldNode20" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=270051227 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
+NextNodes = [NodePath("../FlowfieldNode21")]
+
+[node name="FlowfieldNode21" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=2114605575 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 6)
+NextNodes = [NodePath("../FlowfieldNode22")]
+
+[node name="FlowfieldNode22" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=162435181 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 7)
+NextNodes = [NodePath("../FlowfieldNode23")]
+
+[node name="FlowfieldNode23" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1394705460 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
+NextNodes = [NodePath("../FlowfieldNode24")]
+
+[node name="FlowfieldNode24" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=540721968 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 9)
+NextNodes = [NodePath("../FlowfieldNode25")]
+
+[node name="FlowfieldNode25" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1321015041 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 10)
+NextNodes = [NodePath("../FlowfieldNode26")]
+
+[node name="FlowfieldNode26" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1666749310 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11)
+NextNodes = [NodePath("../FlowfieldNode27")]
+
+[node name="FlowfieldNode27" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=847147818 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 11)
+NextNodes = [NodePath("../FlowfieldNode28")]
+
+[node name="FlowfieldNode28" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=579067359 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, 11)
+NextNodes = [NodePath("../FlowfieldNode29")]
+
+[node name="FlowfieldNode29" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=880220702 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 11)
+NextNodes = [NodePath("../FlowfieldNode30")]
+
+[node name="FlowfieldNode30" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=975132491 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1.5, 11)
+NextNodes = [NodePath("../FlowfieldNode31")]
+
+[node name="FlowfieldNode31" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=12197059 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 11)
+NextNodes = [NodePath("../FlowfieldNode32")]
+
+[node name="FlowfieldNode32" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=361461977 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 11)
+NextNodes = [NodePath("../FlowfieldNode33")]
+
+[node name="FlowfieldNode33" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=422409123 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 11)
+NextNodes = [NodePath("../FlowfieldNode34")]
+
+[node name="FlowfieldNode34" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=164903466 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 11)
+NextNodes = [NodePath("../GateFlowfieldNodeMiddle"), NodePath("../GateFlowfieldNodeLeft"), NodePath("../GateFlowfieldNodeRight")]
+
+[node name="GateFlowfieldNodeMiddle" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=477287653 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 10)
+NextNodes = [NodePath("../../FirstGateToSecondGate/FlowfieldNode38")]
+
+[node name="GateFlowfieldNodeLeft" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=845489825 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.75, 2, 10)
+NextNodes = [NodePath("../../FirstGateToSecondGate/FlowfieldNode38")]
+
+[node name="GateFlowfieldNodeRight" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1749448418 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.25, 2, 10)
+NextNodes = [NodePath("../../FirstGateToSecondGate/FlowfieldNode38")]
+
+[node name="FirstGateToSecondGate" type="Node" parent="Navigation/FlowfieldManager" unique_id=727425394]
+
+[node name="FlowfieldNode38" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=195146732 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 9)
+NextNodes = [NodePath("../FlowfieldNode39")]
+
+[node name="FlowfieldNode39" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=397072268 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 8)
+NextNodes = [NodePath("../FlowfieldNode40")]
+
+[node name="FlowfieldNode40" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=217503281 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 7)
+NextNodes = [NodePath("../FlowfieldNode41")]
+
+[node name="FlowfieldNode41" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1131373762 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 6)
+NextNodes = [NodePath("../FlowfieldNode42")]
+
+[node name="FlowfieldNode42" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=739171113 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode43")]
+
+[node name="FlowfieldNode43" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=331362490 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode44")]
+
+[node name="FlowfieldNode44" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=952004892 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode45")]
+
+[node name="FlowfieldNode45" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=384412189 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode46")]
+
+[node name="FlowfieldNode46" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1181702270 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode47")]
+
+[node name="FlowfieldNode47" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1644722186 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode48")]
+
+[node name="FlowfieldNode48" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1508694224 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode49")]
+
+[node name="FlowfieldNode49" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1564819696 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode50")]
+
+[node name="FlowfieldNode50" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=742808255 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode51")]
+
+[node name="FlowfieldNode51" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=155012665 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode52")]
+
+[node name="FlowfieldNode52" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=392848951 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode53")]
+
+[node name="FlowfieldNode53" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1776179994 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode54")]
+
+[node name="FlowfieldNode54" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=375831219 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
+NextNodes = [NodePath("../FlowfieldNode55")]
+
+[node name="FlowfieldNode55" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1813996328 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 4)
+NextNodes = [NodePath("../FlowfieldNode56")]
+
+[node name="FlowfieldNode56" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=99504748 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3)
+NextNodes = [NodePath("../GateFlowfieldNodeMiddle"), NodePath("../GateFlowfieldNodeLeft"), NodePath("../GateFlowfieldNodeRight")]
+
+[node name="GateFlowfieldNodeMiddle" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=692858163 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 3)
+NextNodes = [NodePath("../../SecondToThirdGate/FlowfieldNode58")]
+
+[node name="GateFlowfieldNodeLeft" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=690675613 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2.25)
+NextNodes = [NodePath("../../SecondToThirdGate/FlowfieldNode58")]
+
+[node name="GateFlowfieldNodeRight" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1144514255 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 3.75)
+NextNodes = [NodePath("../../SecondToThirdGate/FlowfieldNode58")]
+
+[node name="SecondToThirdGate" type="Node" parent="Navigation/FlowfieldManager" unique_id=1284779646]
+
+[node name="FlowfieldNode58" parent="Navigation/FlowfieldManager/SecondToThirdGate" unique_id=611102178 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 3)
+NextNodes = [NodePath("../FlowfieldNode59")]
+
+[node name="FlowfieldNode59" parent="Navigation/FlowfieldManager/SecondToThirdGate" unique_id=1471676425 instance=ExtResource("13_2yqos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 3)
 
 [node name="GRID" type="Node3D" parent="." unique_id=2028902048]
 
-[node name="DECORATIONS0" type="GridMap" parent="GRID" unique_id=310762770]
+[node name="TREES" type="GridMap" parent="GRID" unique_id=696961174]
 mesh_library = ExtResource("8_dri0c")
-collision_layer = 0
-collision_mask = 0
 data = {
-"cells": PackedInt32Array(65526, 65534, 8, 65534, 65534, 1441800, 65526, 65529, 1441806, 65525, 65532, 1441800, 65525, 65533, 1441801, 65525, 65531, 1441801, 65526, 65528, 1441801, 65524, 2, 655369, 65529, 65535, 9, 65528, 65535, 11, 65533, 65534, 11, 65532, 1, 1441803, 65527, 65535, 14, 65526, 65530, 655368, 65533, 0, 655370, 65535, 65533, 1048586, 65534, 65533, 11, 65535, 65535, 12, 65532, 2, 1441811, 65529, 2, 1441811, 65531, 2, 1441812, 65530, 2, 1048596, 65529, 3, 1048584, 65529, 4, 1048590, 65533, 4, 9, 65535, 4, 10, 65534, 4, 12, 65531, 65534, 14, 65530, 65534, 12, 65527, 1, 655368, 65528, 1, 655369, 65525, 65534, 1441798, 65523, 3, 1441797)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="DECORATIONS1" type="GridMap" parent="GRID" unique_id=1752278925]
-mesh_library = ExtResource("8_dri0c")
-collision_layer = 0
-collision_mask = 0
-data = {
-"cells": PackedInt32Array(65526, 65534, 1441800, 65532, 3, 1441801, 65526, 65530, 1441804, 65525, 1, 655374, 65526, 1, 655370, 65524, 2, 1441801, 65533, 0, 1441801, 65534, 65535, 655368, 65535, 65535, 1441803, 65532, 65534, 9, 65530, 65534, 1048585)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="DECORATIONS2" type="GridMap" parent="GRID" unique_id=1023562577]
-mesh_library = ExtResource("8_dri0c")
-collision_layer = 0
-collision_mask = 0
-data = {
-"cells": PackedInt32Array(65535, 65535, 655369, 65534, 65533, 1048585)
-}
-
-[node name="DETECTACBLE_POSITIONS" type="GridMap" parent="GRID" unique_id=1334712716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
-mesh_library = ExtResource("8_dri0c")
-cell_size = Vector3(2, 1, 2)
-data = {
-"cells": PackedInt32Array(-11, 0, 655400, -12, 0, 655400, -10, 0, 655400, -9, 0, 655400, -8, 0, 655400, -6, 0, 655400, -7, 0, 655400, -5, 0, 655400, -5, 1, 655400, -5, 3, 655400, -5, 4, 1441832, -5, 5, 1441832, 65530, 5, 1048616, 131064, 5, 1048616, 131063, 5, 1048616, 131065, 5, 1048616, 131063, 3, 1048616, 131063, 2, 1048616, 131064, 2, 1048616, 131065, 2, 1048616, 131066, 2, 1048616, 131068, 2, 1048616, 131067, 2, 1048616, 131069, 1, 1048616, 131069, 2, 1048616, 131071, 1, 1048616, 65536, 1, 1048616, 65537, 1, 1048616, 65537, 0, 1048616, 65537, 65535, 1048616, 65537, 65534, 1048616, 65536, 65533, 1048616, 65537, 65533, 1048616, 65536, 65532, 1048616, 65536, 65531, 1048616, 131071, 65531, 1048616, 131070, 65531, 1048616, 131069, 65531, 1048616, 131068, 65531, 1048616, 131067, 65531, 1048616, 131066, 65531, 1048616)
-}
-metadata/_editor_floor_ = Vector3(0, 1, 0)
-
-[node name="GRID_PLAYER" type="GridMap" parent="GRID" unique_id=193158259]
-mesh_library = ExtResource("8_dri0c")
-collision_layer = 4
-collision_mask = 0
-data = {
-"cells": PackedInt32Array(65530, 65533, 1441825, 65529, 65533, 1441825, 65529, 65534, 15, 65528, 65534, 15, 65527, 65534, 15, 65527, 65533, 1441825, 65526, 65533, 1048610, 65527, 65532, 655395, 65528, 65533, 1441825, 65526, 65532, 655393, 65526, 65531, 34, 65527, 65530, 655393, 65528, 65530, 655395, 65529, 65530, 15, 65530, 65531, 1441827, 65531, 65532, 1441827, 65530, 65532, 1441827, 65529, 65531, 1441827, 65528, 65531, 1441827, 65529, 65532, 1441827, 65528, 65532, 1441827, 65532, 65532, 35, 65533, 65533, 15, 65527, 65531, 655395, 65531, 65533, 1441825, 65532, 65533, 1441825, 65533, 65532, 15, 65534, 65531, 35, 65534, 65532, 15, 65535, 65532, 15, 0, 65532, 35, 0, 65533, 35, 1, 65533, 35, 65535, 65533, 15, 2, 65532, 15, 3, 65533, 35, 4, 65533, 35, 4, 65534, 35, 4, 65535, 35, 4, 0, 35, 3, 1, 15, 2, 1, 15, 1, 0, 35, 0, 0, 15, 0, 1, 35, 1, 1, 35, 2, 2, 15, 1, 2, 15, 0, 2, 15, 65535, 2, 15, 65535, 1, 35, 65534, 1, 35, 65534, 0, 15, 65535, 0, 15, 65535, 3, 15, 65534, 3, 15, 65534, 2, 15, 65533, 2, 35, 65533, 1, 35, 65533, 3, 15, 0, 65535, 15, 65535, 65534, 15, 1, 65535, 35, 2, 65535, 15, 2, 65534, 15, 3, 65534, 15, 3, 65535, 15, 1, 65534, 35, 3, 0, 35, 2, 0, 35, 0, 65534, 15, 1, 65532, 35, 0, 65531, 35, 65535, 65531, 35, 65534, 65530, 15, 65533, 65530, 15, 65533, 65531, 35, 65532, 65531, 35, 65531, 65531, 1441827, 65528, 65529, 655395, 65527, 65529, 655393, 65527, 65528, 655393, 65528, 65528, 655395, 65528, 65527, 15, 65529, 65527, 15, 65529, 65528, 15, 65530, 65528, 15, 65531, 65528, 15, 65532, 65528, 15, 65532, 65527, 15, 65532, 65526, 15, 65531, 65525, 15, 65531, 65526, 15, 65530, 65526, 15, 65530, 65527, 15, 65530, 65529, 15, 65531, 65529, 15, 65532, 65529, 15, 65533, 65529, 15, 65532, 65530, 15, 65531, 65530, 15, 65530, 65530, 15, 65529, 65529, 15, 65531, 65527, 15, 65533, 65527, 15, 65533, 65528, 15, 65534, 65528, 15, 65535, 65528, 15, 65535, 65529, 15, 0, 65529, 15, 0, 65530, 15, 65535, 65530, 15, 65534, 65529, 15, 3, 65532, 15, 2, 65533, 35, 2, 65531, 15, 1, 65531, 35, 65528, 2, 35, 65528, 3, 15, 65527, 3, 35, 65527, 2, 35, 65526, 2, 15, 65526, 3, 15, 65525, 3, 15, 65525, 2, 15, 65527, 4, 28, 65528, 4, 15, 65526, 4, 15, 65526, 5, 15, 65525, 4, 15, 65524, 3, 15, 5, 65534, 35, 5, 65533, 35, 5, 65535, 35, 5, 0, 35)
+"cells": PackedInt32Array(-11, 65528, 60, -12, 65528, 1441824, -12, 65529, 655391, -11, 65529, 655421, -12, 65530, 1441824, -12, 65531, 655392, -12, 65532, 655391, -13, 65528, 1441822, -13, 65533, 1441822, -13, 65532, 1441822, -13, 65531, 1441823, -13, 65530, 1441822, -13, 65529, 32, -14, 65531, 1048608, -14, 65532, 655391, -14, 65533, 31, -14, 65534, 1048608, -13, 65534, 655390, -12, 65533, 1048606, -12, 65534, 1441822, -12, 65535, 1048636, -11, 65535, 62, -13, 65535, 62, -14, 65535, 61, 65525, 3, 1048638, 65526, 2, 62, 65526, 3, 61, 65528, 3, 1441852, 65531, 65528, 1441852, 65532, 65528, 655421, 65533, 65529, 655421, 65532, 65529, 1441852, 65535, 65530, 1048638, 65534, 65530, 1048638, 65533, 65531, 1441853, 65534, 65531, 61, 65532, 65530, 1048637, 65533, 65530, 1441852, -16, 65531, 1441822, -14, 65529, 1441823, -15, 65530, 655391, -14, 65530, 655392, -15, 65532, 1441823, -15, 65531, 1441822, -12, 1, 1441822, -13, 1, 655391, -12, 2, 1441823, -13, 2, 1441822, -13, 3, 655392, -12, 3, 1441823, -12, 4, 1048608, -13, 4, 1441822)
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="GRID_ENEMY" type="GridMap" parent="GRID" unique_id=1187120966]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+[node name="GRID_BUILDABLE" type="GridMap" parent="GRID" unique_id=1176003463]
 mesh_library = ExtResource("8_dri0c")
-cell_size = Vector3(2, 1, 2)
-collision_layer = 0
-collision_mask = 0
 data = {
-"cells": PackedInt32Array(65528, 65534, 29, 65529, 65534, 29, -11, 65535, 15, -11, 65534, 15, -12, 65534, 15, -12, 65533, 15, -12, 65532, 15, -11, 65532, 15, -10, 65533, 15, -10, 65534, 15, -10, 65535, 15, -9, 65535, 15, -9, 0, 1441820, -10, 0, 1441820, -11, 0, 1441820, -12, 65535, 15, -13, 65534, 15, -14, 65533, 15, -15, 65532, 15, -16, 65532, 15, -16, 65531, 15, -15, 65531, 15, -14, 65532, 15, -13, 65532, 15, -13, 65533, 15, -11, 65533, 15, -15, 65533, 15, -15, 65534, 15, -16, 65534, 15, -17, 65533, 15, -17, 65532, 15, -17, 65534, 15, -16, 65535, 15, -15, 0, 15, -14, 0, 15, -13, 0, 15, -12, 0, 1441820, -12, 1, 15, -13, 2, 15, -14, 1, 15, -15, 65535, 15, -14, 65534, 15, -13, 65535, 15, -16, 65533, 15, -14, 65535, 15, -14, 65531, 15, -12, 2, 15, -11, 3, 15, -10, 3, 15, -11, 2, 15, -13, 1, 15, -11, 1, 15, -10, 1, 15, -9, 1, 15, -8, 1, 15, -8, 2, 15, -7, 2, 15, -7, 1, 15, -6, 1, 15, -6, 0, 1441820, -5, 0, 1441823, -5, 65535, 15, -4, 65535, 15, -3, 65535, 15, -6, 65535, 15, -7, 65535, 1441807, -8, 65535, 15, -8, 0, 1441820, -8, 65534, 15, -7, 65534, 15, -2, 65535, 15, -1, 65535, 15, -2, 65534, 15, -7, 0, 1441820, -1, 65534, 15, -1, 65533, 15, -2, 65532, 15, -1, 65532, 15, -65536, 65532, 15, -65535, 65533, 15, -65534, 65533, 15, -65534, 65534, 15, -65535, 65534, 15, -65536, 65534, 15, -65536, 65533, 15, -2, 65533, 15, -65534, 65535, 15, -65534, 0, 15, -65534, 1, 15, -65535, 1, 15, -65535, 0, 15, -1, 2, 15, -2, 2, 15, -2, 1, 15, -3, 0, 15, -4, 0, 15, -4, 1, 15, -5, 1, 655388, -6, 2, 15, -5, 3, 655388, -4, 3, 15, -5, 4, 655388, -4, 4, 15, -5, 2, 655388, -4, 2, 15, -8, 3, 15, -8, 4, 15, -5, 5, 655391, -4, 5, 15, -3, 5, 15, -2, 5, 15, -1, 5, 15, -65536, 4, 15, -1, 4, 15, -2, 4, 15, -3, 3, 15, -9, 5, 15, -10, 5, 15, -8, 6, 15, -7, 6, 15, -6, 6, 15, -5, 6, 15, -4, 6, 15, -3, 6, 15, -2, 6, 15, -65536, 5, 15, -65535, 5, 15, -65534, 5, 15, -65534, 4, 15, -65534, 3, 15, -65535, 3, 15, -65536, 3, 15, -1, 3, 15, -2, 3, 15, -3, 4, 15, -65535, 4, 15, -10, 65531, 15, -11, 65531, 15, -12, 65530, 15, -13, 65530, 15, -11, 65530, 15, -10, 65530, 15, -14, 65530, 15, -15, 65530, 15, -15, 65529, 15, -14, 65529, 15, -13, 65529, 15, -12, 65529, 15, -11, 65529, 15, -13, 65531, 15, -12, 65531, 15, -12, 65528, 15, -11, 65528, 15, -9, 65528, 15, -9, 65527, 15, -10, 65527, 15, -11, 65527, 15, -12, 65527, 15, -13, 65527, 15, -14, 65527, 15, -15, 65526, 15, -16, 65526, 15, -16, 65527, 15, -15, 65527, 15, -14, 65526, 15, -13, 65526, 15, -13, 65528, 15, -14, 65528, 15, -15, 65528, 15, -16, 65528, 15, -17, 65528, 15, -18, 65528, 15, -18, 65529, 15, -18, 65530, 15, -18, 65531, 15, -17, 65530, 15, -17, 65529, 15, -16, 65529, 15, -16, 65530, 15, -17, 65531, 15, -9, 65526, 15, -10, 65526, 15, -10, 65529, 15, 65529, 4, 1048592, 131065, 4, 655377, 65530, 4, 1048592, 65530, 3, 655377, 65530, 5, 1048605, 65529, 3, 655376, -3, 65534, 15, -4, 65534, 15, -5, 65534, 15, -6, 65534, 15, -10, 65528, 15, 131064, 5, 1441820, 131063, 5, 1048607, 131065, 5, 1048605)
+"cells": PackedInt32Array(65526, 65533, 1048581, 65526, 65534, 5, 65527, 65534, 5, 65528, 65534, 5, 65529, 65534, 5, 65528, 65533, 1048581, 65527, 65533, 1048581, 65530, 65534, 1048581, 65531, 65534, 1048581, 65533, 65533, 5, 65533, 65532, 5, 65534, 65532, 1048581, 65531, 65532, 1048581, 65530, 65532, 1048581, 65528, 65532, 1048581, 65527, 65532, 1048581, 65526, 65532, 1048581, 65526, 65531, 1048581, 65526, 65530, 1048581, 65527, 65530, 1048581, 65531, 65530, 5, 65527, 65531, 1048581, 65531, 65531, 1048581, 65531, 65529, 5, 65529, 65528, 5, 65528, 65528, 5, 65527, 65528, 5, 65527, 65527, 5, 65528, 65527, 5, 65528, 65526, 5, 65529, 65526, 5, 65530, 65526, 5, 65530, 65527, 5, 65531, 65527, 5, 65531, 65528, 5, 65532, 65528, 5, 65529, 65527, 5, 65530, 65528, 5, 0, 65533, 1048581, 65534, 0, 5, 65534, 2, 5, 65534, 3, 5, 65535, 3, 5, 65535, 2, 5, 0, 0, 5, 65535, 0, 5, 2, 0, 5, 2, 1, 5, 3, 1, 5, 2, 2, 5, 1, 2, 5, 0, 2, 5, 0, 3, 5, 1, 3, 5, 2, 3, 5, 3, 2, 5, 2, 65534, 5, 3, 65534, 5, 4, 65534, 5, 4, 65535, 5, 4, 0, 5, 4, 1, 5, 3, 0, 5, 3, 65535, 5, 2, 65535, 5, 2, 65532, 5, 3, 65532, 5, 4, 65532, 5, 4, 65533, 5, 3, 65533, 5, 2, 65533, 5, 0, 65532, 5, 65535, 65532, 5, 3, 65531, 5, 4, 65531, 5, 3, 65530, 5, 2, 65530, 5, 1, 65530, 5, 0, 65530, 5, 0, 65529, 5, 65535, 65529, 5, 65534, 65529, 5, 65534, 65528, 5, 65533, 65528, 5, 65535, 65530, 5, 65533, 65529, 5, 65532, 65529, 5, 2, 65531, 5, 65528, 3, 5, 65526, 2, 5, 65526, 3, 5, 65527, 65529, 1048581, 65534, 65530, 5, 65533, 65530, 5, 65532, 65530, 5)
+}
+
+[node name="DECORATIONS" type="GridMap" parent="GRID" unique_id=445542383]
+mesh_library = ExtResource("8_dri0c")
+data = {
+"cells": PackedInt32Array(65525, 65530, 1441834, 65525, 65531, 1441833, 65525, 65532, 1441831, 65525, 65533, 1441828, 65525, 65535, 1441832, 65525, 65534, 1441830, 65526, 65535, 35, 65527, 65535, 37, 65528, 65535, 36, 65529, 65535, 35, 65530, 65535, 41, 65531, 65535, 42, 65526, 1, 655402, 65527, 1, 655399, 65528, 1, 655401, 65529, 1, 1048610, 65525, 1, 655403, 65525, 2, 1441827, 65525, 3, 1441825, 65525, 4, 1441828, 65530, 2, 1441804, 65531, 2, 1048588, 65529, 2, 1048621, 65532, 2, 1441837, 65529, 3, 1048618, 65529, 4, 40, 65526, 5, 44, 65525, 5, 1441832, 65532, 65534, 41, 65533, 65534, 41, 65534, 65533, 42, 65535, 65533, 39, 0, 65534, 1441829, 0, 65535, 1441827, 65535, 65535, 655393, 65534, 65535, 655396, 65532, 65535, 40, 65534, 65534, 34, 65535, 65534, 1441835, 65533, 0, 1441826, 65526, 65529, 1441829, 65526, 65528, 1441827, 65526, 65527, 1441828, -3, 4, 1441824, -3, 5, 655390, -2, 5, 655390, -1, 5, 31, -65536, 5, 655392, -65536, 6, 31, -1, 6, 32, -2, 6, 1048606, -3, 6, 1048607, -3, 7, 655392, -2, 7, 1441824, -1, 7, 655392, -65536, 7, 655392, -4, 7, 655390, -5, 7, 655392, -4, 6, 655390, -2, 4, 31, -4, 5, 1441824, -4, 8, 1048606, -3, 8, 655390, -2, 8, 1048607, -1, 8, 1441824)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="GRID" unique_id=820295690]
-navigation_mesh = SubResource("NavigationMesh_2yqos")
+[node name="DECORATIONS2" type="GridMap" parent="GRID" unique_id=1879914113]
+mesh_library = ExtResource("8_dri0c")
+data = {
+"cells": PackedInt32Array(65532, 65534, 1048618, 65533, 65535, 655404, 65533, 0, 655401, 65532, 1, 1441829, 65532, 0, 655394, 65532, 3, 1441835, 65533, 3, 35, 65535, 4, 38, 0, 4, 37, 1, 4, 41, 65534, 4, 1441826, 65535, 65533, 1441831, 0, 65534, 37, 0, 65535, 655395, 65534, 65533, 1048609, 65526, 65529, 655395, 65525, 65529, 655394, 131064, 65525, 39, 131065, 65525, 38, 131066, 65525, 37, 131067, 65525, 39, 131069, 65527, 35, 131068, 65526, 1441825)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="GridMap" type="GridMap" parent="GRID/NavigationRegion3D" unique_id=2073027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+[node name="GRID_NOT_BUILDABLE" type="GridMap" parent="GRID" unique_id=97989201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh_library = ExtResource("8_dri0c")
 cell_size = Vector3(2, 1, 2)
-collision_mask = 0
 data = {
-"cells": PackedInt32Array(-131084, 0, 1441841, -131083, 0, 1441841, -131082, 0, 1441841, -131081, 0, 1441841, -131080, 0, 1441841, -131079, 0, 1441841, -131078, 0, 1441841, -131077, 0, 1441843, -131077, 5, 655411, -9, 5, 1048627, -8, 5, 1441841, -131077, 1, 655409, -131077, 2, 655409, -131077, 3, 655409, -131077, 4, 655409, -65542, 5, 1048626, -7, 5, 1048626, -9, 4, 49, -9, 3, 49, -8, 2, 1441841, -9, 2, 51)
+"cells": PackedInt32Array(65527, 5, 1048597, 65528, 5, 1048593, 65529, 5, 1048594, -6, 5, 1048594, -65541, 5, 655380, -65541, 4, 655377, -65541, 3, 655377, -65541, 2, 655377, -65541, 1, 655377, -65541, 0, 1441812, -65542, 0, 1048593, -65543, 0, 1048593, -65544, 0, 1048593, -65545, 0, 1048593, -65546, 0, 1048593, -65547, 0, 1048593, -65548, 0, 1048593, -65549, 0, 1048593, 65527, 6, 18, -9, 7, 18, -65545, 8, 17, -65545, 9, 17, -65545, 10, 17, 65526, 5, 1441798, 65526, 6, 7, 65528, 6, 6, 65529, 6, 1048583, -8, 7, 1441802, -6, 6, 1048582, -6, 7, 1048582, -7, 7, 1048581, -7, 8, 6, -8, 8, 7, -6, 8, 1048583, -10, 7, 1048605, -10, 8, 1048583, -11, 8, 7, -11, 7, 1441798, -11, 6, 1441798, -11, 5, 1441798, -65549, 65535, 1441797, -65548, 65535, 1441797, -65547, 65535, 1441797, -65546, 65535, 1441797, -65545, 65535, 1441797, -65544, 65535, 1441797, -65543, 65535, 1441797, -65542, 65535, 1441797, -65541, 65535, 1441797, -65540, 65534, 1441797, -65540, 65535, 1441797, -65540, 0, 5, -65540, 1, 1441797, -65540, 2, 1441797, -65540, 3, 1441797, -65542, 1, 1441797, -65543, 1, 1441797, -65544, 1, 1441797, -65545, 1, 1441797, -65546, 1, 1441797, -65547, 1, 1441797, -65548, 1, 1441797, -65549, 1, 1441797, -65542, 2, 1441797, -65542, 3, 1441797, -65543, 3, 1441797, -65543, 4, 1441797, -65544, 4, 1441797, -65542, 4, 1441797, -65543, 2, 1441797, -65539, 3, 1441797, -65539, 4, 1441797, -65540, 4, 1441797, -65540, 5, 1441797, -65540, 6, 1441797, -65540, 7, 1441797, -65541, 8, 1441797, -65541, 7, 1441797, -65541, 6, 1441797, -65540, 9, 1441797, -65540, 10, 1441797, -65541, 10, 1441797, -65542, 10, 1441797, -65543, 10, 1441797, -65543, 9, 1441797, -65544, 9, 1441797, -65542, 9, 1441797, -65541, 9, 1441797, -65544, 10, 1441797, -65544, 11, 1441797, -65546, 12, 1441797, -65547, 12, 1441797, -65547, 11, 1441797, -65547, 10, 1441797, -65547, 9, 1441797, -65546, 9, 1441797, -65546, 10, 1441797, -65546, 11, 1441797, -65545, 11, 1441797, -65548, 11, 1441797, -65548, 10, 1441797, -65549, 10, 1441797, -65549, 9, 1441797, -65548, 8, 1441797, -65548, 7, 1441797, -65549, 8, 1441797, -65549, 7, 1441797, -65549, 6, 1441797, -65549, 5, 1441797, -65549, 4, 1441797, -65549, 3, 1441797, -65548, 3, 1441797, -65548, 2, 1441797, -65548, 4, 1441797, -65548, 5, 1441797, -65548, 6, 1441797, -65549, 2, 1441797, -65547, 4, 1441797, -65547, 3, 1441797, -65547, 2, 1441797, -65548, 9, 1441797, -65548, 65533, 1441797, -65548, 65534, 1441797, -65549, 65534, 1441797, -65547, 65534, 1441797, -65547, 65533, 1441797, -65547, 65532, 1441797, -65547, 65531, 1441797, -65547, 65530, 1441797, -65547, 65529, 1441797, -65547, 65528, 1441797, -65548, 65528, 1441797, -65548, 65529, 1441797, -65548, 65530, 1441797, -65548, 65531, 1441797, -65548, 65532, 1441797, -65549, 65533, 1441797, -65549, 65532, 1441797, -65549, 65531, 1441797, -65549, 65530, 1441797, -65549, 65529, 1441797, -65549, 65528, 1441797, -65550, 65528, 1441797, -65550, 65529, 1441797, -65550, 65530, 1441797, -65551, 65530, 1441797, -65550, 65531, 1441797, -65550, 65532, 1441797, -65550, 65533, 1441797, -65550, 65534, 1441797, -65550, 65535, 1441797, -65550, 0, 1441797, -65551, 65535, 1441797, -65552, 65535, 1441797, -65552, 65534, 1441797, -65552, 65533, 1441797, -65552, 65532, 1441797, -65552, 65531, 1441797, -65552, 65530, 1441797, -65551, 65529, 1441797, -65551, 65531, 1441797, -65551, 65532, 1441797, -65551, 65533, 1441797, -65551, 65534, 1441797, -65539, 5, 1441797, -65539, 6, 1441797, -65539, 7, 1441797, -65539, 8, 1441797, -65540, 8, 1441797, -65538, 4, 1441797, -65537, 4, 1441797, -131072, 4, 1441797, -131071, 4, 1441797, -131071, 5, 1441797, -131072, 5, 1441797, -65537, 5, 1441797, -65538, 5, 1441797, -65537, 6, 1441797, -65538, 6, 1441797, -65538, 7, 1441797, -65538, 8, 1441797, -65537, 8, 1441797, -131072, 8, 1441797, -131072, 7, 1441797, -131071, 7, 1441797, -131071, 6, 1441797, -131072, 6, 1441797, -65537, 7, 1441797, -65539, 65534, 5, -65539, 65535, 5, -65538, 65534, 5, -65537, 65534, 5, -65537, 65535, 5, -65538, 65535, 5, -65538, 65533, 5, -65537, 65533, 5, -131072, 65534, 5, -65550, 1, 5, -65550, 2, 5, -65551, 3, 5, -65551, 4, 5, -65551, 5, 5, -65550, 6, 5, -65550, 7, 5, -65550, 8, 5, -65550, 5, 5, -65550, 4, 5, -65551, 2, 5, -65552, 2, 5, -65552, 1, 5, -65552, 0, 5, -65551, 0, 5, -65551, 1, 5, -65550, 3, 5)
 }
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="Target" type="Node3D" parent="GRID/NavigationRegion3D" unique_id=1393911089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.909172, 2.3941605, 5.494114)
-
-[node name="Barbarian" parent="GRID/NavigationRegion3D" unique_id=2072614939 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.949417, 0, 1.3003039)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian2" parent="GRID/NavigationRegion3D" unique_id=1196744147 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.949417, 0, 1.300304)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian3" parent="GRID/NavigationRegion3D" unique_id=1864622495 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11.892203, 0, 0.44752192)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian4" parent="GRID/NavigationRegion3D" unique_id=2041402080 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.324574, 0, 1.8235949)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian5" parent="GRID/NavigationRegion3D" unique_id=1044550940 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10.517889, 0, 0.57484716)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian6" parent="GRID/NavigationRegion3D" unique_id=520105635 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.517889, 0, 0.5748471)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian7" parent="GRID/NavigationRegion3D" unique_id=1023411086 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.556884, 0, -0.22636479)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian8" parent="GRID/NavigationRegion3D" unique_id=1834600158 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.989607, 0, 0.35001278)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian9" parent="GRID/NavigationRegion3D" unique_id=1509002293 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10.485359, 0, 3.1832967)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian10" parent="GRID/NavigationRegion3D" unique_id=905426969 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.973975, 0, 2.9574656)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian11" parent="GRID/NavigationRegion3D" unique_id=2005124093 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.055934, 4.7683716e-07, 4.411125)
-target = NodePath("../Target")
-speed = 200.0
-
-[node name="Barbarian12" parent="GRID/NavigationRegion3D" unique_id=369343085 node_paths=PackedStringArray("target") instance=ExtResource("22_18q1s")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.770714, 4.7683716e-07, 2.649396)
-target = NodePath("../Target")
-speed = 200.0
+metadata/_editor_floor_ = Vector3(0, -2, 0)
