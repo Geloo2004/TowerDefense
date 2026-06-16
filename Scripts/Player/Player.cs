@@ -5,13 +5,16 @@ using System.Data;
 
 public partial class Player : Node
 {
+    [Export] AudioStreamWav goodSound;
+    [Export] AudioStreamWav badSound;
+    [Export] AudioStreamPlayer3D audioSource;
     private bool hasLost;
 
     private int selectedBuildingId = 0;
     private int selectedBuildingPrice = 0;
     private int selectedTurretId = 0;
 
-    [Export] LevelScripter difficultyManager;
+    [Export] LevelScripter levelScript;
 
     [Export] Resource standardCursor;
     [Export] Resource buildingCursor;
@@ -67,7 +70,7 @@ public partial class Player : Node
     {
         hasLost = true;
         isBuildingTurret = false;
-        uiManager.PlayLossScreen(difficultyManager.GetSurvivedWaves());
+        uiManager.PlayLossScreen(levelScript.GetSurvivedWaves());
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -78,12 +81,14 @@ public partial class Player : Node
         uiManager.healthUpgradeBttn.Pressed += UpgradeTownHallHealth;
         uiManager.restartBttn.Pressed += RestartLevel;
         uiManager.loadNextLevelBttn.Pressed += LoadNextLevel;
+        
 
         var palaces = Utilities.FindAllObjectsOfType<Palace>(this.GetTree().Root);
         if (palaces.Count > 0)
         {
             Palace palace = (Palace)palaces[0];
             palace.OnPalaceDestruction += Lose;
+            palace.OnPalaceHealthUpdate += uiManager.UpdatePalaceHealthBar;
             GD.PrintErr("PALACE REGISTERED");
         }
         else
@@ -112,9 +117,15 @@ public partial class Player : Node
             economyManager.SpendGold(cost);
             selectedTownHall.UpgradeTaxes();
             uiManager.UpdateCardData(selectedTownHall);
+
+            GD.Print("Play good sound");
+            audioSource.Stream = goodSound;
+            audioSource.Play();
         }
         else
         {
+            audioSource.Stream = badSound;
+            audioSource.Play();
             // play sound failure
             // display message
 
@@ -131,9 +142,15 @@ public partial class Player : Node
             economyManager.SpendGold(cost);
             selectedTownHall.UpgradeHealth();
             uiManager.UpdateCardData(selectedTownHall);
+
+            GD.Print("Play good sound");
+            audioSource.Stream = goodSound;
+            audioSource.Play();
         }
         else
         {
+            audioSource.Stream = badSound;
+            audioSource.Play();
             // play sound failure
             // display message
 
@@ -252,15 +269,20 @@ public partial class Player : Node
     private void HandleLMBClick()
     {
         lmbHoldDuration = 0;
-        if (isMouseOverUI)
-        {
-            return;
-        }
+
 
         Node clickedObject = camera.GetObjectUnderMouse(collisionMask);
 
         if (clickedObject == null)
         {
+            // reset ui upon miss
+            if (!uiManager.IsMouseOverTownHallUI())
+            {
+                StopUpgradingTownHall();
+                StopBuildingTurrets();
+            }
+
+
             if (lmbHoldDuration > 0)
             {
                 if (isBuildingTurret)
@@ -278,7 +300,11 @@ public partial class Player : Node
                 StopUpgradingTownHall();
                 var clickedTurretSpot = (TurretSpot)clickedObject;
 
-                if (clickedTurretSpot.hasCannon) { uiManager.ShowMessage("ОБЪЕКТ УЖЕ ЗАНЯТ"); }
+                if (clickedTurretSpot.hasCannon) 
+                { 
+                    uiManager.ShowMessage("ОБЪЕКТ УЖЕ ЗАНЯТ");
+                    return;
+                }
 
                 if (turretBuildingManager.GetPrice(selectedTurretId) > economyManager.gold)
                 {
@@ -308,6 +334,7 @@ public partial class Player : Node
             }
         }
     }
+
     private void EnableIdle()
     {
         collisionMask = 2;

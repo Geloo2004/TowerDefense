@@ -155,7 +155,7 @@ public partial class Unit : Node3D
         attackTimer.Start();
         animationController.PlayAnimation(UnitState.Attack);
 		target.TakeDamage(Data.Damage);
-		if(target.health <= 0) 
+		if(target.currentHealth <= 0) 
 		{
             pathfindingAgent.StartWaiting();
             PlayRun();

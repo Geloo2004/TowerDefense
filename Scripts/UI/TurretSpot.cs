@@ -17,6 +17,7 @@ public partial class TurretSpot : Node3D
         newCannon.GlobalPosition = this.GlobalPosition;
         currentCannon = newCannon;
         GD.Print("CANNON BUILT");
+        GD.Print($"{Name} has cannon? => {hasCannon}");
     }
 
     public void RemoveCannon()

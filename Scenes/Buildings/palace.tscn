@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="3_ldcly"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hpf6a"]
-size = Vector3(4, 4, 4)
+size = Vector3(5, 5, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvoo3"]
 resource_name = "TexturePalette"
@@ -50,6 +50,8 @@ shadow_mesh = SubResource("ArrayMesh_5ef3n")
 [node name="Palace" type="Node3D" unique_id=576530032]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_ldcly")
+currentHealth = 100
+maxHealth = 100
 
 [node name="HitboxComponent" type="Area3D" parent="." unique_id=1164556761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

@@ -73,12 +73,12 @@ blend_shape_mode = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_okowg"]
 material = ExtResource("3_u6w2c")
-size = Vector3(0.025, 0.025, 0.025)
+size = Vector3(0.125, 0.125, 0.125)
 
 [sub_resource type="SphereMesh" id="SphereMesh_6sb31"]
 material = ExtResource("4_g8rhj")
-radius = 0.1
-height = 0.2
+radius = 0.8
+height = 1.6
 radial_segments = 6
 rings = 6
 
@@ -191,17 +191,18 @@ angle_min = -720.0
 [node name="CPUParticles3D_smoke" type="CPUParticles3D" parent="LightLafette" unique_id=153478767]
 transform = Transform3D(1.9887132e-09, -0.15606938, 3.977427e-09, -0.045496453, -6.822009e-09, 0, 1.7385882e-16, -1.36440175e-08, -0.045496453, -3.4049656e-08, 0.424985, -0.38948268)
 emitting = false
-amount = 9
+amount = 13
+lifetime = 0.4
 one_shot = true
-explosiveness = 0.85
+explosiveness = 0.9
 randomness = 1.0
 mesh = SubResource("SphereMesh_6sb31")
 direction = Vector3(0, 0, 0)
-spread = 7.3
-flatness = 0.7
-gravity = Vector3(0, 2, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 200.0
+spread = 4.0
+flatness = 0.45
+gravity = Vector3(0, 13, 0)
+initial_velocity_min = 282.48
+initial_velocity_max = 411.68
 damping_min = 3.451
 damping_max = 5.663
 angle_min = -720.0
@@ -233,3 +234,5 @@ shape = SubResource("CylinderShape3D_q0xhw")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=857862905]
 stream = ExtResource("4_fns88")
+volume_db = 80.0
+unit_size = 50.0

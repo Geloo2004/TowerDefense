@@ -15,13 +15,13 @@ public partial class WallGate : Building
 
 	public override void TakeDamage(int damage)
 	{
-		if (health > 0)
+		if (currentHealth > 0)
         {
             GD.Print("GATE DAMAGED");
-            health -= damage;
+            currentHealth -= damage;
 			audioSource.Play();
-            GD.Print("HEALTH: "+health);
-            if (health <= 0)
+            GD.Print("HEALTH: "+currentHealth);
+            if (currentHealth <= 0)
 			{
 				GD.Print("UPDATE MESH");
 				gateMesh?.QueueFree();
