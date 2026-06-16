@@ -115,7 +115,12 @@ public partial class Unit : Node3D
 
             if (building != null)
             {
+                GD.Print("building detected");
                 target = building;
+            }
+            else
+            {
+                return false;
             }
         }
         return true;

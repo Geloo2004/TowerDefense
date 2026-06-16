@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dh0fwa4v033v1" path="res://Scenes/UILayout/ui_layout_1280x_720.tscn" id="10_fc5bk"]
 [ext_resource type="PackedScene" uid="uid://b60815mbd4xu6" path="res://Scenes/Buildings/CITIES/house0.tscn" id="11_fl3av"]
 [ext_resource type="PackedScene" uid="uid://sgyrpmsvl10p" path="res://Scenes/Buildings/wall.tscn" id="11_tc2oq"]
+[ext_resource type="Script" uid="uid://dqsufkf5sqcw3" path="res://Scripts/Managers/LevelScripter_Level1.cs" id="12_jlhn3"]
 [ext_resource type="PackedScene" uid="uid://cmwnkiw12oqsk" path="res://Scenes/Buildings/CITIES/house1.tscn" id="12_tc2oq"]
 [ext_resource type="PackedScene" uid="uid://3sajvk6q6f4b" path="res://Scenes/Navigation/flowfield_node.tscn" id="13_3qdsm"]
 [ext_resource type="PackedScene" uid="uid://cygut0a71k4wo" path="res://Scenes/Buildings/wall_gate.tscn" id="13_af400"]
@@ -85,6 +86,12 @@ taxationTime = 1.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerCamera" unique_id=819261639]
 
+[node name="LevelScript" type="Node" parent="PlayerCamera" unique_id=2136576797 node_paths=PackedStringArray("westBridgeSpawn", "southBridgeSpawn")]
+script = ExtResource("12_jlhn3")
+westBridgeSpawn = NodePath("../../Paths/RiverwoodPath/Bridge/Flow0/UnitSpawner")
+southBridgeSpawn = NodePath("../../Paths/RiverwoodPath/Riverwood2ndPath/Flow0/UnitSpawner")
+barbarianAxe = ExtResource("15_af400")
+
 [node name="Buildings" type="Node3D" parent="." unique_id=1030038010]
 
 [node name="Riverwood" type="Node3D" parent="Buildings" unique_id=935066688]
@@ -123,7 +130,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -74, 0, -3)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -56, 0, 14)
 
 [node name="Palace" parent="Buildings" unique_id=576530032 instance=ExtResource("20_k5r3x")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -18, 0, 1)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 60, 0, -1)
 
 [node name="GRID" type="Node3D" parent="." unique_id=2028902048]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -165,7 +172,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -155, 0, 4)
 [node name="UnitSpawner" parent="Paths/RiverwoodPath/Bridge/Flow0" unique_id=197584738 instance=ExtResource("14_1mtof")]
 spawnInterval = 1.0
 spawnIntervalOffset = 0.2
-spawnedUnits = ExtResource("15_af400")
+enabled = false
 maxSpawnedUnitsCount = 50
 
 [node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0" unique_id=1769468881 instance=ExtResource("13_3qdsm")]
@@ -338,7 +345,7 @@ transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, -6
 [node name="UnitSpawner" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0" unique_id=291637538 instance=ExtResource("14_1mtof")]
 spawnInterval = 1.0
 spawnIntervalOffset = 0.2
-spawnedUnits = ExtResource("15_af400")
+enabled = false
 maxSpawnedUnitsCount = 50
 
 [node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0" unique_id=1197908458 instance=ExtResource("13_3qdsm")]

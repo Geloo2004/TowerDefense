@@ -85,7 +85,8 @@ script = ExtResource("1_vy7l0")
 gateMesh = NodePath("GATE_DOOR")
 collider = NodePath("HitboxComponent")
 audioSource = NodePath("AudioStreamPlayer3D")
-DataPath = "res://Resources/Buildings/WallGateData.tres"
+health = 30
+maxHealth = 30
 
 [node name="HitboxComponent" type="Area3D" parent="." unique_id=1164556761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

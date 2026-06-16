@@ -10,8 +10,7 @@ public partial class UnitSpawner : Node
     [Export] float spawnIntervalOffset = 1;
     [Export] bool enabled = true;
 
-	[Export] Godot.Collections.Array<PackedScene> startSpawnedUnits;
-	private PackedScene[] spawnedUnits;
+	private PackedScene[] spawnedUnits ;
 
     int pointer = 0;
 
@@ -24,7 +23,7 @@ public partial class UnitSpawner : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if (random == null) 
+        if (random == null) 
 		{
 			random = new Random();
 		}
@@ -41,25 +40,62 @@ public partial class UnitSpawner : Node
 		}
 	}
 
-	public void SpawnUnit()
+    public void SpawnUnit()
     {
-        if (!parentNode.IsFree) { return; }
+        if (!parentNode.IsFree)
+            return;
+
+        if (spawnedUnits == null || spawnedUnits.Length == 0)
+            return;
+
+        // End reached
+        if (pointer >= spawnedUnits.Length)
+        {
+            if (isInfinite)
+            {
+                pointer = 0;
+            }
+            else
+            {
+                enabled = false;
+                return;
+            }
+        }
 
         readyToSpawn = false;
-        spawnedUnitCount++; 
-		pointer++;
 
         Unit newUnit = spawnedUnits[pointer].Instantiate<Unit>();
-		this.AddChild(newUnit);
+
+        AddChild(newUnit);
+
         newUnit.Init(parentNode);
         newUnit.GlobalPosition = parentNode.GlobalPosition;
-		if (spawnedUnitCount < maxSpawnedUnitsCount)
+
+        pointer++;
+        spawnedUnitCount++;
+
+        if (enabled &&
+            (maxSpawnedUnitsCount <= 0 || spawnedUnitCount < maxSpawnedUnitsCount))
         {
-            spawnTimer.Start(spawnInterval + (1 - random.NextDouble()) * spawnIntervalOffset * 2);
-        }				
+            spawnTimer.Start(
+                spawnInterval +
+                (1 - random.NextDouble()) * spawnIntervalOffset * 2
+            );
+        }
+    }
+
+    public void UpdateSpawnerSettings(PackedScene[] newUnits, float interval, float intervalRandom, bool isInfinite) 
+	{ 
+		spawnedUnits = newUnits;
+		spawnInterval = interval;
+		spawnIntervalOffset = intervalRandom;
+		this.isInfinite = isInfinite;
 	}
 
-	public void UpdateSpawnerSettings(PackedScene[] newUnits, float interval, float intervalRandom, bool isInfinite) { }
+	public void StartSpawning()
+	{
+		enabled = true;
+	}
 
 	public void SetSpawnedUnits(PackedScene[] newUnits)
 	{
