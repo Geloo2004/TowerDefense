@@ -14,17 +14,19 @@ public partial class AimingComponent : Node
 	[Export] float aimingMargin;
 
 	public bool isAimed { get; private set; }
-
-	public void SetTarget(Node3D newTarget)
-	{
-		this.targetObject = newTarget;
-        isAimed = true;
-	}
-
+    public void SetTarget(Node3D newTarget)
+    {
+        targetObject = newTarget;
+        if (targetObject == null)
+        {
+            isAimed = false;
+            return;
+        }
+        // Don't set isAimed = true here — let _Process determine it
+        // isAimed stays false until rotation is within aimingMargin
+    }
     public void TrackTarget()
     {
-        if (!GodotObject.IsInstanceValid(targetObject)) { return; }
-        // aims exactly at the target. No soft aim
         float rotationAngle;
         if (axis == Vector3.Axis.X)
         {
@@ -40,9 +42,9 @@ public partial class AimingComponent : Node
 
 	public override void _Process(double delta)
     {
-        return;
+        // return;
 
-        if(targetObject == null) { return; }
+        if (targetObject == null || targetObject.IsQueuedForDeletion()) { return; }
         else
         { 
             targetPosition = targetObject.GlobalPosition; 
@@ -69,11 +71,6 @@ public partial class AimingComponent : Node
         {
             TrackTarget();
         }
-    }
-
-    public void AimToTarget(double delta) 
-    {
-        TrackTarget();
     }
 
     public void SoftRotate_Ver(float targetVerRot, double delta)

@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://cygut0a71k4wo"]
 
 [ext_resource type="Script" uid="uid://b0uhmld0xctgp" path="res://Scripts/Entities/WallGate.cs" id="1_vy7l0"]
-[ext_resource type="PackedScene" uid="uid://cxmctr17ctj3s" path="res://Scenes/Buildings/Turrets/turret_spot.tscn" id="2_vy7l0"]
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="4_aumpn"]
 [ext_resource type="Script" uid="uid://q6f8b1y7x0yh" path="res://Scripts/Components/Hitbox.cs" id="5_vy7l0"]
 
@@ -80,17 +79,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_is4pq")
 
-[node name="Gate" type="Node3D" unique_id=314369867 node_paths=PackedStringArray("gateMesh", "collider", "audioSource", "audioSource")]
+[node name="Gate" type="Node3D" unique_id=314369867 node_paths=PackedStringArray("gateMesh", "collider", "audioSource")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_vy7l0")
 gateMesh = NodePath("GATE_DOOR")
 collider = NodePath("HitboxComponent")
 audioSource = NodePath("AudioStreamPlayer3D")
 DataPath = "res://Resources/Buildings/WallGateData.tres"
-audioSource = NodePath("AudioStreamPlayer3D")
-
-[node name="TurretSpot" parent="." unique_id=1503670788 instance=ExtResource("2_vy7l0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
-allowTurrets = Array[int]([11])
 
 [node name="HitboxComponent" type="Area3D" parent="." unique_id=1164556761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

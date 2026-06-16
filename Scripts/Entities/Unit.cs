@@ -6,13 +6,16 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 public enum UnitState
 {
 	Run,
-	Attack
+	Attack,
+    Idle,
+    Dead
 }
 
 public partial class Unit : Node3D
 {
     //pathfininding
     [Export] FlowfieldAgent pathfindingAgent;
+    [Export] public int threatLevel = 1;
 
     private FlowfieldNode originNode;
 
@@ -25,14 +28,13 @@ public partial class Unit : Node3D
     public sbyte currentHealth { get; private set; }
     public float currentSpeed { get; private set; }
 
-    public bool IsDead { get { return currentHealth <= 0; } }
+    public bool IsDead { get { return currentState == UnitState.Dead; } }
 
 	
 	// AI
     UnitState currentState = UnitState.Run;
 	Building target;
 	[Export] RayCast3D attackRay;
-	[Export] float attackRange = 0.5f;
 
 	// SFX
 	[Export] AudioStreamPlayer3D audioSource;
@@ -42,6 +44,7 @@ public partial class Unit : Node3D
 	[Export] UnitAnimationController animationController;
 	// write a random animation selector for each state
 	Timer attackTimer;
+    Timer disappearanceTimer;
 	Node attackTarget;
 
 
@@ -57,7 +60,7 @@ public partial class Unit : Node3D
                 _data = ResourceLoader.Load<Resources.UnitData>(DataPath);
                 if (_data == null)
                 {
-                    GD.PrintErr($"Failed to load BuildingData from: {DataPath}");
+                    GD.PrintErr($"Failed to load Unit from: {DataPath}");
                 }
             }
             return _data;
@@ -98,7 +101,7 @@ public partial class Unit : Node3D
     }
 
 	public bool CheckBuildingInfront()
-	{
+    {
         Rid collision = attackRay.GetColliderRid();
         if (!collision.IsValid)
         {
@@ -119,8 +122,6 @@ public partial class Unit : Node3D
     }
     public override void _Ready()
 	{
-		attackRay.TargetPosition = new Vector3(0,-attackRange,0);
-
         attackTimer = new Timer();
         attackTimer.Autostart = false;
         attackTimer.OneShot = true;
@@ -143,12 +144,13 @@ public partial class Unit : Node3D
     }
 
 	public void PlayAttack()
-	{
+    {
+        if (IsDead) return;
         readyToAttack = false;
         attackTimer.Start();
         animationController.PlayAnimation(UnitState.Attack);
 		target.TakeDamage(Data.Damage);
-		if(target.currentHealth <= 0) 
+		if(target.health <= 0) 
 		{
             pathfindingAgent.StartWaiting();
             PlayRun();
@@ -157,6 +159,7 @@ public partial class Unit : Node3D
 
 	private void PlayRun()
     {
+        if (IsDead) return;
         target = null;
         animationController.PlayAnimation(UnitState.Run);
        // pathfindingAgent.MoveToNextNode();
@@ -168,15 +171,29 @@ public partial class Unit : Node3D
 		if (target!=null && readyToAttack) { PlayAttack(); }
 	}
 
-	public void TakeDamage(sbyte damage)
-	{
-		currentHealth-=damage;
+    public void TakeDamage(sbyte damage)
+    {
+        if (IsDead) return;
+        currentHealth -= damage;
         if (currentHealth <= 0)
-		{
-			pathfindingAgent.ClearNodes();
-            pathfindingAgent.StopMoving();
-             disapperanceTimer.Start(5);
-            this.GlobalPosition += new Vector3(0, -10, 0);
+        {
+            pathfindingAgent.StopMoving(); // cleans up nodes + disables
+            currentState = UnitState.Dead;
+            animationController.PlayAnimation(currentState);
+            Disappear();
         }
-	}
+    }
+
+    private void Disappear()
+    {
+        disappearanceTimer = new Timer();
+        this.AddChild(disappearanceTimer);
+        disappearanceTimer.OneShot = true;
+        disappearanceTimer.Autostart = false;
+        disappearanceTimer.Timeout += () => 
+        {
+            QueueFree(); 
+        };
+        disappearanceTimer.Start(10);
+    }
 }

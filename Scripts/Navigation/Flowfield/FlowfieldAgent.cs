@@ -12,7 +12,6 @@ enum AgentState
 public partial class FlowfieldAgent : Node
 {
     [Export] Unit unit;
-    [Export] AimingComponent aimingComponent;
     [Export] public int lookAhead = 3;
 
     AgentState currentState = AgentState.Disabled;
@@ -37,6 +36,7 @@ public partial class FlowfieldAgent : Node
 
     public void ClearNodes()
     {
+        GD.Print("ClearNodes");
         if (currentState == AgentState.Moving)
         {
             TargetNode.IsReserved = false;
@@ -82,7 +82,22 @@ public partial class FlowfieldAgent : Node
 
     public void StopMoving()
     {
-        // this is supposed to update the agent's state and reset the node it's coming from
+        // Free nodes based on current state BEFORE disabling
+        if (currentState == AgentState.Moving && TargetNode != null)
+        {
+            TargetNode.IsReserved = false;
+            CurrentNode.IsFree = true;  // it was freed when we started moving, but just in case
+        }
+        else if (currentState == AgentState.Waiting && CurrentNode != null)
+        {
+            CurrentNode.IsFree = true;
+        }
+        else if (currentState == AgentState.Fighting && CurrentNode != null)
+        {
+            CurrentNode.IsFree = true;
+        }
+
+        TargetNode = null;
         currentState = AgentState.Disabled;
     }
 
@@ -101,7 +116,7 @@ public partial class FlowfieldAgent : Node
         else
         {
             if(CurrentNode == null) { GD.PrintErr("CurrentNode = null in Move"); }
-            float currentSpeed = unit.currentSpeed * CurrentNode.speedModifier;
+            float currentSpeed = unit.currentSpeed;
             float step = currentSpeed * (float)delta;
 
             if (step >= distance)

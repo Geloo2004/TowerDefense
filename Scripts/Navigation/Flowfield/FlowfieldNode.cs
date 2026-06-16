@@ -6,7 +6,6 @@ using System.Linq;
 public partial class FlowfieldNode : Node3D
 {
     [Export] public Godot.Collections.Array<FlowfieldNode> NextNodes;
-    [Export] public float speedModifier = 1;
     public bool IsFree = true;
     public bool IsReserved = false;
 
@@ -17,14 +16,34 @@ public partial class FlowfieldNode : Node3D
 
     public override void _Ready()
     {
+        // Auto-populate NextNodes from child FlowfieldNodes
+        if (NextNodes == null || NextNodes.Count == 0)
+        {
+            NextNodes = new Godot.Collections.Array<FlowfieldNode>();
+
+            foreach (Node child in GetChildren())
+            {
+                if (child is FlowfieldNode flowNode)
+                {
+                    NextNodes.Add(flowNode);
+                }
+            }
+        }
+
+        // Build distance cache
         NodeDistances = new Dictionary<FlowfieldNode, float>();
+
         foreach (var node in NextNodes)
         {
-            NodeDistances[node] = (node.GlobalPosition - this.GlobalPosition).Length();
+            if (node == null)
+                continue;
+
+            NodeDistances[node] =
+                (node.GlobalPosition - GlobalPosition).Length();
+
             GD.Print(NodeDistances[node]);
         }
     }
-
     public override void _Process(double delta)
     {
         free.Visible = IsFree;

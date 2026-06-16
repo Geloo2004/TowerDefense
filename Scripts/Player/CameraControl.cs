@@ -4,10 +4,11 @@ using System;
 public partial class CameraControl : Camera3D
 {
     Vector2I resolution;
-    [Export] float scrollSpeed;
+    [Export] float scrollSpeed = 30f;
     [Export] float maxVertical;
     [Export] float maxHorizontal;
     [Export] Input.MouseModeEnum mouseMode;
+    [Export] AudioStreamPlayer3D audioSource;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -19,7 +20,6 @@ public partial class CameraControl : Camera3D
     {
         Vector2 mousePos = GetViewport().GetMousePosition();
         float edgeSize = 20.0f;
-        float speed = 10.0f;
 
         Vector3 moveDirection = Vector3.Zero;
 
@@ -41,14 +41,13 @@ public partial class CameraControl : Camera3D
             // Convert local direction to global and move
             Vector3 globalMovement = Transform.Basis * moveDirection;
             globalMovement.Y = 0;  // Lock Y axis to keep same height
-            Position += globalMovement * speed * (float)delta;
+            Position += globalMovement * scrollSpeed * (float)delta;
         }
     }
     private void HandleOrthographicEdgeScrolling(double delta)
     {
         Vector2 mousePos = GetViewport().GetMousePosition();
         float edgeSize = 20.0f;
-        float speed = 10.0f;
 
         Vector3 moveDirection = Vector3.Zero;
 
@@ -69,7 +68,7 @@ public partial class CameraControl : Camera3D
 
             // Convert local direction to global and move
             Vector3 globalMovement = Transform.Basis * moveDirection;
-            Position += globalMovement * speed * (float)delta;
+            Position += globalMovement * scrollSpeed * (float)delta;
         }
     }
     // Called every frame. 'delta' is the elapsed time since the previous frame.

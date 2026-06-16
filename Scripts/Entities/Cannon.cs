@@ -4,154 +4,197 @@ using System.Collections.Generic;
 
 public partial class Cannon : Node3D
 {
-    [Export] float reloadTime = 1;
-    Timer reloadTimer;
-    Timer peaceTimer;
+    [Export] private float reloadTime = 1f;
+    [Export] private sbyte damage = 1;
 
-    [Export] Area3D detectionArea;
-    [Export] Godot.Collections.Array<AimingComponent> aimingComponents;
-    bool readyToFire = false;
+    [Export] CpuParticles3D fireParticles;
+    [Export] CpuParticles3D smokeParticles;
 
-    List<Unit> unitsInRange = new List<Unit>();
-    Unit currentTarget = null;
-    int currentTargetPriority = 0;
+    [Export] private Area3D detectionArea;
+    [Export] private Godot.Collections.Array<AimingComponent> aimingComponents;
+    [Export] private AudioStreamPlayer3D audioSource;
 
-    static int distancePriority = 3;
-    static int damagePriority = 20;
-    static int speedPriority = 10;  
+    private readonly HashSet<Unit> unitsInRange = new();
 
-    static float targetSwitchMargin = 1.5f; // shows how many times greater (in percent) the priority of a new target should be for the cannon to switch to it instead of the current one
+    private Unit currentTarget;
 
+    private Timer reloadTimer;
+    private bool readyToFire;
 
-   // [Export] Resources.CannonData _data;
-    [Export] AudioStreamPlayer3D audioSource;
+    private bool isDead = false;
 
-    // Called when the node enters the scene tree for the first time.
+    private static readonly Random random = new();
+
+    public void Die()
+    {
+        detectionArea.QueueFree();
+        reloadTimer.Stop();
+        reloadTimer.QueueFree();
+        currentTarget = null;
+        isDead = true;
+    }
+
     public override void _Ready()
     {
         reloadTimer = new Timer();
-        reloadTimer.Autostart = false;
         reloadTimer.OneShot = true;
+        reloadTimer.Timeout += OnReloadFinished;
+
         AddChild(reloadTimer);
-        reloadTimer.Timeout += () =>
-        {
-            readyToFire = true;
-            GD.Print("LOADED!");
-        };
 
-      //  detectionArea.AreaEntered += UpdateTarget;
+        detectionArea.AreaEntered += OnAreaEntered;
+        detectionArea.AreaExited += OnAreaExited;
 
-        reloadTimer.Start(reloadTime);
-
-        detectionArea.AreaEntered += (Area3D collision) => 
-        {
-            var parent = collision.GetParent();
-            if(parent is Unit)
-            {
-                unitsInRange.Add((Unit)parent);
-            }
-        };
-        detectionArea.AreaExited += (Area3D collision) =>
-        {
-            var parent = collision.GetParent();
-            if (parent is Unit)
-            {
-                unitsInRange.Remove((Unit)parent);                
-            }
-        };
+        StartReload();
     }
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
 
     public override void _Process(double delta)
     {
-        // SCRAPPED. TOO DIFFICULT
+        if (isDead) { return; }
+        ValidateCurrentTarget();
 
-        // find target distance
-        // find TIME to reach target now
-        // guess position after TIME
-        // find angles
-        // aim
+        if (currentTarget == null)
+            AcquireTarget();
 
-        // ADD RANDOM ROTATION IF NO ENEMIES?
+        if (currentTarget == null)
+            return;
 
+        bool aimed = AimAtTarget(delta);
 
-        // choose target
-        // deal damage
-        // start reloading
-        if (unitsInRange.Count > 0)
-        {
-            SelectTarget();
-            bool isAimed = AimCannon(delta);
-            if (readyToFire && isAimed)
-            {
-                Fire();
-            }
-        }
+        if (readyToFire && aimed)
+            Fire();
     }
 
-    private void SelectTarget()
+    private void OnReloadFinished()
     {
-        Unit highestPriorityUnit = null;
-        int highestPriority = 0;
-
-        foreach (var unit in unitsInRange)
-        {
-            float distance = (unit.GlobalPosition - this.GlobalPosition).LengthSquared();
-            int priority = (int)(distancePriority * distance);
-
-            if(priority > highestPriority)
-            {
-                highestPriority = priority;
-                highestPriorityUnit = unit;
-            }
-        }
-
-        if (highestPriority > currentTargetPriority)
-        {
-            currentTarget = highestPriorityUnit;
-            currentTargetPriority = (int)(highestPriority * targetSwitchMargin);
-            UpdateAimingComponentsTarget(highestPriorityUnit);
-        }
-
-        currentTarget = highestPriorityUnit;
+        readyToFire = true;
     }
 
-    private void Fire()
+    private void StartReload()
     {
-        if(currentTarget == null) { return; }
-
         readyToFire = false;
-        if (aimingComponents[0].isAimed)
-        {
-            GD.Print("TakeDamage");
-            currentTarget.TakeDamage(1);
-            if (currentTarget.currentHealth <= 0)
-            {
-                UpdateAimingComponentsTarget(null);
-            }
-        }
-
         reloadTimer.Start(reloadTime);
     }
 
-    private bool AimCannon(double delta)
+    private void OnAreaEntered(Area3D area)
     {
-        bool isAimed = true;
-        foreach (var aimingComponent in aimingComponents)
-        {
-            aimingComponent.AimToTarget(delta);
-            if (!aimingComponent.isAimed) { isAimed = false; }
-        }
-        GD.Print(isAimed);
-        return isAimed;
+        if (area.GetParent() is Unit unit)
+            unitsInRange.Add(unit);
     }
 
-    private void UpdateAimingComponentsTarget(Node3D newTarget)
+    private void OnAreaExited(Area3D area)
     {
-        foreach (var aimingComponent in aimingComponents)
+        if (area.GetParent() is Unit unit)
         {
-            aimingComponent.SetTarget(newTarget);
+            unitsInRange.Remove(unit);
+
+            if (unit == currentTarget)
+                ClearTarget();
         }
+    }
+
+    private void ValidateCurrentTarget()
+    {
+        if (currentTarget == null)
+            return;
+
+        if (!GodotObject.IsInstanceValid(currentTarget))
+        {
+            ClearTarget();
+            return;
+        }
+
+        if (currentTarget.IsDead)
+        {
+            ClearTarget();
+            return;
+        }
+
+        if (!unitsInRange.Contains(currentTarget))
+        {
+            ClearTarget();
+            return;
+        }
+    }
+
+    private void AcquireTarget()
+    {
+        Unit bestTarget = null;
+        float bestScore = float.MinValue;
+
+        foreach (var unit in unitsInRange)
+        {
+            if (!GodotObject.IsInstanceValid(unit))
+                continue;
+
+            if (unit.IsDead)
+                continue;
+
+            float distance =
+                GlobalPosition.DistanceSquaredTo(unit.GlobalPosition);
+
+            float score =
+                unit.threatLevel * 1000f - distance;
+
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestTarget = unit;
+            }
+        }
+
+        if (bestTarget != null)
+            SetTarget(bestTarget);
+    }
+
+    private void SetTarget(Unit target)
+    {
+        currentTarget = target;
+
+        foreach (var aimer in aimingComponents)
+            aimer.SetTarget(target);
+    }
+
+    private void ClearTarget()
+    {
+        currentTarget = null;
+
+        foreach (var aimer in aimingComponents)
+            aimer.SetTarget(null);
+    }
+
+    private bool AimAtTarget(double delta)
+    {
+        bool allAimed = true;
+
+        foreach (var aimer in aimingComponents)
+        {
+            // Let each aimer run its own soft-rotate logic via _Process,
+            // but we still need to know if all are aimed
+            if (!aimer.isAimed)
+                allAimed = false;
+        }
+
+        return allAimed;
+    }
+    private void Fire()
+    {
+        if (currentTarget == null)
+            return;
+
+        currentTarget.TakeDamage(damage);
+
+        audioSource.PitchScale =
+            1f + random.Next(0, 50) / 100f;
+
+        audioSource.Play();
+
+        if (currentTarget.IsDead)
+            ClearTarget();
+
+        fireParticles.Emitting = true;
+        smokeParticles.Emitting = true;
+
+        StartReload();
     }
 }

@@ -15,11 +15,11 @@ public partial class WallGate : Building
 
 	public override void TakeDamage(int damage)
 	{
-		if (currentHealth > 0)
+		if (health > 0)
 		{
-			currentHealth -= damage;
+			health -= damage;
 			audioSource.Play();
-			if (currentHealth <= 0)
+			if (health <= 0)
 			{
 				gateMesh?.QueueFree();
 				collider?.QueueFree();

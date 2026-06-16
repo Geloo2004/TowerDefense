@@ -1,26 +1,38 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 public partial class UnitAnimationController : Node
 {
-    [Export] Godot.Collections.Dictionary<UnitState, string> Animations;
+	Dictionary<UnitState, string[]> animations = new Dictionary<UnitState, string[]> 
+	{
+		{UnitState.Run, new string[] { "Run" } },
+        {UnitState.Attack, new string[] { "Attack0", "Attack0", "Attack0" } },
+        {UnitState.Idle, new string[] { "Idle0", "Idle1", "Idle2" } },
+		//{UnitState.Dead, new string[] { "Death0", "Death2", "Death3" } }
+    };
     [Export] AnimationPlayer animController;
+	[Export] CpuParticles3D particles3D;
+	[Export] MeshInstance3D mesh;
 
     static Random Random = new Random();
 	public void PlayAnimation(UnitState currentState)
 	{
-		List<string> possibleAnimations = new List<string>();
-		foreach (var animation in Animations) 
+		if (currentState == UnitState.Dead) { PlayDeathAnimation(); }
+		else
 		{
-			if (animation.Key == currentState)
-			{
-				possibleAnimations.Add(animation.Value);
-			}
-		}
+			string[] possibleAnimations = animations[currentState];
 
-        // play random animation
-        animController.Play(possibleAnimations[Random.Next(possibleAnimations.Count)]);
+			// play random animation
+			animController.Play(possibleAnimations[Random.Next(possibleAnimations.Length)]);
+		}
+	}
+
+	private void PlayDeathAnimation()
+	{
+		particles3D.Emitting = true;
+		mesh.Visible= false;
 	}
 
 	// Called when the node enters the scene tree for the first time.

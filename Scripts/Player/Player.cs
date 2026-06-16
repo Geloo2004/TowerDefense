@@ -5,25 +5,29 @@ using System.Data;
 
 public partial class Player : Node
 {
+    private bool hasLost;
 
-	private int selectedBuildingId = 0;
+    private int selectedBuildingId = 0;
     private int selectedBuildingPrice = 0;
     private int selectedTurretId = 0;
-    // BUILDING
+
+    [Export] LevelScripter difficultyManager;
+
+    [Export] Resource standardCursor;
+    [Export] Resource buildingCursor;
+
+
+    [Export] PackedScene nextLevel;
     [Export] CameraControl camera;
-
-   // [Export] BuildingManager buildingManager;
-
     [Export] TurretBuildingManager turretBuildingManager;
-    [Export] UIManager uiManager;
+    [Export] UIUpdater uiManager;
 
-    private bool isBuilding = false;
+    TownHall selectedTownHall = null;
+
     private bool isBuildingTurret = false;
+    private bool isInteractingWithTownHall = false;
     private bool isMouseOverUI = false;
 
-    Vector3I startTile;
-    Vector3I endTile;
-    Vector3I buildingOutlinePosition;
     bool outOfBounds = false;
     [Export] public uint collisionMask = 2;
     Node clickedObject = null;
@@ -39,30 +43,53 @@ public partial class Player : Node
 
     // MOUSE CONTROL
     float lmbHoldDuration = 0;
-	float rmbHoldDuration = 0;
+    float rmbHoldDuration = 0;
     [Export] float holdDuration = 0.15f;
 
-    // GAME
-    [Export] public int coins = 100;
-    SceneManager sceneManager;
+    // PAUSE CONTROL
+    bool isPaused = false;
+    bool isPausePressed = false;
 
+    SceneManager sceneManager;
+    [Export] EconomyManager economyManager;
     private void RestartLevel()
     {
         this.GetTree().ReloadCurrentScene();
     }
 
+    private void LoadNextLevel()
+    {
+        // load new level when all waves are completed and all enemies are dead
+        GetTree().ChangeSceneToPacked(nextLevel);
+    }
 
-
+    private void Lose()
+    {
+        hasLost = true;
+        isBuildingTurret = false;
+        uiManager.PlayLossScreen(difficultyManager.GetSurvivedWaves());
+    }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        Palace palace = (Palace)Utilities.FindAllObjectsOfType<Palace>(this.GetTree().Root)[0];
-        palace.OnPalaceDestruction += RestartLevel;
+        Input.SetCustomMouseCursor(standardCursor);
+        uiManager.taxUpgradeBttn.Pressed += UpgradeTownHallTaxes;
+        uiManager.healthUpgradeBttn.Pressed += UpgradeTownHallHealth;
+        uiManager.restartBttn.Pressed += RestartLevel;
+        uiManager.loadNextLevelBttn.Pressed += LoadNextLevel;
 
-        uiManager.UpdateCoins(coins);
-        uiManager.OnBuildingSelected += StartBuilding;
-        uiManager.OnTurretSelected += StartBuildingTurrets;
+        var palaces = Utilities.FindAllObjectsOfType<Palace>(this.GetTree().Root);
+        if (palaces.Count > 0)
+        {
+            Palace palace = (Palace)palaces[0];
+            palace.OnPalaceDestruction += Lose;
+            GD.PrintErr("PALACE REGISTERED");
+        }
+        else
+        {
+            GD.PrintErr("PALACE DOESNT EXIST");
+        }
 
         var sceneManager = Utilities.FindAllObjectsOfType<SceneManager>(GetTree().Root);
         if (sceneManager.Count > 0)
@@ -71,23 +98,71 @@ public partial class Player : Node
         }
 
         uiManager.OnMouseHoverUI += (bool isMouseOverUI) => { this.isMouseOverUI = isMouseOverUI; };
+        uiManager.OnContinueButtonPressUI += HandlePausePress;
+        economyManager.OnGoldUpdate += UpdateGold;
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    private void UpgradeTownHallTaxes()
     {
-        uiManager.UpdateStatus(isBuilding, isBuildingTurret, selectedBuildingId);
-        var rmbInput = Input.GetActionStrength("RMBPress");
-        var lmbInput = Input.GetActionStrength("LMBPress");
+        GD.Print("UpgradeTownHallTaxes");
+        int cost = selectedTownHall.GetTaxUpgradeCost();
+        if (cost < economyManager.gold)
+        {
+            // play sound success
+            economyManager.SpendGold(cost);
+            selectedTownHall.UpgradeTaxes();
+            uiManager.UpdateCardData(selectedTownHall);
+        }
+        else
+        {
+            // play sound failure
+            // display message
 
-        if (isBuilding)
-        {
-           //buildingManager.UpdateBuildingOutline(camera.GetObjectUnderMouse(collisionMask),selectedBuildingId);
         }
-        if (isBuildingTurret) 
+    }
+
+    private void UpgradeTownHallHealth()
+    {
+        GD.Print("UpgradeTownHallHealth");
+        int cost = selectedTownHall.GetHealthUpgradeCost();
+        if (cost < economyManager.gold)
         {
-            
+            // play sound success
+            economyManager.SpendGold(cost);
+            selectedTownHall.UpgradeHealth();
+            uiManager.UpdateCardData(selectedTownHall);
         }
+        else
+        {
+            // play sound failure
+            // display message
+
+        }
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+        if (hasLost) { return; }
+
+        // OPEN PAUSE MENU
+        var pauseInput = Input.GetActionStrength("Pause");
+        if (pauseInput > 0)
+        {
+            if(!isPausePressed)
+            {
+                isPausePressed = true;
+                HandlePausePress();
+            }
+        }
+        else
+        {
+            OnPauseRelease();
+        }
+
+        // READ GAME INPUT
+        uiManager.UpdateStatus(isBuildingTurret, selectedBuildingId);
+        var lmbInput = Input.GetActionStrength("LMBPress");
 
         if (lmbInput > 0)
 		{
@@ -115,38 +190,46 @@ public partial class Player : Node
             }
 
         }
-        if (rmbInput > 0)
-        {
-            StopBuilding();
-            StopBuildingTurrets();
-        }
 
-        uiManager.UpdateStatus(isBuilding, isBuildingTurret,selectedBuildingId);
+        uiManager.UpdateStatus(isBuildingTurret,selectedBuildingId);
     }
-    private void HandleRMBPress(double delta)
-    {
-        rmbHoldDuration += (float)delta;
-        // On first press
-    }
-    public void HandleRMBClick() { }
-    public void OnRMBHold(double delta) { rmbHoldDuration += (float)delta; }
-    public void OnRMBRelease() { rmbHoldDuration = 0; }
-    private void HandleLMBPress(double delta)
-    {
-        GD.Print("HandleLMBPress");
-        lmbHoldDuration += (float)delta;
-        Node clickedObject = camera.GetObjectUnderMouse(collisionMask);
-        if (clickedObject == null) { return; }
 
-        if (clickedObject is GridCell)
+    private void HandlePausePress()
+    {
+        isPaused = !isPaused;
+        if (isPaused)
         {
-            startTile = ((GridCell)clickedObject).IntPosition;
-            outOfBounds = false;
+            uiManager.SetUIPage(UIPage.PauseMenu);
         }
         else
         {
-            outOfBounds = true;
+            uiManager.SetUIPage(UIPage.Game);
         }
+        UpdateCursor();
+    }
+
+    private void UpdateCursor()
+    {
+        GD.PrintErr("CURSOR IS NOT UPDATING");
+        return;
+
+        if (isBuildingTurret)
+        {
+            Input.SetCustomMouseCursor(buildingCursor);
+        }
+        else
+        {
+            Input.SetCustomMouseCursor(standardCursor);
+        }
+    }
+    private void OnPauseRelease()
+    {
+        isPausePressed = false;
+    }
+
+    private void HandleLMBPress(double delta)
+    {
+        lmbHoldDuration += (float)delta;
     }
     private void OnLMBRelease()
     {
@@ -157,10 +240,6 @@ public partial class Player : Node
         if (clickedObject == null) { return; }
 
         if (outOfBounds) { return; }
-        if (clickedObject is GridCell)
-        {
-            endTile = ((GridCell)clickedObject).IntPosition;
-        }
 
        // buildingManager.BuildWall(startTile, endTile);
     }
@@ -173,7 +252,6 @@ public partial class Player : Node
     private void HandleLMBClick()
     {
         lmbHoldDuration = 0;
-
         if (isMouseOverUI)
         {
             return;
@@ -190,55 +268,23 @@ public partial class Player : Node
                     isBuildingTurret = false;
                     StopBuildingTurrets();
                 }
-
-                if (isBuilding)
-                {
-                    StopBuilding();
-                }
             }
             return;
         }
-        else if (isBuilding)
-        {
-            /*
-            GD.Print($"selectedBuildingId = {selectedBuildingId}");
-            if(buildingManager.GetPrice(selectedBuildingId) > coins) 
-            {
-                uiManager.ShowMessage("NOT ENOUGH COINS");
-                return;
-            }
-            if (clickedObject is GridCell)
-            {
-                var clickedTile = ((GridCell)clickedObject).IntPosition;
-
-                if (buildingManager.IsAreaFree(clickedTile, selectedBuildingId))
-                {
-                    coins -= selectedBuildingPrice;
-                    buildingManager.Build(clickedTile, 0, selectedBuildingId);
-                    outOfBounds = false;
-                    uiManager.UpdateCoins(coins);
-                }
-                else
-                {
-                    GD.Print("AREA NOT FREE");
-                }
-            }
-            else
-            {
-                StopBuilding();
-            }
-            */
-        }
         else if (isBuildingTurret)
         {
-            GD.Print("isBuildingTurret");
             if (clickedObject is TurretSpot)
             {
+                StopUpgradingTownHall();
                 var clickedTurretSpot = (TurretSpot)clickedObject;
 
-                if (turretBuildingManager.GetPrice(selectedTurretId) > coins) { return; }
+                if (clickedTurretSpot.hasCannon) { uiManager.ShowMessage("ОБЪЕКТ УЖЕ ЗАНЯТ"); }
 
-                GD.Print("isBuildingTurret and price is ok");
+                if (turretBuildingManager.GetPrice(selectedTurretId) > economyManager.gold)
+                {
+                    return; 
+                }
+
                 turretBuildingManager.BuildTurret(clickedTurretSpot, selectedTurretId);
             }
             else
@@ -248,26 +294,18 @@ public partial class Player : Node
         }
         else
         {
-            /*
-            GD.Print("is not Building");
-            if (clickedObject is TurretSpot)
+            var parent = clickedObject.GetParent();
+            if (clickedObject is TownHall)
             {
-                GD.Print("is TurretSpot");
-                if (isImprovingTower)
-                {
-                    uiManager.HideTurretSelectionMenu();
-                }
-                isImprovingTower = true;
-                collisionMask = 2;
-                uiManager.ShowTurretSelectionMenu((TurretSpot)clickedObject);
-
+                selectedTownHall = (TownHall)clickedObject;
+                uiManager.ShowTownHallUI(selectedTownHall);
             }
-            else if (isImprovingTower)
+            else
             {
-                GD.Print("isImprovingTower");
-                uiManager.HideTurretSelectionMenu();
+                StopUpgradingTownHall();
+                uiManager.ShowTurretsUI();
+                selectedTownHall = null;
             }
-            */
         }
     }
     private void EnableIdle()
@@ -277,46 +315,33 @@ public partial class Player : Node
 
     private void StopBuildingTurrets()
     {
+        Input.SetCustomMouseCursor(standardCursor);
         isBuildingTurret = false;
-
-        uiManager.ShowBuildingMenus();
         uiManager.UpdateTooltip("");
     }
-    private void StartBuildingTurrets(int selectedTurretId)
+    public void StartBuildingTurrets(int selectedTurretId)
     {
+        Input.SetCustomMouseCursor(buildingCursor);
         isBuildingTurret = true;
         collisionMask = 2;
 
         this.selectedTurretId = selectedTurretId;
-
-        uiManager.HideBuildingMenus();
-        uiManager.UpdateTooltip("[ PRESS RMB TO CANCEL ]");
-    }
-    public void StartBuilding(int selectedBuildingId)
-    {
-        
-
-        isBuilding = true;
-        collisionMask = 3;
-
-        this.selectedBuildingId = selectedBuildingId;
-        /*
-        buildingManager.DestroyBuildingOutline();
-        buildingManager.CreateBuildingOutline(selectedBuildingId);
-        buildingOutlinePosition = Vector3I.MinValue;
-        */
-        uiManager.HideBuildingMenus();
-        uiManager.UpdateTooltip("[ PRESS RMB TO CANCEL ]");
-        
     }
 
-    public void StopBuilding()
+    public void StopUpgradingTownHall()
     {
-        isBuilding = false;
+        selectedTownHall = null;
+        uiManager.ShowTurretsUI();
+    }
 
-       // buildingManager.DestroyBuildingOutline();
+    public void StartUpgradingTownHall(TownHall newSelectedTownHall)
+    {
+        selectedTownHall = newSelectedTownHall;
+        uiManager.ShowTownHallUI(newSelectedTownHall);
+    }
 
-        uiManager.ShowBuildingMenus();
-        uiManager.UpdateTooltip("");
+    public void UpdateGold(int newGold)
+    {
+        uiManager.UpdateCoins(newGold);
     }
 }

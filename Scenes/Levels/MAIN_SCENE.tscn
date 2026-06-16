@@ -1,470 +1,504 @@
 [gd_scene format=3 uid="uid://divgll7gw3v4"]
 
 [ext_resource type="Script" uid="uid://bpr3d1nqrn18y" path="res://Scripts/Player/CameraControl.cs" id="1_iy57e"]
-[ext_resource type="Script" uid="uid://cu6xouopwbuk8" path="res://Scripts/Player/BuildingManager.cs" id="2_0f8ff"]
 [ext_resource type="Script" uid="uid://5qaldirptnnx" path="res://Scripts/Managers/SceneManager.cs" id="2_fkge6"]
-[ext_resource type="Script" uid="uid://c38rbshfd5nra" path="res://Scripts/UI/UIManager.cs" id="4_dri0c"]
-[ext_resource type="PackedScene" uid="uid://sgyrpmsvl10p" path="res://Scenes/Buildings/wall.tscn" id="4_rc0xk"]
+[ext_resource type="Texture2D" uid="uid://dxsbjoa1kaoc7" path="res://Textures/Icons/cursor.png" id="4_5y4qw"]
 [ext_resource type="Script" uid="uid://dsmqc0m34ojdt" path="res://Scripts/Player/Player.cs" id="4_tqeus"]
-[ext_resource type="PackedScene" uid="uid://b3tokey6byihn" path="res://Scenes/Buildings/tower.tscn" id="5_rc0xk"]
-[ext_resource type="PackedScene" uid="uid://cygut0a71k4wo" path="res://Scenes/Buildings/wall_gate.tscn" id="5_v1f81"]
+[ext_resource type="PackedScene" uid="uid://8xijp2evwexq" path="res://Scenes/Buildings/Turrets/cannon.tscn" id="5_5byux"]
+[ext_resource type="Texture2D" uid="uid://lfk3ciieeis2" path="res://Textures/Icons/hammer.png" id="5_k5r3x"]
+[ext_resource type="PackedScene" uid="uid://cfgbahn7m1fvm" path="res://Scenes/Buildings/Turrets/heavy_cannon.tscn" id="6_5y4qw"]
+[ext_resource type="Script" uid="uid://c3j5g03qgl062" path="res://Scripts/Player/EconomyManager.cs" id="6_pt0kp"]
 [ext_resource type="Script" uid="uid://cehg05fpvinpc" path="res://Scripts/Player/TurretBuildingManager.cs" id="7_1mtof"]
-[ext_resource type="PackedScene" uid="uid://r7qoky0n7k42" path="res://Scenes/Buildings/palace.tscn" id="8_1lmi8"]
+[ext_resource type="PackedScene" uid="uid://b3q26n7r384ry" path="res://Scenes/Buildings/Turrets/sniper_cannon.tscn" id="7_k5r3x"]
 [ext_resource type="MeshLibrary" uid="uid://bro43kaol0ek2" path="res://MeshLibraries/newTiles.meshlib" id="8_dri0c"]
-[ext_resource type="PackedScene" uid="uid://batny1pkv7mj8" path="res://Scenes/Navigation/flowfield_manager.tscn" id="12_3qdsm"]
-[ext_resource type="PackedScene" uid="uid://bnojyc4757bhd" path="res://Scenes/Navigation/unit_spawner.tscn" id="13_1mtof"]
-[ext_resource type="PackedScene" uid="uid://3sajvk6q6f4b" path="res://Scenes/Navigation/flowfield_node.tscn" id="13_2yqos"]
-[ext_resource type="PackedScene" uid="uid://blq6aq5bhdfco" path="res://Scenes/Units/barbarian.tscn" id="14_2yqos"]
+[ext_resource type="PackedScene" uid="uid://ser6ykawlx7o" path="res://Scenes/Buildings/CITIES/town_hall.tscn" id="8_e3ght"]
+[ext_resource type="PackedScene" uid="uid://dh0fwa4v033v1" path="res://Scenes/UILayout/ui_layout_1280x_720.tscn" id="10_fc5bk"]
+[ext_resource type="PackedScene" uid="uid://b60815mbd4xu6" path="res://Scenes/Buildings/CITIES/house0.tscn" id="11_fl3av"]
+[ext_resource type="PackedScene" uid="uid://sgyrpmsvl10p" path="res://Scenes/Buildings/wall.tscn" id="11_tc2oq"]
+[ext_resource type="PackedScene" uid="uid://cmwnkiw12oqsk" path="res://Scenes/Buildings/CITIES/house1.tscn" id="12_tc2oq"]
+[ext_resource type="PackedScene" uid="uid://3sajvk6q6f4b" path="res://Scenes/Navigation/flowfield_node.tscn" id="13_3qdsm"]
+[ext_resource type="PackedScene" uid="uid://cygut0a71k4wo" path="res://Scenes/Buildings/wall_gate.tscn" id="13_af400"]
+[ext_resource type="PackedScene" uid="uid://doktctwlc0327" path="res://Scenes/Buildings/CITIES/house2.tscn" id="13_pt0kp"]
+[ext_resource type="PackedScene" uid="uid://b3tokey6byihn" path="res://Scenes/Buildings/tower.tscn" id="14_1lmi8"]
+[ext_resource type="PackedScene" uid="uid://bnojyc4757bhd" path="res://Scenes/Navigation/unit_spawner.tscn" id="14_1mtof"]
+[ext_resource type="PackedScene" uid="uid://cufhevwxdvfiv" path="res://Scenes/Buildings/CITIES/house3.tscn" id="14_5byux"]
+[ext_resource type="PackedScene" uid="uid://b18eehcle6p4t" path="res://Scenes/Buildings/CITIES/house4.tscn" id="15_41vn3"]
+[ext_resource type="PackedScene" uid="uid://blq6aq5bhdfco" path="res://Scenes/Units/barbarian.tscn" id="15_af400"]
+[ext_resource type="PackedScene" uid="uid://dnfe4apmkul6f" path="res://Scenes/Buildings/CITIES/house5.tscn" id="16_5y4qw"]
+[ext_resource type="Material" uid="uid://ccnr7xc6fffci" path="res://Materials/water.tres" id="16_e3ght"]
+[ext_resource type="PackedScene" uid="uid://4du3ykvgphml" path="res://Scenes/Buildings/CITIES/house6.tscn" id="17_k5r3x"]
+[ext_resource type="PackedScene" uid="uid://r7qoky0n7k42" path="res://Scenes/Buildings/palace.tscn" id="20_k5r3x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5byux"]
+size = Vector3(19, 2, 11)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2no5g"]
+size = Vector2(10, 10)
+
+[sub_resource type="Environment" id="Environment_k5r3x"]
+background_mode = 1
+tonemap_mode = 3
+tonemap_exposure = 0.94
+tonemap_white = 67.3
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_contrast = 1.08
+adjustment_saturation = 1.2
 
 [node name="Node" type="Node" unique_id=1617110443]
 
 [node name="PlayerCamera" type="Camera3D" parent="." unique_id=231962963]
-transform = Transform3D(0.7071067, 0.35355335, -0.61237234, 0, 0.8660253, 0.49999997, 0.7071067, -0.35355335, 0.61237234, -26.717514, 15.669873, 16.81802)
+transform = Transform3D(0.7071068, 0.3535534, -0.61237246, 0, 0.8660254, 0.50000006, 0.7071068, -0.3535534, 0.61237246, -172.71751, 69.669876, 110.81802)
 projection = 1
 fov = 34.5
-size = 17.0
+size = 70.0
 script = ExtResource("1_iy57e")
+scrollSpeed = 100.0
+mouseMode = 3
 
 [node name="AudioListener3D" type="AudioListener3D" parent="PlayerCamera" unique_id=737845872]
-
-[node name="BuildingManager" type="Node" parent="PlayerCamera" unique_id=1108803973 node_paths=PackedStringArray("buildableGrid")]
-script = ExtResource("2_0f8ff")
-buildingDataPaths = Dictionary[int, String]({
-1: "res://Resources/Buildings/HouseData.tres",
-2: "res://Resources/Buildings/TowerData.tres",
-3: "res://Resources/Buildings/CastleData.tres",
-4: "res://Resources/Buildings/PalaceData.tres"
-})
-buildableGrid = NodePath("../../GRID/GRID_BUILDABLE")
-tileMeshLib = ExtResource("8_dri0c")
 
 [node name="SceneManager" type="Node" parent="PlayerCamera" unique_id=1110561530]
 script = ExtResource("2_fkge6")
 
-[node name="Player" type="Node" parent="PlayerCamera" unique_id=827705775 node_paths=PackedStringArray("camera", "buildingManager", "turretBuildingManager", "uiManager")]
+[node name="Player" type="Node" parent="PlayerCamera" unique_id=827705775 node_paths=PackedStringArray("camera", "turretBuildingManager", "uiManager", "economyManager")]
 script = ExtResource("4_tqeus")
+standardCursor = ExtResource("4_5y4qw")
+buildingCursor = ExtResource("5_k5r3x")
 camera = NodePath("..")
-buildingManager = NodePath("../BuildingManager")
 turretBuildingManager = NodePath("../TurretBuildingManager")
-uiManager = NodePath("../UIManager")
-
-[node name="UIManager" type="Node" parent="PlayerCamera" unique_id=23929044 node_paths=PackedStringArray("coinsLabel", "TurretsButtonsList", "BuildingButtonsList", "statusLabel", "messageLabel", "tooltipLabel", "buildingInfoPanel")]
-script = ExtResource("4_dri0c")
-coinsLabel = NodePath("../../UI/Control/CoinsDisplay")
-TurretsButtonsList = NodePath("../../UI/Control/TurretsList")
-BuildingButtonsList = NodePath("../../UI/Control/BuildingsList")
-statusLabel = NodePath("../../UI/Control/status")
-messageLabel = NodePath("../../UI/Control/MessageLabel")
-tooltipLabel = NodePath("../../UI/Control/TooltipLabel")
-buildingInfoPanel = NodePath("../../UI/Control/BuildingInfoDisplayPanel")
+uiManager = NodePath("../UIUpdater")
+economyManager = NodePath("../EconomyManager")
 
 [node name="TurretBuildingManager" type="Node" parent="PlayerCamera" unique_id=1751143074]
 script = ExtResource("7_1mtof")
-turretsDataPaths = Dictionary[int, String]({
-1: "res://Resources/Turrets/MediumCannonData.tres"
-})
+turretScenes = Array[PackedScene]([ExtResource("5_5byux"), ExtResource("6_5y4qw"), ExtResource("7_k5r3x")])
+turretPrices = Array[int]([30, 30, 50])
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=29155539]
-transform = Transform3D(-2.1855692e-08, 0.86602545, -0.49999997, 3.7855173e-08, 0.49999997, 0.86602545, 1, 1.7763568e-15, -4.371139e-08, -5, 8, 0)
+[node name="UIUpdater" parent="PlayerCamera" unique_id=2038862548 instance=ExtResource("10_fc5bk")]
+
+[node name="EconomyManager" type="Node" parent="PlayerCamera" unique_id=434836676 node_paths=PackedStringArray("townHalls")]
+script = ExtResource("6_pt0kp")
+gold = 100
+townHalls = [NodePath("../../Buildings/Riverwood/TownHall")]
+taxationTime = 1.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerCamera" unique_id=819261639]
 
 [node name="Buildings" type="Node3D" parent="." unique_id=1030038010]
-visible = false
 
-[node name="Tower" parent="Buildings" unique_id=1297713477 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 1, 1)
+[node name="Riverwood" type="Node3D" parent="Buildings" unique_id=935066688]
 
-[node name="Tower5" parent="Buildings" unique_id=922894512 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9999998, 1, 7)
+[node name="TownHall" parent="Buildings/Riverwood" unique_id=1947363234 node_paths=PackedStringArray("areaOfControl") instance=ExtResource("8_e3ght")]
+transform = Transform3D(5, 0, 2.3841858e-07, -1.1920929e-07, 5, 2.3841858e-07, 4.7683716e-07, 0, 5, -71, 0, 19)
+areaOfControl = NodePath("Area3D")
 
-[node name="Tower2" parent="Buildings" unique_id=979389027 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 1, -5)
+[node name="Area3D" type="Area3D" parent="Buildings/Riverwood/TownHall" unique_id=1211572541]
+collision_layer = 0
+collision_mask = 8
 
-[node name="Tower3" parent="Buildings" unique_id=1496743083 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17, 1, -2.9999995)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buildings/Riverwood/TownHall/Area3D" unique_id=1075428491]
+transform = Transform3D(1, 0, -1.6271429e-12, 4.334465e-15, 1, -1.6271429e-12, -3.2542857e-12, 0, 1, 3, 0.50000095, 0.99999976)
+shape = SubResource("BoxShape3D_5byux")
 
-[node name="Tower4" parent="Buildings" unique_id=1313580864 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 1, -2.9999995)
+[node name="HOUSE" parent="Buildings/Riverwood" unique_id=1364912030 instance=ExtResource("11_fl3av")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -60, 0, -4)
 
-[node name="Tower6" parent="Buildings" unique_id=1754811836 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19, 1, 9)
+[node name="HOUSE1" parent="Buildings/Riverwood" unique_id=1658173006 instance=ExtResource("12_tc2oq")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -58, 0, 24)
 
-[node name="Tower7" parent="Buildings" unique_id=2013398800 instance=ExtResource("5_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.999999, 1, 9)
+[node name="HOUSE2" parent="Buildings/Riverwood" unique_id=1609579297 instance=ExtResource("13_pt0kp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -85, 0, -14)
 
-[node name="Wall" parent="Buildings" unique_id=107570890 instance=ExtResource("4_rc0xk")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 1, 5)
+[node name="HOUSE3" parent="Buildings/Riverwood" unique_id=1348634447 instance=ExtResource("14_5byux")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -86, 0, -4)
 
-[node name="Wall2" parent="Buildings" unique_id=1618159754 instance=ExtResource("4_rc0xk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1, -3)
+[node name="HOUSE4" parent="Buildings/Riverwood" unique_id=1515367287 instance=ExtResource("15_41vn3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -84, 0, 14)
 
-[node name="Gate" parent="Buildings" unique_id=314369867 instance=ExtResource("5_v1f81")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 1, 3)
+[node name="HOUSE5" parent="Buildings/Riverwood" unique_id=701022752 instance=ExtResource("16_5y4qw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -74, 0, -3)
 
-[node name="Gate2" parent="Buildings" unique_id=493111239 instance=ExtResource("5_v1f81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, 8.999999)
+[node name="HOUSE6" parent="Buildings/Riverwood" unique_id=552340673 instance=ExtResource("17_k5r3x")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -56, 0, 14)
 
-[node name="Palace" parent="Buildings" unique_id=576530032 instance=ExtResource("8_1lmi8")]
-transform = Transform3D(1, 2.9802322e-08, 1.1920929e-07, -2.9802322e-08, 1, -2.9802322e-08, 0, -2.9802322e-08, 1.0000001, -13.000002, 8.34465e-07, -11.000001)
-
-[node name="UI" type="Node" parent="." unique_id=1957633949]
-
-[node name="Control" type="Control" parent="UI" unique_id=412989527]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="CoinsDisplay" type="Label" parent="UI/Control" unique_id=1759675214]
-auto_translate_mode = 2
-layout_mode = 1
-anchors_preset = -1
-offset_top = 45.0
-offset_right = 720.0
-offset_bottom = 720.0
-theme_override_font_sizes/font_size = 32
-text = "COINS:"
-autowrap_mode = 2
-
-[node name="TurretsList" type="ItemList" parent="UI/Control" unique_id=2113131797]
-auto_translate_mode = 2
-layout_mode = 1
-anchors_preset = -1
-offset_right = 160.0
-offset_bottom = 720.0
-
-[node name="status" type="Label" parent="UI/Control" unique_id=1890029705]
-auto_translate_mode = 2
-layout_mode = 0
-offset_left = 772.0
-offset_top = 15.0
-offset_right = 1192.0
-offset_bottom = 38.0
-text = "status"
-
-[node name="BuildingsList" type="ItemList" parent="UI/Control" unique_id=2073763651]
-auto_translate_mode = 2
-layout_mode = 1
-anchors_preset = -1
-offset_right = 160.0
-offset_bottom = 720.0
-allow_search = false
-
-[node name="MessageLabel" type="Label" parent="UI/Control" unique_id=1004061568]
-auto_translate_mode = 2
-layout_mode = 1
-anchors_preset = -1
-offset_right = 1280.0
-offset_bottom = 720.0
-theme_override_font_sizes/font_size = 30
-text = "TEST MESSAGE"
-horizontal_alignment = 1
-
-[node name="TooltipLabel" type="Label" parent="UI/Control" unique_id=369561501]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 32
-text = "[ TEST TOOLTIP ]"
-
-[node name="BuildingInfoDisplayPanel" type="Panel" parent="UI/Control" unique_id=1923935054]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Navigation" type="Node3D" parent="." unique_id=1051442426]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9, 0.76498485, 5)
-
-[node name="FlowfieldManager" parent="Navigation" unique_id=1660553320 instance=ExtResource("12_3qdsm")]
-
-[node name="FirstApproach" type="Node" parent="Navigation/FlowfieldManager" unique_id=978003340]
-
-[node name="StartFlowfieldNode" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1833281073 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode2")]
-
-[node name="UnitSpawner" parent="Navigation/FlowfieldManager/FirstApproach/StartFlowfieldNode" unique_id=197584738 instance=ExtResource("13_1mtof")]
-spawnInterval = 0.4
-enabled = false
-spawnedUnits = ExtResource("14_2yqos")
-maxSpawnedUnitsCount = 160
-
-[node name="FlowfieldNode2" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=458211408 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode3")]
-
-[node name="FlowfieldNode3" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1242012856 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode4")]
-
-[node name="FlowfieldNode4" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=509430442 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode5")]
-
-[node name="FlowfieldNode5" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=201848524 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode6")]
-
-[node name="FlowfieldNode6" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1575929447 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode7")]
-
-[node name="FlowfieldNode7" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=649859500 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode8")]
-
-[node name="FlowfieldNode8" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1395994031 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode9")]
-
-[node name="FlowfieldNode9" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1996545042 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode10")]
-
-[node name="FlowfieldNode10" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1937543609 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode11")]
-
-[node name="FlowfieldNode11" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1342534222 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode12")]
-
-[node name="FlowfieldNode12" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=803671453 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode13")]
-
-[node name="FlowfieldNode13" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=179157537 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode14")]
-
-[node name="FlowfieldNode14" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1787131272 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode15")]
-
-[node name="FlowfieldNode15" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=990444874 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode16")]
-
-[node name="FlowfieldNode16" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1155770206 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 1)
-NextNodes = [NodePath("../FlowfieldNode17")]
-
-[node name="FlowfieldNode17" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=165022887 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
-NextNodes = [NodePath("../FlowfieldNode18")]
-
-[node name="FlowfieldNode18" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=310088989 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 3)
-NextNodes = [NodePath("../FlowfieldNode19")]
-
-[node name="FlowfieldNode19" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=698066100 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 4)
-NextNodes = [NodePath("../FlowfieldNode20")]
-
-[node name="FlowfieldNode20" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=270051227 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 5)
-NextNodes = [NodePath("../FlowfieldNode21")]
-
-[node name="FlowfieldNode21" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=2114605575 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 6)
-NextNodes = [NodePath("../FlowfieldNode22")]
-
-[node name="FlowfieldNode22" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=162435181 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 7)
-NextNodes = [NodePath("../FlowfieldNode23")]
-
-[node name="FlowfieldNode23" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1394705460 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 8)
-NextNodes = [NodePath("../FlowfieldNode24")]
-
-[node name="FlowfieldNode24" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=540721968 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 9)
-NextNodes = [NodePath("../FlowfieldNode25")]
-
-[node name="FlowfieldNode25" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1321015041 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 10)
-NextNodes = [NodePath("../FlowfieldNode26")]
-
-[node name="FlowfieldNode26" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1666749310 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11)
-NextNodes = [NodePath("../FlowfieldNode27")]
-
-[node name="FlowfieldNode27" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=847147818 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 11)
-NextNodes = [NodePath("../FlowfieldNode28")]
-
-[node name="FlowfieldNode28" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=579067359 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, 11)
-NextNodes = [NodePath("../FlowfieldNode29")]
-
-[node name="FlowfieldNode29" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=880220702 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 11)
-NextNodes = [NodePath("../FlowfieldNode30")]
-
-[node name="FlowfieldNode30" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=975132491 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1.5, 11)
-NextNodes = [NodePath("../FlowfieldNode31")]
-
-[node name="FlowfieldNode31" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=12197059 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 11)
-NextNodes = [NodePath("../FlowfieldNode32")]
-
-[node name="FlowfieldNode32" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=361461977 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 11)
-NextNodes = [NodePath("../FlowfieldNode33")]
-
-[node name="FlowfieldNode33" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=422409123 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 11)
-NextNodes = [NodePath("../FlowfieldNode34")]
-
-[node name="FlowfieldNode34" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=164903466 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 11)
-NextNodes = [NodePath("../GateFlowfieldNodeMiddle"), NodePath("../GateFlowfieldNodeLeft"), NodePath("../GateFlowfieldNodeRight")]
-
-[node name="GateFlowfieldNodeMiddle" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=477287653 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 10)
-NextNodes = [NodePath("../../FirstGateToSecondGate/FlowfieldNode38")]
-
-[node name="GateFlowfieldNodeLeft" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=845489825 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.75, 2, 10)
-NextNodes = [NodePath("../../FirstGateToSecondGate/FlowfieldNode38")]
-
-[node name="GateFlowfieldNodeRight" parent="Navigation/FlowfieldManager/FirstApproach" unique_id=1749448418 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.25, 2, 10)
-NextNodes = [NodePath("../../FirstGateToSecondGate/FlowfieldNode38")]
-
-[node name="FirstGateToSecondGate" type="Node" parent="Navigation/FlowfieldManager" unique_id=727425394]
-
-[node name="FlowfieldNode38" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=195146732 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 9)
-NextNodes = [NodePath("../FlowfieldNode39")]
-
-[node name="FlowfieldNode39" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=397072268 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 8)
-NextNodes = [NodePath("../FlowfieldNode40")]
-
-[node name="FlowfieldNode40" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=217503281 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 7)
-NextNodes = [NodePath("../FlowfieldNode41")]
-
-[node name="FlowfieldNode41" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1131373762 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 6)
-NextNodes = [NodePath("../FlowfieldNode42")]
-
-[node name="FlowfieldNode42" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=739171113 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode43")]
-
-[node name="FlowfieldNode43" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=331362490 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode44")]
-
-[node name="FlowfieldNode44" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=952004892 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode45")]
-
-[node name="FlowfieldNode45" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=384412189 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode46")]
-
-[node name="FlowfieldNode46" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1181702270 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode47")]
-
-[node name="FlowfieldNode47" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1644722186 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode48")]
-
-[node name="FlowfieldNode48" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1508694224 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode49")]
-
-[node name="FlowfieldNode49" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1564819696 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode50")]
-
-[node name="FlowfieldNode50" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=742808255 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode51")]
-
-[node name="FlowfieldNode51" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=155012665 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode52")]
-
-[node name="FlowfieldNode52" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=392848951 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode53")]
-
-[node name="FlowfieldNode53" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1776179994 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode54")]
-
-[node name="FlowfieldNode54" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=375831219 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 5)
-NextNodes = [NodePath("../FlowfieldNode55")]
-
-[node name="FlowfieldNode55" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1813996328 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 4)
-NextNodes = [NodePath("../FlowfieldNode56")]
-
-[node name="FlowfieldNode56" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=99504748 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 3)
-NextNodes = [NodePath("../GateFlowfieldNodeMiddle"), NodePath("../GateFlowfieldNodeLeft"), NodePath("../GateFlowfieldNodeRight")]
-
-[node name="GateFlowfieldNodeMiddle" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=692858163 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 3)
-NextNodes = [NodePath("../../SecondToThirdGate/FlowfieldNode58")]
-
-[node name="GateFlowfieldNodeLeft" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=690675613 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 2.25)
-NextNodes = [NodePath("../../SecondToThirdGate/FlowfieldNode58")]
-
-[node name="GateFlowfieldNodeRight" parent="Navigation/FlowfieldManager/FirstGateToSecondGate" unique_id=1144514255 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 3.75)
-NextNodes = [NodePath("../../SecondToThirdGate/FlowfieldNode58")]
-
-[node name="SecondToThirdGate" type="Node" parent="Navigation/FlowfieldManager" unique_id=1284779646]
-
-[node name="FlowfieldNode58" parent="Navigation/FlowfieldManager/SecondToThirdGate" unique_id=611102178 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 3)
-NextNodes = [NodePath("../FlowfieldNode59")]
-
-[node name="FlowfieldNode59" parent="Navigation/FlowfieldManager/SecondToThirdGate" unique_id=1471676425 instance=ExtResource("13_2yqos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 3)
+[node name="Palace" parent="Buildings" unique_id=576530032 instance=ExtResource("20_k5r3x")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -18, 0, 1)
 
 [node name="GRID" type="Node3D" parent="." unique_id=2028902048]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="TREES" type="GridMap" parent="GRID" unique_id=696961174]
-mesh_library = ExtResource("8_dri0c")
-data = {
-"cells": PackedInt32Array(-11, 65528, 60, -12, 65528, 1441824, -12, 65529, 655391, -11, 65529, 655421, -12, 65530, 1441824, -12, 65531, 655392, -12, 65532, 655391, -13, 65528, 1441822, -13, 65533, 1441822, -13, 65532, 1441822, -13, 65531, 1441823, -13, 65530, 1441822, -13, 65529, 32, -14, 65531, 1048608, -14, 65532, 655391, -14, 65533, 31, -14, 65534, 1048608, -13, 65534, 655390, -12, 65533, 1048606, -12, 65534, 1441822, -12, 65535, 1048636, -11, 65535, 62, -13, 65535, 62, -14, 65535, 61, 65525, 3, 1048638, 65526, 2, 62, 65526, 3, 61, 65528, 3, 1441852, 65531, 65528, 1441852, 65532, 65528, 655421, 65533, 65529, 655421, 65532, 65529, 1441852, 65535, 65530, 1048638, 65534, 65530, 1048638, 65533, 65531, 1441853, 65534, 65531, 61, 65532, 65530, 1048637, 65533, 65530, 1441852, -16, 65531, 1441822, -14, 65529, 1441823, -15, 65530, 655391, -14, 65530, 655392, -15, 65532, 1441823, -15, 65531, 1441822, -12, 1, 1441822, -13, 1, 655391, -12, 2, 1441823, -13, 2, 1441822, -13, 3, 655392, -12, 3, 1441823, -12, 4, 1048608, -13, 4, 1441822)
-}
-metadata/_editor_floor_ = Vector3(0, -1, 0)
-
-[node name="GRID_BUILDABLE" type="GridMap" parent="GRID" unique_id=1176003463]
-mesh_library = ExtResource("8_dri0c")
-data = {
-"cells": PackedInt32Array(65526, 65533, 1048581, 65526, 65534, 5, 65527, 65534, 5, 65528, 65534, 5, 65529, 65534, 5, 65528, 65533, 1048581, 65527, 65533, 1048581, 65530, 65534, 1048581, 65531, 65534, 1048581, 65533, 65533, 5, 65533, 65532, 5, 65534, 65532, 1048581, 65531, 65532, 1048581, 65530, 65532, 1048581, 65528, 65532, 1048581, 65527, 65532, 1048581, 65526, 65532, 1048581, 65526, 65531, 1048581, 65526, 65530, 1048581, 65527, 65530, 1048581, 65531, 65530, 5, 65527, 65531, 1048581, 65531, 65531, 1048581, 65531, 65529, 5, 65529, 65528, 5, 65528, 65528, 5, 65527, 65528, 5, 65527, 65527, 5, 65528, 65527, 5, 65528, 65526, 5, 65529, 65526, 5, 65530, 65526, 5, 65530, 65527, 5, 65531, 65527, 5, 65531, 65528, 5, 65532, 65528, 5, 65529, 65527, 5, 65530, 65528, 5, 0, 65533, 1048581, 65534, 0, 5, 65534, 2, 5, 65534, 3, 5, 65535, 3, 5, 65535, 2, 5, 0, 0, 5, 65535, 0, 5, 2, 0, 5, 2, 1, 5, 3, 1, 5, 2, 2, 5, 1, 2, 5, 0, 2, 5, 0, 3, 5, 1, 3, 5, 2, 3, 5, 3, 2, 5, 2, 65534, 5, 3, 65534, 5, 4, 65534, 5, 4, 65535, 5, 4, 0, 5, 4, 1, 5, 3, 0, 5, 3, 65535, 5, 2, 65535, 5, 2, 65532, 5, 3, 65532, 5, 4, 65532, 5, 4, 65533, 5, 3, 65533, 5, 2, 65533, 5, 0, 65532, 5, 65535, 65532, 5, 3, 65531, 5, 4, 65531, 5, 3, 65530, 5, 2, 65530, 5, 1, 65530, 5, 0, 65530, 5, 0, 65529, 5, 65535, 65529, 5, 65534, 65529, 5, 65534, 65528, 5, 65533, 65528, 5, 65535, 65530, 5, 65533, 65529, 5, 65532, 65529, 5, 2, 65531, 5, 65528, 3, 5, 65526, 2, 5, 65526, 3, 5, 65527, 65529, 1048581, 65534, 65530, 5, 65533, 65530, 5, 65532, 65530, 5)
-}
-
-[node name="DECORATIONS" type="GridMap" parent="GRID" unique_id=445542383]
-mesh_library = ExtResource("8_dri0c")
-data = {
-"cells": PackedInt32Array(65525, 65530, 1441834, 65525, 65531, 1441833, 65525, 65532, 1441831, 65525, 65533, 1441828, 65525, 65535, 1441832, 65525, 65534, 1441830, 65526, 65535, 35, 65527, 65535, 37, 65528, 65535, 36, 65529, 65535, 35, 65530, 65535, 41, 65531, 65535, 42, 65526, 1, 655402, 65527, 1, 655399, 65528, 1, 655401, 65529, 1, 1048610, 65525, 1, 655403, 65525, 2, 1441827, 65525, 3, 1441825, 65525, 4, 1441828, 65530, 2, 1441804, 65531, 2, 1048588, 65529, 2, 1048621, 65532, 2, 1441837, 65529, 3, 1048618, 65529, 4, 40, 65526, 5, 44, 65525, 5, 1441832, 65532, 65534, 41, 65533, 65534, 41, 65534, 65533, 42, 65535, 65533, 39, 0, 65534, 1441829, 0, 65535, 1441827, 65535, 65535, 655393, 65534, 65535, 655396, 65532, 65535, 40, 65534, 65534, 34, 65535, 65534, 1441835, 65533, 0, 1441826, 65526, 65529, 1441829, 65526, 65528, 1441827, 65526, 65527, 1441828, -3, 4, 1441824, -3, 5, 655390, -2, 5, 655390, -1, 5, 31, -65536, 5, 655392, -65536, 6, 31, -1, 6, 32, -2, 6, 1048606, -3, 6, 1048607, -3, 7, 655392, -2, 7, 1441824, -1, 7, 655392, -65536, 7, 655392, -4, 7, 655390, -5, 7, 655392, -4, 6, 655390, -2, 4, 31, -4, 5, 1441824, -4, 8, 1048606, -3, 8, 655390, -2, 8, 1048607, -1, 8, 1441824)
-}
-metadata/_editor_floor_ = Vector3(0, 1, 0)
-
-[node name="DECORATIONS2" type="GridMap" parent="GRID" unique_id=1879914113]
-mesh_library = ExtResource("8_dri0c")
-data = {
-"cells": PackedInt32Array(65532, 65534, 1048618, 65533, 65535, 655404, 65533, 0, 655401, 65532, 1, 1441829, 65532, 0, 655394, 65532, 3, 1441835, 65533, 3, 35, 65535, 4, 38, 0, 4, 37, 1, 4, 41, 65534, 4, 1441826, 65535, 65533, 1441831, 0, 65534, 37, 0, 65535, 655395, 65534, 65533, 1048609, 65526, 65529, 655395, 65525, 65529, 655394, 131064, 65525, 39, 131065, 65525, 38, 131066, 65525, 37, 131067, 65525, 39, 131069, 65527, 35, 131068, 65526, 1441825)
-}
-metadata/_editor_floor_ = Vector3(0, 1, 0)
-
-[node name="GRID_NOT_BUILDABLE" type="GridMap" parent="GRID" unique_id=97989201]
+[node name="GROUND" type="GridMap" parent="GRID" unique_id=1500992008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh_library = ExtResource("8_dri0c")
 cell_size = Vector3(2, 1, 2)
 data = {
-"cells": PackedInt32Array(65527, 5, 1048597, 65528, 5, 1048593, 65529, 5, 1048594, -6, 5, 1048594, -65541, 5, 655380, -65541, 4, 655377, -65541, 3, 655377, -65541, 2, 655377, -65541, 1, 655377, -65541, 0, 1441812, -65542, 0, 1048593, -65543, 0, 1048593, -65544, 0, 1048593, -65545, 0, 1048593, -65546, 0, 1048593, -65547, 0, 1048593, -65548, 0, 1048593, -65549, 0, 1048593, 65527, 6, 18, -9, 7, 18, -65545, 8, 17, -65545, 9, 17, -65545, 10, 17, 65526, 5, 1441798, 65526, 6, 7, 65528, 6, 6, 65529, 6, 1048583, -8, 7, 1441802, -6, 6, 1048582, -6, 7, 1048582, -7, 7, 1048581, -7, 8, 6, -8, 8, 7, -6, 8, 1048583, -10, 7, 1048605, -10, 8, 1048583, -11, 8, 7, -11, 7, 1441798, -11, 6, 1441798, -11, 5, 1441798, -65549, 65535, 1441797, -65548, 65535, 1441797, -65547, 65535, 1441797, -65546, 65535, 1441797, -65545, 65535, 1441797, -65544, 65535, 1441797, -65543, 65535, 1441797, -65542, 65535, 1441797, -65541, 65535, 1441797, -65540, 65534, 1441797, -65540, 65535, 1441797, -65540, 0, 5, -65540, 1, 1441797, -65540, 2, 1441797, -65540, 3, 1441797, -65542, 1, 1441797, -65543, 1, 1441797, -65544, 1, 1441797, -65545, 1, 1441797, -65546, 1, 1441797, -65547, 1, 1441797, -65548, 1, 1441797, -65549, 1, 1441797, -65542, 2, 1441797, -65542, 3, 1441797, -65543, 3, 1441797, -65543, 4, 1441797, -65544, 4, 1441797, -65542, 4, 1441797, -65543, 2, 1441797, -65539, 3, 1441797, -65539, 4, 1441797, -65540, 4, 1441797, -65540, 5, 1441797, -65540, 6, 1441797, -65540, 7, 1441797, -65541, 8, 1441797, -65541, 7, 1441797, -65541, 6, 1441797, -65540, 9, 1441797, -65540, 10, 1441797, -65541, 10, 1441797, -65542, 10, 1441797, -65543, 10, 1441797, -65543, 9, 1441797, -65544, 9, 1441797, -65542, 9, 1441797, -65541, 9, 1441797, -65544, 10, 1441797, -65544, 11, 1441797, -65546, 12, 1441797, -65547, 12, 1441797, -65547, 11, 1441797, -65547, 10, 1441797, -65547, 9, 1441797, -65546, 9, 1441797, -65546, 10, 1441797, -65546, 11, 1441797, -65545, 11, 1441797, -65548, 11, 1441797, -65548, 10, 1441797, -65549, 10, 1441797, -65549, 9, 1441797, -65548, 8, 1441797, -65548, 7, 1441797, -65549, 8, 1441797, -65549, 7, 1441797, -65549, 6, 1441797, -65549, 5, 1441797, -65549, 4, 1441797, -65549, 3, 1441797, -65548, 3, 1441797, -65548, 2, 1441797, -65548, 4, 1441797, -65548, 5, 1441797, -65548, 6, 1441797, -65549, 2, 1441797, -65547, 4, 1441797, -65547, 3, 1441797, -65547, 2, 1441797, -65548, 9, 1441797, -65548, 65533, 1441797, -65548, 65534, 1441797, -65549, 65534, 1441797, -65547, 65534, 1441797, -65547, 65533, 1441797, -65547, 65532, 1441797, -65547, 65531, 1441797, -65547, 65530, 1441797, -65547, 65529, 1441797, -65547, 65528, 1441797, -65548, 65528, 1441797, -65548, 65529, 1441797, -65548, 65530, 1441797, -65548, 65531, 1441797, -65548, 65532, 1441797, -65549, 65533, 1441797, -65549, 65532, 1441797, -65549, 65531, 1441797, -65549, 65530, 1441797, -65549, 65529, 1441797, -65549, 65528, 1441797, -65550, 65528, 1441797, -65550, 65529, 1441797, -65550, 65530, 1441797, -65551, 65530, 1441797, -65550, 65531, 1441797, -65550, 65532, 1441797, -65550, 65533, 1441797, -65550, 65534, 1441797, -65550, 65535, 1441797, -65550, 0, 1441797, -65551, 65535, 1441797, -65552, 65535, 1441797, -65552, 65534, 1441797, -65552, 65533, 1441797, -65552, 65532, 1441797, -65552, 65531, 1441797, -65552, 65530, 1441797, -65551, 65529, 1441797, -65551, 65531, 1441797, -65551, 65532, 1441797, -65551, 65533, 1441797, -65551, 65534, 1441797, -65539, 5, 1441797, -65539, 6, 1441797, -65539, 7, 1441797, -65539, 8, 1441797, -65540, 8, 1441797, -65538, 4, 1441797, -65537, 4, 1441797, -131072, 4, 1441797, -131071, 4, 1441797, -131071, 5, 1441797, -131072, 5, 1441797, -65537, 5, 1441797, -65538, 5, 1441797, -65537, 6, 1441797, -65538, 6, 1441797, -65538, 7, 1441797, -65538, 8, 1441797, -65537, 8, 1441797, -131072, 8, 1441797, -131072, 7, 1441797, -131071, 7, 1441797, -131071, 6, 1441797, -131072, 6, 1441797, -65537, 7, 1441797, -65539, 65534, 5, -65539, 65535, 5, -65538, 65534, 5, -65537, 65534, 5, -65537, 65535, 5, -65538, 65535, 5, -65538, 65533, 5, -65537, 65533, 5, -131072, 65534, 5, -65550, 1, 5, -65550, 2, 5, -65551, 3, 5, -65551, 4, 5, -65551, 5, 5, -65550, 6, 5, -65550, 7, 5, -65550, 8, 5, -65550, 5, 5, -65550, 4, 5, -65551, 2, 5, -65552, 2, 5, -65552, 1, 5, -65552, 0, 5, -65551, 0, 5, -65551, 1, 5, -65550, 3, 5)
+"cells": PackedInt32Array(-65541, 1, 1048576, -65542, 0, 1441798, -65543, 0, 1441798, -65544, 0, 1441798, -65545, 0, 1441798, -65541, 0, 1441798, -65551, 2, 1048610, -65551, 1, 1048612, -65551, 0, 1441798, -65551, 65535, 1048576, -65551, 65534, 655397, -65552, 65533, 655394, -65552, 65534, 1048576, -65552, 65535, 655360, -65552, 0, 1441798, -65552, 1, 1048576, -65552, 2, 1048576, -65553, 2, 655360, -65553, 1, 1048576, -65553, 0, 1441798, -65553, 65535, 1441792, -65553, 65534, 1048576, -65553, 65533, 655394, -65544, 65535, 0, -65542, 65535, 1441792, -65544, 65533, 1048576, -65542, 65533, 1048576, -65543, 65535, 0, -65544, 65534, 0, -65543, 65534, 0, -65542, 65534, 0, -65541, 65535, 1441792, -65541, 65534, 0, -65541, 65533, 1048576, -65543, 65533, 1048576, -65544, 65532, 655394, -65543, 65532, 655394, -65542, 65532, 655394, -65541, 65532, 655394, -65545, 65533, 1048576, -65545, 65534, 1441792, -65545, 65535, 1441792, -65545, 65532, 655394, -65546, 65532, 655394, -65546, 65533, 1048576, -65546, 65534, 1441792, -65546, 65535, 1441792, -65546, 0, 1441798, -65546, 1, 1441792, -65546, 2, 1048576, -65546, 3, 1048576, -65547, 65532, 655394, -65548, 8, 1441826, -65547, 7, 655394, -65546, 8, 655397, -65547, 8, 1048576, -65545, 1, 1441792, -65544, 1, 1441792, -65543, 1, 1441792, -65543, 2, 1441792, -65544, 2, 1441792, -65545, 2, 1048576, -65545, 3, 1048576, -65544, 4, 1048576, -65544, 3, 1048576, -65550, 65534, 655395, -65550, 0, 1048610, -65550, 65535, 1048610, -65542, 1, 655360, -65542, 2, 655360, -65542, 3, 1441792, -65543, 3, 1048576, -65545, 5, 1441828, -65544, 5, 1048576, -65543, 4, 1048576, -65543, 5, 1048576, -65542, 4, 1441792, -65541, 3, 6, -65540, 0, 10, -65541, 2, 9, -65540, 2, 655369, -65540, 1, 6, -65539, 2, 0, -65539, 1, 0, -65539, 0, 1048582, -65538, 65535, 1048576, -65538, 65534, 1048576, -65539, 65535, 1048576, -65539, 65534, 1048576, -65540, 65534, 0, -65540, 65535, 0, -65554, 0, 1441798, -65547, 65533, 1048576, -65547, 65534, 1048576, -65547, 65535, 1048576, -65547, 1, 1048576, -65547, 2, 1048576, -65547, 3, 36, -65547, 0, 1441798, -65548, 65533, 1441826, -65548, 65534, 1441826, -65548, 65535, 1441826, -65548, 0, 1441826, -65548, 1, 1441826, -65548, 2, 1441826, -65548, 3, 35, -65551, 3, 1048610, -65550, 1, 1048611, -65547, 4, 35, -65546, 4, 34, -65545, 4, 36, -65546, 5, 1441827, -65546, 6, 35, -65545, 6, 34, -65544, 6, 34, -65543, 6, 34, -131084, 4, 42, -131086, 2, 42, -131085, 2, 42, -131085, 3, 42, -131086, 3, 42, -131085, 4, 42, -131086, 4, 42, -131085, 1, 42, -131085, 0, 42, -131085, 65535, 42, -131085, 65534, 42, -131085, 65533, 42, -131085, 65532, 42, -131083, 5, 42, -131084, 5, 42, -131085, 5, 42, -131086, 5, 42, -65542, 5, 1048576, -65550, 5, 35, -65549, 5, 1048611, -65550, 4, 1441827, -65549, 4, 655395, -65548, 65532, 1441827, -65540, 65532, 1441829, -131076, 65531, 655402, -131077, 65531, 655402, -131078, 65531, 655402, -131079, 65531, 655402, -131080, 65531, 655402, -131081, 65531, 655402, -131082, 65531, 655402, -131083, 65531, 655402, -131084, 65531, 655402, -131084, 65530, 655402, -131085, 65531, 655402, -131085, 65530, 655402, -131083, 65530, 655402, -131082, 65530, 655402, -131081, 65529, 655402, -131080, 65529, 655402, -131079, 65529, 655402, -131078, 65529, 655402, -131077, 65529, 655402, -131077, 65530, 655402, -131076, 65530, 655402, -131078, 65530, 655402, -131079, 65530, 655402, -131080, 65530, 655402, -131081, 65530, 655402, -131082, 65529, 655402, -131083, 65529, 655402, -131084, 65529, 655402, -131085, 65529, 655402, -131085, 65528, 655402, -131084, 65528, 655402, -131083, 65528, 655402, -131082, 65528, 655402, -131081, 65528, 655402, -131080, 65528, 655402, -131079, 65528, 655402, -131078, 65528, 655402, -131077, 65528, 655402, -131076, 65528, 655402, -131076, 65529, 655402, -131086, 65531, 655402, -131086, 65530, 655402, -131086, 65529, 655402, -131086, 65528, 655402, -131087, 65528, 655402, -131088, 65528, 655402, -131089, 65528, 655402, -131090, 65528, 655402, -131091, 65528, 655402, -131091, 65529, 655402, -131091, 65530, 655402, -131090, 65530, 655402, -131089, 65529, 655402, -131088, 65529, 655402, -131087, 65529, 655402, -131087, 65531, 655402, -131088, 65531, 655402, -131089, 65531, 655402, -131089, 65530, 655402, -131090, 65529, 655402, -131088, 65530, 655402, -131087, 65530, 655402, -131090, 65531, 655402, -131091, 65531, 655402, -131086, 65532, 655402, -131087, 65532, 655402, -131088, 65532, 655402, -131089, 65532, 655402, -131090, 65532, 655402, -131091, 65532, 655402, -65551, 65533, 655395, -131086, 65533, 655402, -65554, 65533, 655394, -65554, 65534, 1048576, -65554, 65535, 655360, -65551, 4, 1048611, -65552, 4, 1048613, -65554, 4, 37, -65553, 4, 1048576, -65552, 3, 1048576, -65554, 3, 45, -65555, 3, 1048576, -65555, 4, 34, -65553, 5, 34, -65554, 5, 35, -65552, 5, 1048611, -131091, 5, 1048618, -131091, 6, 1048618, -131090, 6, 1048618, -131089, 6, 1048618, -131088, 6, 1048618, -131087, 6, 1048618, -131087, 5, 1048618, -131086, 6, 1048618, -131085, 6, 1048618, -131084, 6, 1048618, -131083, 6, 1048618, -65553, 3, 1048576, -65554, 2, 1048576, -65555, 2, 1048576, -65555, 1, 1048576, -65554, 1, 1048576, -65555, 0, 1441798, -65555, 65535, 1048576, -65555, 65534, 1048576, -65555, 65533, 655394, -65540, 65533, 1048576, -65539, 65532, 1048576, -65538, 65532, 655397, -65538, 65533, 1048576, -65538, 0, 1048582, -65538, 1, 1048612, -65537, 0, 1048610, -65537, 65532, 655395, -65538, 65531, 655395, -65540, 65531, 1441827, -65539, 65531, 655394, -65537, 65535, 1048610, -65537, 65534, 1048610, -65537, 65533, 1048610, -65538, 2, 1048610, -65539, 3, 0, -65541, 5, 6, -65540, 3, 0, -65540, 4, 0, -65540, 5, 1048576, -65541, 4, 6, -65542, 6, 34, -65540, 6, 34, -65541, 6, 34, -65545, 8, 655394, -65544, 8, 655394, -65543, 8, 655394, -65543, 9, 1048582, -65542, 9, 1048582, -65541, 9, 655369, -65542, 8, 655394, -65541, 8, 655394, -65540, 8, 655394, -65546, 9, 1048576, -65545, 9, 9, -65544, 9, 1048582, -65540, 9, 1048576, -65546, 7, 655395, -131081, 7, 655402, -131080, 7, 655402, -131079, 7, 655402, -131078, 7, 655402, -131077, 7, 655402, -131076, 7, 655402, -65548, 7, 1441827, -65548, 9, 1441829, -65548, 10, 0, -65549, 9, 1441827, -65549, 10, 1441826, -65548, 11, 0, -65547, 9, 1048576, -65547, 10, 0, -65546, 10, 0, -65544, 11, 0, -65543, 11, 0, -65547, 11, 0, -65546, 11, 0, -65544, 12, 0, -65543, 12, 0, -65545, 11, 6, -65545, 12, 655369, -65545, 10, 6, -65544, 10, 0, -65539, 9, 655397, -65540, 11, 0, -65539, 10, 1048613, -65539, 11, 1048610, -65538, 10, 1048616, -65538, 9, 655395, -65540, 10, 1048576, -65541, 12, 1048576, -65542, 12, 0, -65541, 13, 1048613, -65542, 13, 0, -65541, 14, 1048611, -65542, 14, 1048612, -65540, 12, 1048612, -65540, 13, 1048611, -65543, 13, 0, -65542, 11, 0, -65541, 11, 1048576, -65543, 10, 1048576, -65542, 10, 1048576, -65541, 10, 1048576, -131085, 7, 1048618, -131086, 7, 1048618, -131087, 7, 1048618, -131088, 7, 1048618, -131089, 7, 1048618, -131090, 7, 1048618, -131091, 7, 1048618, -131091, 8, 1048618, -131090, 8, 1048618, -131089, 8, 1048618, -131088, 8, 1048618, -131087, 8, 1048618, -131086, 8, 1048618, -131085, 8, 1048618, -131091, 9, 1048618, -131091, 10, 1048618, -131091, 11, 1048618, -131091, 12, 1048618, -131091, 13, 1048618, -131091, 14, 1048618, -131090, 14, 1048618, -131090, 15, 1048618, -131089, 15, 1048618, -131088, 15, 1048618, -131088, 14, 1048618, -131088, 13, 1048618, -131089, 13, 1048618, -131089, 12, 1048618, -131089, 11, 1048618, -131089, 10, 1048618, -131089, 9, 1048618, -131090, 10, 1048618, -131090, 11, 1048618, -131090, 12, 1048618, -131090, 13, 1048618, -131091, 15, 1048618, -131089, 14, 1048618, -131090, 9, 1048618, -131088, 9, 1048618, -131088, 10, 1048618, -131088, 11, 1048618, -131088, 12, 1048618, -131087, 13, 1048618, -131087, 12, 1048618, -131087, 11, 1048618, -131087, 10, 1048618, -131087, 9, 1048618, -131086, 9, 1048618, -131086, 10, 1048618, -131086, 11, 1048618, -131086, 12, 1048618, -131086, 13, 1048618, -131086, 14, 1048618, -131086, 15, 1048618, -131085, 15, 1048618, -131087, 15, 1048618, -131087, 14, 1048618, -131085, 14, 1048618, -131084, 14, 1048618, -131083, 14, 1048618, -131082, 14, 1048618, -131081, 14, 1048618, -131080, 14, 1048618, -131079, 14, 1048618, -131078, 15, 1048618, -131079, 15, 1048618, -131080, 15, 1048618, -131081, 15, 1048618, -131082, 15, 1048618, -131083, 15, 1048618, -131084, 15, 1048618, -131081, 13, 1048618, -131080, 13, 1048618, -131082, 13, 1048618, -131083, 13, 1048618, -131084, 13, 1048618, -131085, 13, 1048618, -131085, 12, 1048618, -131085, 11, 1048618, -131084, 12, 1048618, -131083, 12, 1048618, -131082, 12, 1048618, -131077, 15, 1048618, -131076, 15, 1048618, -131076, 14, 1048618, -196607, 3, 1048589, -131074, 3, 1048589, -196597, 65533, 1048589, -196598, 65534, 1048589, -196598, 65535, 1048589, -196598, 0, 1048589, -196598, 1, 1048589, -196598, 2, 1048589, -196598, 3, 1048589, -196598, 4, 1048589, -196597, 3, 1048589, -196597, 2, 1048589, -196597, 1, 1048589, -196597, 0, 1048589, -196597, 65535, 1048589, -196597, 65534, 1048589, -196598, 65533, 1048589, -196593, 65532, 1048589, -196593, 65533, 1048589, -196593, 65534, 1048589, -196593, 65535, 1048589, -196594, 0, 1048589, -196594, 1, 1048589, -196594, 2, 1048589, -196594, 3, 1048589, -196594, 4, 1048589, -196593, 4, 1048589, -196593, 3, 1048589, -196593, 2, 1048589, -196593, 1, 1048589, -196593, 0, 1048589, -196594, 65532, 1048589, -196594, 65533, 1048589, -196594, 65534, 1048589, -196594, 65535, 1048589, -196595, 1, 1048589, -196595, 2, 1048589, -196595, 3, 1048589, -196595, 4, 1048589, -196596, 4, 1048589, -196597, 4, 1048589, -196596, 65534, 1048589, -196596, 65533, 1048589, -196596, 65532, 1048589, -196595, 65533, 1048589, -196595, 65534, 1048589, -196596, 65535, 1048589, -196596, 0, 1048589, -196596, 1, 1048589, -196596, 2, 1048589, -196596, 3, 1048589, -196595, 65532, 1048589, -196595, 65535, 1048589, -196595, 0, 1048589, -196608, 1, 1048589, -196605, 65533, 1048589, -196603, 0, 1048589, -196603, 1, 1048589, -196603, 2, 1048589, -196601, 65535, 1048589, -196601, 0, 1048589, -196602, 1, 1048589, -196602, 2, 1048589, -196602, 0, 1048589, -196601, 65534, 1048589, -196601, 1, 1048589, -196601, 2, 1048589, -196602, 3, 1048589, -196602, 4, 1048589, -196603, 3, 1048589, -196599, 4, 1048589, -196600, 3, 1048589, -196600, 2, 1048589, -196600, 1, 1048589, -196600, 0, 1048589, -196600, 65535, 1048589, -196599, 65535, 1048589, -196599, 0, 1048589, -196599, 1, 1048589, -196599, 2, 1048589, -196599, 3, 1048589, -196601, 4, 1048589, -196600, 4, 1048589, -196601, 3, 1048589, -196598, 5, 1048589, -131078, 4, 1048589, -65539, 6, 1048611, -65538, 4, 1048611, -65539, 5, 1048610, -65538, 3, 1048610, -65539, 4, 1048612, -65537, 1, 1048611, -131071, 3, 1048576, -131069, 65533, 1048576, -131069, 65534, 34, -131068, 65533, 655396, -131070, 65533, 1441826, -131069, 65532, 655394, -131071, 2, 655394, -131070, 3, 1048610, -131071, 4, 34, -131072, 3, 1441826, -131070, 4, 1048616, -131072, 4, 40, -131070, 65534, 40, -131072, 2, 1441832, -131070, 65532, 1441832, -131070, 2, 655400, -131068, 65534, 36, -131068, 0, 1441826, -131068, 1, 1441826, -131068, 2, 1441826, -131066, 65534, 655394, -131065, 65534, 1441828, -131066, 65535, 0, -131065, 65535, 9, -131067, 1, 0, -131067, 2, 0, -131067, 3, 0, -131067, 0, 1048582, -131065, 0, 1441802, -131065, 2, 655369, -131066, 2, 9, -131066, 4, 1048585, -131066, 0, 1048582, -131065, 1, 6, -131066, 3, 6, -131065, 4, 1441798, -131064, 4, 1441798, -131063, 4, 1441798, -131066, 1, 1441792, -65529, 4, 1441799, -65528, 4, 1441798, -65527, 4, 655369, 9, 3, 7, 9, 2, 6, 9, 1, 9, 10, 1, 1441806, 10, 2, 1048588, 10, 0, 12, 11, 1, 1441805, 11, 0, 1048587, 12, 0, 1048587, 12, 1, 1441805, 12, 2, 1441803, 11, 2, 1441803, -131064, 3, 1441792, -131065, 3, 1441792, -131064, 2, 1441792, -131064, 1, 1441792, -131064, 0, 1441792, -131064, 65535, 655369, -131063, 1, 1441792, -131063, 0, 1441792, 9, 0, 1441822, -65529, 3, 1441808, -65528, 3, 655364, -65528, 2, 1441793, -65528, 1, 1441793, -65528, 0, 1441794, -65527, 0, 655364, -131067, 65535, 0, -131067, 65534, 655396, -131068, 65535, 1441826, -131067, 65533, 655395, -131068, 65532, 655395, -131064, 65533, 1441828, -131064, 65534, 9, -131063, 65533, 0, -131062, 65533, 0, -131061, 65533, 0, -131063, 65532, 655394, -131062, 65532, 655394, -131061, 65532, 655394, -131064, 65532, 1441827, -131065, 65533, 1441827, -196602, 65532, 1441834, -196601, 65532, 1441834, -196603, 65532, 1441834, -196605, 65535, 1441834, -196606, 65535, 1441834, -196607, 65535, 1441834, -196608, 65535, 1441834, -196608, 0, 1441834, -196608, 65534, 1441834, -196608, 65533, 1441834, -196607, 65533, 1441834, -196607, 65534, 1441834, -196602, 65533, 1441834, -131073, 2, 1441834, -131074, 5, 1441834, -131074, 11, 1441834, -65539, 8, 655395, -131063, 65535, 655360, -131062, 65535, 655360, -131062, 65534, 1048582, -131061, 65534, 1048582, -131060, 65534, 655360, -131059, 65534, 655360, -131060, 65535, 655360, -131061, 65535, 655360, -131059, 65535, 655360, -131063, 65534, 1048582, -65524, 65534, 1441799, 13, 65535, 655367, -65523, 65534, 1441801, 13, 0, 655375, -65524, 65535, 655364, -65526, 65535, 655361, -65525, 65535, 655361, -65527, 65535, 1441794, 13, 1, 11, 13, 2, 655372, -65524, 65533, 1441794, -65523, 65533, 655361, -65522, 65533, 655362, -65520, 0, 1048577, -65520, 65535, 655401, -65520, 1, 1048578, -65524, 3, 1, -65525, 3, 1, -65526, 3, 1, 10, 3, 1048592, -65526, 4, 1048577, -131061, 4, 1048576, -131060, 4, 1048576, -65528, 5, 1, -65527, 5, 1, -65529, 5, 41, -65526, 5, 1048578, -131068, 3, 1441826, -131064, 6, 34, -131063, 6, 34, -131065, 6, 34, -131062, 6, 34, -131060, 5, 34, -131066, 6, 35, -131067, 5, 35, -131068, 4, 35, -131067, 4, 36, -131066, 5, 36, -131061, 5, 1048612, -131061, 6, 1048611, -131057, 4, 1048613, -131057, 5, 1048611, -131059, 5, 34, -131058, 5, 34, -131056, 3, 1048613, -131055, 2, 1048610, -131055, 1, 1048610, -131055, 0, 1048610, -131055, 65535, 1048610, -131056, 4, 1048611, -131055, 3, 1048611, -131057, 3, 1048576, -131058, 4, 1048576, -131059, 4, 1048576, -65523, 3, 1, -65522, 3, 1048617, -65522, 2, 1048577, -65522, 1, 4, -65522, 0, 655360, -65522, 65535, 1048580, -65521, 1, 1, -65521, 65535, 655361, -65521, 0, 655360, -65523, 0, 655360, -65522, 65534, 1048577, -131057, 2, 1048576, -131056, 2, 1048576, -131055, 65534, 655395, -131057, 65534, 655396, -131056, 65534, 655394, -131058, 65532, 655394, -131059, 65532, 655394, -131060, 65532, 655394, -131057, 65532, 655395, -131057, 65533, 1048610, -196592, 65533, 1048618, -196591, 65533, 1048618, -196591, 65532, 1048618, -196592, 65532, 1048618, -196592, 65531, 1048618, -196591, 65531, 1048618, -196591, 65530, 1048618, -196592, 65530, 1048618, -196592, 65529, 1048618, -196592, 65528, 1048618, -196591, 65528, 1048618, -196591, 65529, 1048618, -196596, 6, 1048618, -196595, 6, 1048618, -196594, 6, 1048618, -196593, 6, 1048618, -196592, 6, 1048618, -196591, 6, 1048618, -196591, 5, 1048618, -196591, 4, 1048618, -196592, 5, 1048618, -196592, 7, 1048618, -196592, 8, 1048618, -196592, 9, 1048618, -196591, 7, 1048618, -196591, 8, 1048618, -196591, 9, 1048618, -196591, 10, 1048618, -196591, 11, 1048618, -196591, 12, 1048618, -196591, 13, 1048618, -196591, 14, 1048618, -196591, 15, 1048618, -196592, 15, 1048618, -196592, 14, 1048618, -196592, 13, 1048618, -196592, 12, 1048618, -196592, 11, 1048618, -196592, 10, 1048618, -131074, 8, 1441834, -196607, 65532, 1048618, -196608, 65532, 1048618, -196608, 65531, 1048618, -196608, 65530, 1048618, -131073, 65530, 1048618, -131073, 65531, 1048618, -131074, 65530, 1048618, -131075, 65530, 1048618, -131075, 65529, 1048618, -131075, 65528, 1048618, -131074, 65528, 1048618, -131073, 65528, 1048618, -196608, 65528, 1048618, -196607, 65528, 1048618, -196606, 65528, 1048618, -196605, 65528, 1048618, -196604, 65528, 1048618, -196603, 65528, 1048618, -196602, 65528, 1048618, -196601, 65528, 1048618, -196600, 65528, 1048618, -196599, 65528, 1048618, -196598, 65528, 1048618, -196597, 65528, 1048618, -196596, 65528, 1048618, -196595, 65528, 1048618, -196594, 65528, 1048618, -196593, 65528, 1048618, -196593, 65529, 1048618, -196593, 65530, 1048618, -196593, 65531, 1048618, -196594, 65531, 1048618, -196595, 65531, 1048618, -196596, 65531, 1048618, -196597, 65531, 1048618, -196598, 65531, 1048618, -196599, 65531, 1048618, -196600, 65531, 1048618, -196601, 65531, 1048618, -196602, 65531, 1048618, -196603, 65531, 1048618, -196604, 65531, 1048618, -196605, 65531, 1048618, -196606, 65531, 1048618, -196606, 65530, 1048618, -196607, 65530, 1048618, -196607, 65531, 1048618, -196608, 65529, 1048618, -131073, 65529, 1048618, -131074, 65529, 1048618, -196607, 65529, 1048618, -196606, 65529, 1048618, -196605, 65529, 1048618, -196604, 65529, 1048618, -196603, 65529, 1048618, -196602, 65529, 1048618, -196601, 65529, 1048618, -196600, 65529, 1048618, -196599, 65529, 1048618, -196598, 65529, 1048618, -196597, 65529, 1048618, -196596, 65529, 1048618, -196595, 65529, 1048618, -196594, 65529, 1048618, -196594, 65530, 1048618, -196595, 65530, 1048618, -196596, 65530, 1048618, -196597, 65530, 1048618, -196598, 65530, 1048618, -196599, 65530, 1048618, -196600, 65530, 1048618, -196601, 65530, 1048618, -196602, 65530, 1048618, -196603, 65530, 1048618, -196604, 65530, 1048618, -196605, 65530, 1048618, -196607, 0, 1048618, -196607, 1, 1048618, -196606, 1, 1048618, -196606, 0, 1048618, -196605, 0, 1048618, -196605, 1, 1048618, -196605, 2, 1048618, -196605, 3, 1048618, -196605, 4, 1048618, -196605, 5, 1048618, -196605, 6, 1048618, -196606, 6, 1048618, -196607, 6, 1048618, -196608, 6, 1048618, -131073, 6, 1048618, -131073, 5, 1048618, -131073, 4, 1048618, -131073, 3, 1048618, -131073, 7, 1048618, -131074, 7, 1048618, -131075, 7, 1048618, -131074, 6, 1048618, -196608, 5, 1048618, -196607, 5, 1048618, -196606, 5, 1048618, -196604, 5, 1048618, -196603, 5, 1048618, -196603, 6, 1048618, -196603, 7, 1048618, -196603, 8, 1048618, -196604, 8, 1048618, -196604, 6, 1048618, -196604, 7, 1048618, -196605, 8, 1048618, -196605, 9, 1048618, -196606, 9, 1048618, -196607, 9, 1048618, -196608, 9, 1048618, -131073, 9, 1048618, -131073, 8, 1048618, -131073, 10, 1048618, -131073, 11, 1048618, -131073, 12, 1048618, -131073, 13, 1048618, -131074, 13, 1048618, -131074, 12, 1048618, -131075, 12, 1048618, -131075, 13, 1048618, -131075, 14, 1048618, -131075, 15, 1048618, -131074, 15, 1048618, -131073, 15, 1048618, -196608, 15, 1048618, -196607, 15, 1048618, -196606, 15, 1048618, -196605, 15, 1048618, -196604, 15, 1048618, -196603, 14, 1048618, -196602, 14, 1048618, -196601, 14, 1048618, -196600, 14, 1048618, -196599, 14, 1048618, -196598, 14, 1048618, -196597, 14, 1048618, -196596, 14, 1048618, -196595, 14, 1048618, -196594, 14, 1048618, -196593, 15, 1048618, -196594, 15, 1048618, -196595, 15, 1048618, -196596, 15, 1048618, -196597, 15, 1048618, -196598, 15, 1048618, -196599, 15, 1048618, -196600, 15, 1048618, -196601, 15, 1048618, -196602, 15, 1048618, -196603, 15, 1048618, -131073, 14, 1048618, -131074, 14, 1048618, -196608, 14, 1048618, -196607, 14, 1048618, -196606, 14, 1048618, -196605, 14, 1048618, -196604, 14, 1048618, -196607, 13, 1048618, -196607, 12, 1048618, -196607, 11, 1048618, -196607, 10, 1048618, -196607, 8, 1048618, -196607, 7, 1048618, -196608, 7, 1048618, -196608, 8, 1048618, -196608, 10, 1048618, -196608, 11, 1048618, -196608, 12, 1048618, -196608, 13, 1048618, -196606, 13, 1048618, -196606, 12, 1048618, -196606, 11, 1048618, -196606, 10, 1048618, -196606, 8, 1048618, -196606, 7, 1048618, -196605, 7, 1048618, -196605, 10, 1048618, -196605, 11, 1048618, -196605, 12, 1048618, -196605, 13, 1048618, -196604, 13, 1048618, -196604, 12, 1048618, -196604, 11, 1048618, -196604, 10, 1048618, -196604, 9, 1048618, -196603, 9, 1048618, -196603, 10, 1048618, -196603, 11, 1048618, -196603, 12, 1048618, -196603, 13, 1048618, -196602, 13, 1048618, -196602, 12, 1048618, -196602, 11, 1048618, -196602, 10, 1048618, -196602, 9, 1048618, -196602, 8, 1048618, -196602, 7, 1048618, -196601, 7, 1048618, -196601, 8, 1048618, -196601, 9, 1048618, -196601, 10, 1048618, -196601, 11, 1048618, -196601, 12, 1048618, -196601, 13, 1048618, -196600, 13, 1048618, -196600, 12, 1048618, -196600, 11, 1048618, -196600, 10, 1048618, -196600, 9, 1048618, -196600, 7, 1048618, -196600, 8, 1048618, -196599, 13, 1048618, -196599, 12, 1048618, -196599, 11, 1048618, -196599, 10, 1048618, -196599, 9, 1048618, -196599, 8, 1048618, -196599, 7, 1048618, -196598, 7, 1048618, -196598, 8, 1048618, -196598, 9, 1048618, -196598, 10, 1048618, -196598, 11, 1048618, -196598, 12, 1048618, -196598, 13, 1048618, -196597, 13, 1048618, -196597, 12, 1048618, -196597, 11, 1048618, -196597, 10, 1048618, -196597, 9, 1048618, -196597, 8, 1048618, -196597, 7, 1048618, -196596, 7, 1048618, -196596, 8, 1048618, -196596, 9, 1048618, -196596, 10, 1048618, -196596, 11, 1048618, -196596, 12, 1048618, -196596, 13, 1048618, -196595, 13, 1048618, -196595, 12, 1048618, -196595, 11, 1048618, -196595, 10, 1048618, -196595, 9, 1048618, -196595, 8, 1048618, -196595, 7, 1048618, -196594, 8, 1048618, -196594, 9, 1048618, -196594, 10, 1048618, -196594, 11, 1048618, -196594, 12, 1048618, -196594, 13, 1048618, -196593, 13, 1048618, -196593, 14, 1048618, -196593, 12, 1048618, -196593, 11, 1048618, -196593, 10, 1048618, -196593, 9, 1048618, -196594, 7, 1048618, -196593, 7, 1048618, -196593, 8, 1048618, -131062, 0, 12, -65526, 0, 12, -65546, 12, 9, -65547, 12, 0, -65548, 12, 0, -65548, 13, 0, -65547, 13, 0, -65546, 13, 6, -65545, 13, 0, -65544, 13, 0, -65543, 14, 0, -65544, 14, 0, -65542, 15, 1048610, -65549, 11, 1441826, -65549, 13, 1441826, -65549, 12, 1441826, -65549, 14, 1441826, -65549, 15, 1441826, -65545, 14, 1441792, -65546, 14, 6, -65547, 14, 1441792, -65548, 14, 1441792, -65548, 15, 1441792, -65547, 15, 1441792, -65546, 15, 6, -65545, 15, 1441792, -65544, 15, 1441792, -65543, 15, 1441792, -3, 65535, 1048578, -5, 65535, 2, -5, 65533, 1441794, -3, 65533, 655362, -4, 65533, 655361, -3, 65534, 1048577, -4, 65535, 1, -4, 65534, 1441792, -5, 65534, 1441793, -65539, 12, 1048611)
 }
 metadata/_editor_floor_ = Vector3(0, -2, 0)
+
+[node name="Water" type="MeshInstance3D" parent="GRID" unique_id=1847975153]
+transform = Transform3D(15.3, 0, 0, 0, 1, 0, 0, 0, 15, -23.00277, -0.34672832, 0.014282227)
+material_override = ExtResource("16_e3ght")
+mesh = SubResource("PlaneMesh_2no5g")
+
+[node name="DECORATIONS" type="GridMap" parent="GRID" unique_id=175339387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh_library = ExtResource("8_dri0c")
+cell_size = Vector3(2, 1, 2)
+data = {
+"cells": PackedInt32Array(-12, 0, 1441844, -14, 0, 1048628, -13, 0, 1048629, -11, 0, 1441839, -15, 0, 1048623, -7, 4, 19, -7, 3, 19, -8, 3, 19, -6, 3, 19, -7, 5, 19, -8, 4, 19, -8, 5, 19, -9, 3, 19, -10, 3, 19, -10, 2, 19, -9, 2, 19, -11, 2, 19, -16, 65534, 655379, -17, 65534, 1048596, -18, 65534, 1048596, -19, 65534, 1048596, -19, 65535, 655378, -18, 65535, 19, -16, 65535, 655378, -17, 65535, 655378, -16, 2, 19, -16, 3, 19, -17, 3, 655380, -18, 2, 655380, -17, 2, 655380, -16, 1, 1048595, -17, 1, 1048595, -18, 1, 19, -18, 3, 1048595, -19, 3, 655380, -19, 1, 1441811, -17, 4, 1441810, -5, 6, 53, -5, 5, 47, -5, 9, 655407, -5, 7, 655413, -5, 8, 655413, -1, 0, 1048629, -65536, 0, 1441844, -65535, 0, 1048628, -65533, 0, 1048628, -65534, 0, 1441844, -65532, 0, 1048629, -65531, 0, 1441839, -2, 0, 1048623, 8, 1, 1441822, 8, 2, 1441817, 9, 0, 655384, 8, 0, 655388, 10, 65535, 655390, 11, 65535, 655385, 9, 65535, 655382, 12, 65535, 655387, 8, 3, 1441814, 10, 3, 30, 11, 3, 24, 12, 3, 21, 13, 3, 23, 14, 2, 1048606, 14, 0, 1048603, 14, 1, 1048602, 14, 3, 32, 14, 65535, 1048598, 65529, 11, 1441818, 65530, 10, 655381, 65531, 10, 1048608, 65530, 12, 24, 65531, 12, 28, 65529, 12, 1441814, 65529, 10, 655391, 65531, 11, 1048603, 65530, 11, 1048576, 65524, 10, 1441821, 65526, 10, 1048603, 65525, 9, 655390, 65525, 11, 27, 65524, 11, 1441823, 65524, 9, 655392, 65526, 9, 1048598, 65526, 11, 31, 65525, 10, 0, -8, 12, 1048595, -9, 13, 655379, -11, 12, 1048596, -11, 14, 1048594, -12, 12, 20, -12, 13, 18, -11, 13, 1441812, -8, 10, 1441812, -8, 13, 1441810, -7, 14, 655380, -8, 14, 1441812, -8, 15, 20, -7, 13, 655379, -7, 15, 655380, -9, 15, 20, -9, 14, 1441810, -8, 65534, 18, -7, 65534, 1441811, -6, 65534, 1048596, 65532, 65534, 1441810, -2, 65534, 655378, -2, 65533, 655379, -3, 65532, 1048596, -6, 65533, 1048596, -5, 1, 1048596, -4, 9, 1441810, -4, 10, 1048595, -11, 8, 1441811)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Paths" type="Node3D" parent="." unique_id=513787923]
+visible = false
+
+[node name="RiverwoodPath" type="Node3D" parent="Paths" unique_id=1239868369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 1)
+
+[node name="Bridge" type="Node3D" parent="Paths/RiverwoodPath" unique_id=157005182]
+
+[node name="Flow0" parent="Paths/RiverwoodPath/Bridge" unique_id=1833281073 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -155, 0, 4)
+
+[node name="UnitSpawner" parent="Paths/RiverwoodPath/Bridge/Flow0" unique_id=197584738 instance=ExtResource("14_1mtof")]
+spawnInterval = 1.0
+spawnIntervalOffset = 0.2
+spawnedUnits = ExtResource("15_af400")
+maxSpawnedUnitsCount = 50
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0" unique_id=1769468881 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1" unique_id=1414225891 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1" unique_id=273123315 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1" unique_id=1537262235 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1" unique_id=1329682514 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=89345393 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1474772064 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=982639010 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1757467153 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=67380951 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1924678083 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1109050245 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1954698268 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=21275296 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1115664101 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1307756681 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1440969342 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1974303180 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1347855490 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1677219253 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=618022200 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1602642259 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=401176371 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=44034419 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=591936880 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1897697360 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1378884012 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1522035413 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=300157879 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1633741693 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="INTERSECTION0" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1843743583 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0" unique_id=278022902 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1" unique_id=720384218 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1" unique_id=765144601 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1" unique_id=1191370381 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1" unique_id=1916920730 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=845588466 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1207507033 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=159341945 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1045287450 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=186293534 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1374541883 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2120730453 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2093016054 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1316714460 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=681332812 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1312229789 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2029747756 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2063582890 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=513337078 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=453925108 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1726899203 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1477941059 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="RiverwoodCityPath" type="Node3D" parent="Paths/RiverwoodPath" unique_id=2081911229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, 0)
+
+[node name="Riverwood2ndPath" type="Node3D" parent="Paths/RiverwoodPath" unique_id=385020828]
+
+[node name="Flow0" parent="Paths/RiverwoodPath/Riverwood2ndPath" unique_id=1327361639 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, -60, 0, 159)
+
+[node name="UnitSpawner" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0" unique_id=291637538 instance=ExtResource("14_1mtof")]
+spawnInterval = 1.0
+spawnIntervalOffset = 0.2
+spawnedUnits = ExtResource("15_af400")
+maxSpawnedUnitsCount = 50
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0" unique_id=1197908458 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1" unique_id=750188743 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1" unique_id=121261610 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1" unique_id=834899067 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1" unique_id=103218328 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1087357296 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1299552826 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1656839580 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=511174628 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1884284562 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1511085657 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=98290609 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1576037439 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1397017390 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=843146509 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1948218256 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1098711409 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1389429147 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=440086465 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=123147670 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1185024002 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2103037610 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=636314028 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=831431856 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=970382345 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=300425272 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2066743257 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=255797112 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=329159045 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1357938664 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=438928946 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=829488304 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=184503354 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1088125804 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1513059945 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1211263433 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1844961075 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 1, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1975212004 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1091352737 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, 0, 0, 1)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=2113950950 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0.99999976, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=656841874 instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0.99999976, 0, 0)
+
+[node name="Flow1" parent="Paths/RiverwoodPath/Riverwood2ndPath/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1" unique_id=1639782564 node_paths=PackedStringArray("NextNodes") instance=ExtResource("13_3qdsm")]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0.99999976, 0, 0)
+NextNodes = [NodePath("../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../Bridge/Flow0/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/Flow1/INTERSECTION0")]
+
+[node name="Lighting" type="Node3D" parent="." unique_id=1567252423]
+
+[node name="LightmapGI" type="LightmapGI" parent="Lighting" unique_id=870089214]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=92504207]
+environment = SubResource("Environment_k5r3x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=29155539]
+transform = Transform3D(0.24236232, 0.6852174, -0.68683165, -0.1294095, 0.7244444, 0.6770771, 0.96151626, -0.07521555, 0.2642518, -5, 8, 0)
+shadow_enabled = true
+
+[node name="Gate" parent="." unique_id=314369867 instance=ExtResource("13_af400")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -105, -5, 5)
+
+[node name="Wall" parent="." unique_id=107570890 instance=ExtResource("11_tc2oq")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -105, -5, -5)
+
+[node name="Wall2" parent="." unique_id=73205353 instance=ExtResource("11_tc2oq")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, -105, -5, -15)
+
+[node name="Tower" parent="." unique_id=1297713477 instance=ExtResource("14_1lmi8")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, -105, -5, 15)
+
+[node name="Tower2" parent="." unique_id=515467753 instance=ExtResource("14_1lmi8")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, -105, -5, -25)
+
+[node name="Gate2" parent="." unique_id=120650386 instance=ExtResource("13_af400")]
+transform = Transform3D(5, 0, -2.842171e-14, 0, 5, 0, 2.842171e-14, 0, 5, -45, -5, 55)
+
+[node name="Tower3" parent="." unique_id=1694831723 instance=ExtResource("14_1lmi8")]
+transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, -55, -5, 55)
+
+[node name="Tower4" parent="." unique_id=1367135259 instance=ExtResource("14_1lmi8")]
+transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, -35, -5, 55)

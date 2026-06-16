@@ -3,7 +3,7 @@ using System;
 
 public partial class BuildButton : Button
 {
-	[Export] uint buildingId;
+	[Export] int buildingId;
 	Player player;
 
 	// Called when the node enters the scene tree for the first time.
@@ -20,27 +20,6 @@ public partial class BuildButton : Button
 
 	private void OnButtonPressed()
 	{
-		GD.PrintErr("I DO NOTHING " + this.Name);
-		/*
-		if (player.CanBuild(buildingId))
-		{
-			if (player.IsBuilding)
-			{
-				if (player.selectedBuildingId != buildingId)
-				{
-					player.selectedBuildingId = buildingId;
-					player.IsBuilding = true;
-				}
-				else
-				{
-					player.IsBuilding = false;
-				}
-			}
-			else
-			{
-				player.selectedBuildingId = buildingId;
-				player.IsBuilding = true;
-			}
-		}*/
-	}
+		player.StartBuildingTurrets(buildingId);
+    }
 }

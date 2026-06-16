@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://b3tokey6byihn"]
 
-[ext_resource type="Script" uid="uid://cs8xaxp8levbw" path="res://Scripts/Entities/Building.cs" id="1_ohfnd"]
-[ext_resource type="PackedScene" uid="uid://dlghh1kbch4ur" path="res://Scenes/Components/health_component.tscn" id="3_jbdiw"]
+[ext_resource type="Script" uid="uid://dx636xky3g6eg" path="res://Scripts/Entities/Buildings/Tower.cs" id="1_jbdiw"]
 [ext_resource type="Texture2D" uid="uid://sxvrqs5w7lh1" path="res://Textures/colorPalette.png" id="6_26wgh"]
 [ext_resource type="PackedScene" uid="uid://cxmctr17ctj3s" path="res://Scenes/Buildings/Turrets/turret_spot.tscn" id="7_ma4wn"]
 
@@ -45,57 +44,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gnyyy")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0ug4"]
-resource_name = "TexturePalette"
-cull_mode = 2
-albedo_texture = ExtResource("6_26wgh")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_acar1"]
-_surfaces = [{
-"aabb": AABB(-1, -1.9999993, -1, 2, 2.9999993, 2),
-"format": 34359742465,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAQADAAIAAAAEAAEAAgADAAUAAgAFAAAAAAAGAAQAAAAFAAYABAAHAAEAAQAHAAMABAAGAAcABQADAAcABQAHAAYA"),
-"name": "TexturePalette",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AACAPwAAgD8AAIC/AACAvwAAgD8AAIA/AACAPwAAgD8AAIA/AACAP/r//78AAIA/AACAvwAAgD8AAIC/AACAP/r//78AAIC/AACAv/r//78AAIC/AACAv/r//78AAIA/")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_eroj8"]
-resource_name = "SimpleTileset_Cube_024"
-_surfaces = [{
-"aabb": AABB(-1, -1.9999993, -1, 2, 2.9999993, 2),
-"attribute_data": PackedByteArray("cKYfO4Bstjxwph87gGy2PHCmHzuAbLY8cKYfO4Bstjz9/ss7AACPPP3+yzsAAI88/f7LOwAAjzz9/ss7AACPPP3+yzsAAI88/f7LOwAAjzz9/ss7AACPPP3+yzsAAI88/f7LOwAAjzz9/ss7AACPPP3+yzsAAI88/f7LOwAAjzz9/ss7AACPPP3+yzsAAI88/f7LOwAAjzz9/ss7AACPPP3+yzsAAI88/f7LOwAAjzz9/ss7AACPPP3+yzsAAI88"),
-"format": 34359742487,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_b0ug4"),
-"name": "TexturePalette",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AACAPwAAgD8AAIC/AACAvwAAgD8AAIA/AACAPwAAgD8AAIA/AACAvwAAgD8AAIC/AACAP/r//78AAIC/AACAv/r//78AAIA/AACAv/r//78AAIC/AACAP/r//78AAIA/AACAvwAAgD8AAIA/AACAP/r//78AAIA/AACAPwAAgD8AAIA/AACAv/r//78AAIA/AACAPwAAgD8AAIC/AACAv/r//78AAIC/AACAvwAAgD8AAIC/AACAP/r//78AAIC/AACAPwAAgD8AAIA/AACAP/r//78AAIC/AACAPwAAgD8AAIC/AACAP/r//78AAIA/AACAvwAAgD8AAIC/AACAv/r//78AAIA/AACAvwAAgD8AAIA/AACAv/r//78AAIC//38AAP///z//fwAA////P/9/AAD///8//38AAP///z//f///////P/9///////8//3///////z//f///////P/////////8//////////z//////////P/////////8//3//f////z//f/9/////P/9//3////8//3//f////z8AAP9/////vwAA/3////+/AAD/f////78AAP9/////v////3////+/////f////7////9/////v////3////+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_acar1")
-
-[node name="Tower" type="Node3D" unique_id=1297713477]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-script = ExtResource("1_ohfnd")
-DataPath = "res://Resources/Buildings/TowerData.tres"
-
-[node name="HealthComponent" parent="." unique_id=934013437 instance=ExtResource("3_jbdiw")]
-health = 5.0
+[node name="Tower" type="Node3D" unique_id=1297713477 node_paths=PackedStringArray("turretSpot")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 0, 0, 0)
+script = ExtResource("1_jbdiw")
+turretSpot = NodePath("TurretSpot")
 
 [node name="WALL_TOWER" type="MeshInstance3D" parent="." unique_id=1342706343]
 mesh = SubResource("ArrayMesh_jicmr")
 
 [node name="TurretSpot" parent="." unique_id=1503670788 instance=ExtResource("7_ma4wn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="GROUND_FLAT" type="MeshInstance3D" parent="." unique_id=928069794]
-mesh = SubResource("ArrayMesh_eroj8")

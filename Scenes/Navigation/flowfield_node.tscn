@@ -19,6 +19,7 @@ radial_segments = 5
 rings = 0
 
 [node name="FlowfieldNode" type="Node3D" unique_id=1833281073 node_paths=PackedStringArray("NextNodes", "reserved", "free")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_5cmjs")
 NextNodes = []
 reserved = NodePath("reserved")

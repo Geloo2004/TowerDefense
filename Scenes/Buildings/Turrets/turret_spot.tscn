@@ -7,7 +7,6 @@ size = Vector3(1.3, 0.7, 1.3)
 
 [node name="TurretSpot" type="Node3D" unique_id=1503670788]
 script = ExtResource("1_0vhwf")
-allowedTurrets = Array[int]([1])
 
 [node name="ClickboxComponent" type="Area3D" parent="." unique_id=1684087004]
 collision_layer = 2
